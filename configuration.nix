@@ -50,6 +50,8 @@ in {
 
     libinput.enable = true;
     gpm.enable = true;
+
+    udisks2.enable = true;
   };
 
   environment = {

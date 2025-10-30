@@ -421,6 +421,15 @@ in {
     };
   };
 
+  services = {
+    udiskie = {
+      automount = false;
+      enable = true;
+      notify = true;
+      tray = "always";
+    };
+  };
+
   systemd.user.services = lib.attrsets.mapAttrs (name: value:
     {
       # serviceConfig.PassEnvironment =
