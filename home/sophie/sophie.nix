@@ -63,6 +63,7 @@ in {
       grm = "git rm --cached";
       ca = "git commit";
       push = "git push";
+      clone = "git clone";
     };
     packages = with pkgs; [
       # fonts
