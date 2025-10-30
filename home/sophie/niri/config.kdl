@@ -146,8 +146,6 @@ layout {
 	background-color "#1e1e2e"
 }
 
-spawn-at-startup "swayosd-server"
-
 hotkey-overlay { skip-at-startup; }
 
 screenshot-path "~/screenshots/niri-%Y-%m-%d-%H-%M-%S.png"
