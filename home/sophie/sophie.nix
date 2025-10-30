@@ -41,7 +41,7 @@ in {
   home = {
     shell.enableShellIntegration = true;
     shellAliases = {
-      "nixos-update" = "sudo nixos-rebuild switch --flake /etc/nixos";
+      "nixos-update" = "sudo nixos-rebuild switch --flake /etc/nixos --impure";
       cd = "z";
       exa = "eza";
       ls = "eza";
