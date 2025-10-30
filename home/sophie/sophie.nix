@@ -24,12 +24,10 @@ in {
     flavor = "mocha";
   } // (lib.attrsets.genAttrs [
     "kitty"
-    "rofi"
     "bat"
     "zsh-syntax-highlighting"
     "cursors"
     "firefox"
-    "rofi"
     "fzf"
     "mpv"
     "nvim"
@@ -111,10 +109,6 @@ in {
       };
     };
     vesktop = import ./vesktop.nix args;
-    rofi = {
-      enable = true;
-      location = "center";
-    };
     fzf = {
       enable = true;
       enableZshIntegration = true;

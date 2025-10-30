@@ -282,7 +282,7 @@ binds {
 	Mod+T hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
 	Super+L hotkey-overlay-title="Lock Screen" { spawn "swaylock"; }
 
-	Mod+R hotkey-overlay-title="Open Rofi" { spawn "rofi -show drun"; }
+	// Mod+R hotkey-overlay-title="Open Rofi" { spawn "rofi -show drun"; }
 	Mod+Y hotkey-overlay-title="Open Browser" { spawn "zen"; }
 	Mod+K hotkey-overlay-title="Open KeePassXC" { spawn "keepassxc"; }
 
