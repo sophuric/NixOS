@@ -101,13 +101,6 @@ in {
   };
 
   programs = {
-    readline = {
-      enable = true;
-      bindings = {
-        "\\C-h" = "backward-kill-word";
-        "\\e[3;5~" = "kill-word";
-      };
-    };
     vesktop = import ./vesktop.nix args;
     fzf = {
       enable = true;
@@ -170,8 +163,10 @@ in {
         enable = true;
         highlighters = [ "main" "brackets" ];
       };
-      initContent =
-        "setopt HIST_FCNTL_LOCK RM_STAR_WAIT AUTO_PUSHD CHASE_DOTS CHASE_LINKS PUSHD_IGNORE_DUPS PUSHD_SILENT AUTO_LIST GLOB_DOTS";
+      initContent = ''
+        setopt HIST_FCNTL_LOCK RM_STAR_WAIT AUTO_PUSHD CHASE_DOTS CHASE_LINKS PUSHD_IGNORE_DUPS PUSHD_SILENT AUTO_LIST GLOB_DOTS
+        bindkey '\C-h' backward-kill-word
+      '';
       history = {
         size = 10000;
         save = 10000;
