@@ -108,14 +108,9 @@ layout {
 
 	default-column-width { proportion 0.5; }
 
-	focus-ring { 
-		width 4
-		active-color "#f5c2e7"
-		inactive-color "#313244"
-		urgent-color "#f38ba8"
-	}
-	
 	default-column-display "normal"
+
+	focus-ring { off; }
 
 	tab-indicator {
 		hide-when-single-tab
@@ -241,13 +236,14 @@ animations {
 window-rule {
 	match is-window-cast-target=true
 
-	focus-ring { 
-		inactive-color "#313244"
-		urgent-color "#f38ba8"
+	border {
+		active-gradient from="#f5c2e7" to="#a6e3a1" angle=45
+		inactive-gradient from="#313244" to="#a6e3a1" angle=45
+		urgent-gradient from="#f38ba8" to="#a6e3a1" angle=45
 	}
 
 	tab-indicator {
-		active-color "#f5c2e7"
+		active-color "#a6e3a1"
 		inactive-color "#313244"
 	}
 }

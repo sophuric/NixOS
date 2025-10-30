@@ -127,7 +127,10 @@ in {
       extraOptions = [ "--header" "--group" "--binary" "--sort=Name" ];
     };
     mpv.enable = true;
-    obs-studio.enable = true;
+    obs-studio = {
+      enable = true;
+      plugins = [ pkgs.obs-studio-plugins.wlrobs ];
+    };
     ripgrep.enable = true;
     git = {
       enable = true;
