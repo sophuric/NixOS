@@ -59,9 +59,12 @@ in {
       gadd = "git add";
       ginfo = "git info";
       grm = "git rm --cached";
-      ca = "git commit";
+      gstatus = "git status";
+      commit = "git commit";
       push = "git push";
+      pull = "git pull";
       clone = "git clone";
+      ca = "git commit";
     };
     packages = with pkgs; [
       # fonts
