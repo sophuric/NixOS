@@ -11,7 +11,7 @@
 > [!IMPORTANT]
 > These are my personal config files and are not intended to be used by others. They are provided as-is and may not work on your system.
 > 
-> If you really want to use these, you will need to edit many files such as monitor config. I do plan on creating separate configurations for my other devices. You can create a personal fork and sync changes with git merge. Use at your own risk.
+> If you really want to use these, you will need to edit many files such as monitor config. I do plan on creating separate specialisations for my other devices. You can create a personal fork and sync changes with git merge. Use at your own risk.
 
 ### To-Do List:
 - [ ] Port [my old Hyprland config](https://github.com/sophuric/dotfiles-old) to niri
@@ -25,7 +25,7 @@
 - [ ] Potentially port [my old Neovim config](https://github.com/sophuric/nvim) to [Nixvim](https://github.com/nix-community/nixvim)
 - [ ] Configure zen-browser and its extensions
 - [ ] Set Zsh prompt and other settings
-- [ ] Add derivations for my [laptop](https://nixos.wiki/wiki/Laptop)
+- [ ] Add specialisations for my [laptop](https://nixos.wiki/wiki/Laptop)
 - [ ] Add programs
   - [ ] [Prism Launcher](https://prismlauncher.org/)
   - [ ] [Vesktop](https://github.com/Vencord/Vesktop)
