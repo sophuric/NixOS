@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     # language servers for nvim
     # TODO: migrate to nixvim
+    git
     gcc
     gopls
     pyright
