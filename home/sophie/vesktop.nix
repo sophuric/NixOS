@@ -17,10 +17,10 @@
     themes = {
       custom = ''
         :root {
-          --font-code: "Cartograph CF" !important;
-          --font-primary: Ubuntu !important;
-          --font-display: Ubuntu !important;
-          --font-headline: Ubuntu !important;
+          --font-code: monospace !important;
+          --font-primary: sans-serif !important;
+          --font-display: sans-serif !important;
+          --font-headline: sans-serif !important;
         }
       '';
     };
