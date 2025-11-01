@@ -17,6 +17,7 @@ in {
     ./zen-browser.nix
     ./keepassxc.nix
     ./kitty.nix
+    ./syncthing.nix
   ];
 
   manual.html.enable = true;
