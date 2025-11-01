@@ -9,7 +9,15 @@ let
     emoji = [ "Twitter Color Emoji" ];
   };
 in {
-  imports = [ args.zen-browser.homeModules.twilight ./nvim.nix ./shell.nix ];
+  imports = [
+    args.zen-browser.homeModules.twilight
+    ./nvim.nix
+    ./shell.nix
+    ./vesktop.nix
+    ./zen-browser.nix
+    ./keepassxc.nix
+    ./kitty.nix
+  ];
 
   manual.html.enable = true;
   manual.manpages.enable = true;
@@ -22,15 +30,8 @@ in {
   catppuccin = {
     accent = "pink";
     flavor = "mocha";
-  } // (lib.attrsets.genAttrs [
-    "kitty"
-    "cursors"
-    "firefox"
-    "mpv"
-    "nvim"
-    "obs"
-    "vesktop"
-  ] (_: { enable = true; }));
+  } // (lib.attrsets.genAttrs [ "cursors" "mpv" "nvim" "obs" ]
+    (_: { enable = true; }));
 
   home = {
     packages = with pkgs; [
@@ -73,14 +74,6 @@ in {
       vimAlias = true;
       withNodeJs = true;
     };
-
-    vesktop = import ./vesktop.nix args;
-
-    zen-browser = import ./zen-browser.nix (args // { inherit defaultFonts; });
-
-    keepassxc = import ./keepassxc.nix args;
-
-    kitty = import ./kitty.nix args;
   };
 
   xdg = {
