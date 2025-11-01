@@ -14,6 +14,7 @@ args@{ self, config, lib, pkgs, ... }: {
       killall
       eza
       btop
+      pv
     ];
     shell.enableShellIntegration = true;
     shellAliases = {
