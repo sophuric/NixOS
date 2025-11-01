@@ -94,8 +94,6 @@ in {
 
   systemd.user.services = lib.attrsets.mapAttrs (name: value:
     {
-      # serviceConfig.PassEnvironment =
-      # lib.strings.concatStringsSep " " [ "DISPLAY" "WAYLAND_DISPLAY" "" ];
       Service.ExecStart = value.binary;
       Unit.PartOf = [ "graphical-session.target" ];
       Install.WantedBy = [ "graphical-session.target" ]; # start after login
