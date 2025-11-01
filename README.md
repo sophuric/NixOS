@@ -28,7 +28,7 @@
 - [ ] Add specialisations for my [laptop](https://nixos.wiki/wiki/Laptop)
 - [ ] Add programs
   - [ ] [Prism Launcher](https://prismlauncher.org/)
-  - [ ] [Vesktop](https://github.com/Vencord/Vesktop)
+  - [x] [Vesktop](https://github.com/Vencord/Vesktop)
   - [ ] [IntelliJ IDEA](https://www.jetbrains.com/idea/)
   - [ ] [Nemo](https://github.com/linuxmint/nemo)
   - [ ] [Syncthing](https://syncthing.net/)
