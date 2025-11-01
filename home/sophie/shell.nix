@@ -12,7 +12,6 @@ args@{ self, config, lib, pkgs, ... }: {
       unzip
       less
       killall
-      eza
       btop
       pv
     ];
