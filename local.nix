@@ -1,5 +1,5 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-{ self, config, pkgs, ... }:
+{ ... }:
 
 {
   time.timeZone = "Australia/Melbourne";
