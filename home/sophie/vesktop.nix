@@ -438,7 +438,7 @@
         notifyAboutUpdates = false;
         macosTranslucency = false;
         eagerPatches = false;
-      };
+      } // (import /root/vencord-settings.nix);
     };
   };
 }
