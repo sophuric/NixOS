@@ -22,7 +22,7 @@
         branding = null;
         brandingColor = 0;
       };
-      wallpapers = [ "${self}/limine_bg.bmp" ];
+      wallpapers = [ ./limine_bg.bmp ];
       wallpaperStyle = "centered";
       graphicalTerminal = {
         margin = 64;
