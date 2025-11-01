@@ -141,8 +141,8 @@ args@{ self, config, lib, pkgs, ... }: {
         subc = "submodule update --init --recursive";
         unstage = "restore --staged";
         r = "remote";
-        rebase = ''
-          git -c rebase.instructionFormat='%s%nexec GIT_COMMITTER_DATE="%cD" GIT_COMMITTER_NAME="%cn" GIT_COMMITTER_EMAIL="%ce"  git commit --amend --no-edit --reset-author --date="%cD"' rebase -i''; # preserve commit date/username
+        rebase-preserve = ''
+          -c rebase.instructionFormat='%s%nexec GIT_COMMITTER_DATE="%cD" GIT_COMMITTER_NAME="%cn" GIT_COMMITTER_EMAIL="%ce" git commit --amend --no-edit --reset-author --date="%cD"' rebase -i''; # preserve commit date/username
       };
       userEmail = "48314599+sophuric@users.noreply.github.com";
       userName = "sophur";
