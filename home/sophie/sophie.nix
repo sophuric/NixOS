@@ -61,6 +61,12 @@ in {
       NIXOS_OZONE_WL = "1";
       SUDO_ASKPASS = "ksshaskpass";
     };
+
+    pointerCursor = {
+      enable = true;
+      dotIcons.enable = true;
+      size = 32;
+    };
   };
 
   programs = {
