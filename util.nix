@@ -1,7 +1,7 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
 
 args@{ self, ... }:
-args // {
-  trimNewlines = x: (builtins.replaceStrings [ "\n" "\r" ] [ "" "" ] x);
-  first = x: (builtins.elemAt x 0);
+with builtins; {
+  trimNewlines = x: (replaceStrings [ "\n" "\r" ] [ "" "" ] x);
+  first = x: (elemAt x 0);
 }

@@ -13,7 +13,7 @@
     catppuccin.url = "github:catppuccin/nix/release-25.05";
   };
   outputs = args:
-    let inputs = (import ./util.nix args);
+    let inputs = args // { util = import ./util.nix args; };
     in {
       nixosConfigurations.sophie = args.nixpkgs.lib.nixosSystem {
         specialArgs = inputs;

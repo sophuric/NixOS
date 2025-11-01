@@ -30,7 +30,7 @@ in {
     "nvim"
     "obs"
     "vesktop"
-  ] (x: { enable = true; }));
+  ] (_: { enable = true; }));
 
   home = {
     packages = with pkgs; [
