@@ -17,6 +17,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin.url = "github:catppuccin/nix/release-25.05";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = args:
     let
@@ -35,6 +39,7 @@
               extraSpecialArgs = inputs;
               users.sophie = {
                 imports = [
+                  args.nur.modules.homeManager.default
                   args.catppuccin.homeModules.catppuccin
                   ./home/sophie/sophie.nix
                 ];
