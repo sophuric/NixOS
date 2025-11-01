@@ -1,5 +1,5 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-args@{ self, config, lib, pkgs, ... }:
+args@{ util, lib, pkgs, ... }:
 let
   defaultFonts = {
     serif = [ "Liberation Serif" ];
@@ -27,11 +27,14 @@ in {
     inherit defaultFonts;
   };
 
-  catppuccin = {
-    accent = "pink";
-    flavor = "mocha";
-  } // (lib.attrsets.genAttrs [ "cursors" "mpv" "nvim" "obs" ]
-    (_: { enable = true; }));
+  catppuccin = util.merge [
+    {
+      accent = "pink";
+      flavor = "mocha";
+    }
+    (lib.attrsets.genAttrs [ "cursors" "mpv" "nvim" "obs" ]
+      (_: { enable = true; }))
+  ];
 
   home = {
     packages = with pkgs; [
@@ -93,11 +96,13 @@ in {
   };
 
   systemd.user.services = lib.attrsets.mapAttrs (name: value:
-    {
-      Service.ExecStart = value.binary;
-      Unit.PartOf = [ "graphical-session.target" ];
-      Install.WantedBy = [ "graphical-session.target" ]; # start after login
-    } // value) {
+    util.merge [
+      {
+        Unit.PartOf = [ "graphical-session.target" ];
+        Install.WantedBy = [ "graphical-session.target" ]; # start after login
+      }
+      value
+    ]) {
       swayosd = { Service.ExecStart = "${pkgs.swayosd}/bin/swayosd-server"; };
       keepassxc = { Service.ExecStart = "${pkgs.keepassxc}/bin/keepassxc"; };
     };
