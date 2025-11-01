@@ -9,12 +9,7 @@
     # File should be simple key=value file, psk1=..., etc.
     # Use wpa_passphrase to generate passphrase
     secretsFile = "/root/wifi/secret";
-    networks = {
-      # I don't care about securing these SSIDs client-side, just from Git
-      ${util.trimNewlines (builtins.readFile "/root/wifi/ssid1")}.pskRaw =
-        "ext:psk1";
-      ${util.trimNewlines (builtins.readFile "/root/wifi/ssid2")}.pskRaw =
-        "ext:psk2";
-    };
+    # I don't care about securing these SSIDs client-side, just from Git
+    networks = import /root/wifi-networks.nix;
   };
 }

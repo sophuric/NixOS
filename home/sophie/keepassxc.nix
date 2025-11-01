@@ -28,7 +28,7 @@
       ToolButtonStyle = 0;
       TrayIconAppearance = "monochrome-light";
     };
-    PasswordGenerator = import /root/keepassxc-password-generator;
+    PasswordGenerator = import /root/keepassxc-password-generator.nix;
     SSHAgent.Enabled = true;
     Security = {
       ClearClipboardTimeout = 7;
