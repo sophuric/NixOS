@@ -31,4 +31,4 @@
   - [x] [Vesktop](https://github.com/Vencord/Vesktop)
   - [ ] [IntelliJ IDEA](https://www.jetbrains.com/idea/)
   - [ ] [Nemo](https://github.com/linuxmint/nemo)
-  - [ ] [Syncthing](https://syncthing.net/)
+  - [x] [Syncthing](https://syncthing.net/)
