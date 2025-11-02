@@ -24,7 +24,7 @@
       remember_window_size = false;
       remember_window_position = false;
       hide_window_decorations = true;
-      background_opacity = 0.75;
+      background_opacity = 0.85;
     };
     keybindings = {
       "kitty_mod+C" = "copy_to_clipboard";
