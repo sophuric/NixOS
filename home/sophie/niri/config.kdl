@@ -280,9 +280,10 @@ binds {
 	Mod+T hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
 	Super+L hotkey-overlay-title="Lock Screen" { spawn "swaylock"; }
 
-	// Mod+R hotkey-overlay-title="Open Rofi" { spawn "rofi -show drun"; }
-	Mod+Y hotkey-overlay-title="Open Browser" { spawn "zen"; }
+	// Mod+R hotkey-overlay-title="Open Rofi"      { spawn "rofi -show drun"; }
+	Mod+Y hotkey-overlay-title="Open Browser"   { spawn "zen"; }
 	Mod+K hotkey-overlay-title="Open KeePassXC" { spawn "keepassxc"; }
+	Mod+G hotkey-overlay-title="Open GIMP"      { spawn "gimp"; }
 
 	XF86AudioRaiseVolume  allow-when-locked=true { spawn "swayosd-client" "--output-volume" "+5"; }
 	XF86AudioLowerVolume  allow-when-locked=true { spawn "swayosd-client" "--output-volume" "-5"; }

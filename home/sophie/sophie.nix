@@ -53,6 +53,7 @@ args@{ util, lib, pkgs, ... }: {
       pavucontrol
       wl-clipboard
       libsForQt5.ksshaskpass
+      gimp
     ];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
