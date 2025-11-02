@@ -103,15 +103,34 @@ in {
     };
   };
 
-  systemd.user.services = lib.attrsets.mapAttrs (name: value:
+  systemd.user.services = lib.attrsets.mapAttrs (name:
+    value@{ package, bin }:
     util.merge [
+      # https://github.com/spikespaz/dotfiles/blob/odyssey/hm-modules/keepassxc.nix
       {
-        Install.WantedBy = [ "graphical-session.target" ]; # start after login
+        Unit = {
+          Description = package.meta.description;
+          After = [ "graphical-session.target" ];
+        };
+        Service = {
+          Type = "simple";
+          KillMode = "process";
+          ExecStart = lib.getExe' package bin;
+          Restart = "on-failure";
+          RestartSec = 5;
+        };
+        Install = { WantedBy = [ "graphical-session.target" ]; };
       }
-      value
+      (removeAttrs value [ "package" "bin" ])
     ]) {
-      swayosd = { Service.ExecStart = "${pkgs.swayosd}/bin/swayosd-server"; };
-      keepassxc = { Service.ExecStart = "${pkgs.keepassxc}/bin/keepassxc"; };
+      swayosd = {
+        package = pkgs.swayosd;
+        bin = "swayosd-server";
+      };
+      keepassxc = {
+        package = pkgs.keepassxc;
+        bin = "keepassxc";
+      };
     };
 
   home.stateVersion = "25.05"; # Do not change
