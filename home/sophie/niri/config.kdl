@@ -60,7 +60,7 @@ input {
 
 	warp-mouse-to-focus
 
-	focus-follows-mouse max-scroll-amount="30%"
+	focus-follows-mouse
 
 	mod-key "Super"
 	mod-key-nested "Alt"
