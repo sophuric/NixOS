@@ -27,7 +27,7 @@
 - [ ] Set Zsh prompt and other settings
 - [ ] Add specialisations for my [laptop](https://nixos.wiki/wiki/Laptop)
 - [ ] Add programs
-  - [ ] [Prism Launcher](https://prismlauncher.org/)
+  - [x] [Prism Launcher](https://prismlauncher.org/)
   - [x] [Vesktop](https://github.com/Vencord/Vesktop)
   - [ ] [IntelliJ IDEA](https://www.jetbrains.com/idea/)
   - [ ] [Nemo](https://github.com/linuxmint/nemo)

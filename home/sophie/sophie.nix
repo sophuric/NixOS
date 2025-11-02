@@ -55,6 +55,7 @@ args@{ util, lib, pkgs, ... }: {
       wl-clipboard
       libsForQt5.ksshaskpass
       gimp
+      prismlauncher
     ];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
