@@ -105,7 +105,6 @@ in {
   systemd.user.services = lib.attrsets.mapAttrs (name: value:
     util.merge [
       {
-        Unit.PartOf = [ "graphical-session.target" ];
         Install.WantedBy = [ "graphical-session.target" ]; # start after login
       }
       value
