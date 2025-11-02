@@ -18,6 +18,7 @@ in {
     ./keepassxc.nix
     ./kitty.nix
     ./syncthing.nix
+    ./waybar.nix
   ];
 
   manual.html.enable = true;

@@ -94,7 +94,7 @@ layout {
 	struts {
 		left 0
 		right 0
-		top 0
+		top -16 // hacky fix to prevent extra padding around waybar
 		bottom 0
 	}
 
