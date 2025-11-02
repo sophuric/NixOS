@@ -31,7 +31,7 @@ args@{ util, lib, pkgs, ... }: {
       accent = "pink";
       flavor = "mocha";
     }
-    (lib.attrsets.genAttrs [ "cursors" "mpv" "obs" "swaylock" ]
+    (lib.attrsets.genAttrs [ "cursors" "mpv" "obs" "swaylock" "fuzzel" ]
       (_: { enable = true; }))
   ];
 
@@ -70,6 +70,7 @@ args@{ util, lib, pkgs, ... }: {
 
   programs = {
     mpv.enable = true;
+
     obs-studio = {
       enable = true;
       plugins = [ pkgs.obs-studio-plugins.wlrobs ];
@@ -99,6 +100,21 @@ args@{ util, lib, pkgs, ... }: {
         caps-lock-key-hl-color = lib.mkForce "f9e2af";
         caps-lock-bs-hl-color = lib.mkForce "fab387";
         key-hl-color = lib.mkForce "f5c2e7";
+      };
+    };
+
+    fuzzel = {
+      enable = true;
+      settings = {
+        main = {
+          font = "sans-serif:size=16";
+          line-height = 36;
+          match-mode = "fzf";
+        };
+        border = {
+          width = 4;
+          radius = 40;
+        };
       };
     };
   };

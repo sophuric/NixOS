@@ -248,7 +248,7 @@ window-rule {
 
 window-rule {
 	// Prevent kitty crashing from resizing it too small
-	match app-id=r#"^kitty$"#
+	match app-id="^kitty$"
 	min-width 384
 	min-height 384
 }
@@ -274,13 +274,28 @@ window-rule {
 	clip-to-geometry true
 }
 
+layer-rule {
+	match namespace="^launcher$"
+
+	shadow {
+		on
+		softness 10
+		spread 8
+		offset x=0 y=0
+		color "#f5c2e722"
+		inactive-color "#f5c2e722"
+	}
+
+	geometry-corner-radius 40
+}
+
 binds {
 	Mod+Shift+Slash { show-hotkey-overlay; }
 
 	Mod+T hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
 	Super+L hotkey-overlay-title="Lock Screen" { spawn "swaylock"; }
 
-	// Mod+R hotkey-overlay-title="Open Rofi"      { spawn "rofi -show drun"; }
+	Mod+R hotkey-overlay-title="Open Fuzzel"    { spawn "fuzzel"; }
 	Mod+Y hotkey-overlay-title="Open Browser"   { spawn "zen"; }
 	Mod+K hotkey-overlay-title="Open KeePassXC" { spawn "keepassxc"; }
 	Mod+G hotkey-overlay-title="Open GIMP"      { spawn "gimp"; }
