@@ -34,8 +34,7 @@ in {
       accent = "pink";
       flavor = "mocha";
     }
-    (lib.attrsets.genAttrs [ "cursors" "mpv" "obs" ]
-      (_: { enable = true; }))
+    (lib.attrsets.genAttrs [ "cursors" "mpv" "obs" ] (_: { enable = true; }))
   ];
 
   home = {
