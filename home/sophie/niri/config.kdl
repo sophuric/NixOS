@@ -292,6 +292,22 @@ binds {
 	XF86MonBrightnessUp   allow-when-locked=true { spawn "swayosd-client" "--brightness" "raise"; }
 	XF86MonBrightnessDown allow-when-locked=true { spawn "swayosd-client" "--brightness" "lower"; }
 
+	Mod+KP_Up             allow-when-locked=true { spawn "swayosd-client" "--output-volume" "+5"; }
+	Mod+KP_Down           allow-when-locked=true { spawn "swayosd-client" "--output-volume" "-5"; }
+	Mod+KP_Begin          allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+	Mod+KP_Left           allow-when-locked=true { spawn "swayosd-client" "--input-volume"  "mute-toggle"; }
+
+	Mod+KP_Prior          allow-when-locked=true { spawn "swayosd-client" "--brightness" "raise"; }
+	Mod+KP_Next           allow-when-locked=true { spawn "swayosd-client" "--brightness" "lower"; }
+
+	Mod+KP_8              allow-when-locked=true { spawn "swayosd-client" "--output-volume" "+5"; }
+	Mod+KP_2              allow-when-locked=true { spawn "swayosd-client" "--output-volume" "-5"; }
+	Mod+KP_5              allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+	Mod+KP_4              allow-when-locked=true { spawn "swayosd-client" "--input-volume"  "mute-toggle"; }
+
+	Mod+KP_9              allow-when-locked=true { spawn "swayosd-client" "--brightness" "raise"; }
+	Mod+KP_3              allow-when-locked=true { spawn "swayosd-client" "--brightness" "lower"; }
+
 	Mod+Space hotkey-overlay-title="Clear Clipboard" { spawn-sh "true | wl-copy"; }
 
 	// Open/close the Overview: a zoomed-out view of workspaces and windows.
