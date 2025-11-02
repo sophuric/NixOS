@@ -42,6 +42,8 @@ args@{ pkgs, ... }: {
 
   security.sudo.extraConfig = "Defaults pwfeedback";
 
+  security.pam.services.swaylock = { };
+
   console = {
     earlySetup = true;
     font = "${pkgs.terminus_font}/share/consolefonts/ter-v22n.psf.gz";

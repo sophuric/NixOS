@@ -31,7 +31,8 @@ args@{ util, lib, pkgs, ... }: {
       accent = "pink";
       flavor = "mocha";
     }
-    (lib.attrsets.genAttrs [ "cursors" "mpv" "obs" ] (_: { enable = true; }))
+    (lib.attrsets.genAttrs [ "cursors" "mpv" "obs" "swaylock" ]
+      (_: { enable = true; }))
   ];
 
   home = {
@@ -81,14 +82,28 @@ args@{ util, lib, pkgs, ... }: {
       vimAlias = true;
       withNodeJs = true;
     };
-  };
 
-  xdg = {
-    configFile = {
-      # TODO: migrate to niri-flake
-      niri.source = ./niri;
+    swaylock = {
+      enable = true;
+      settings = {
+        font-size = 24;
+        show-keyboard-layout = true;
+        indicator-idle-visible = false;
+        indicator-radius = 100;
+        indicator-thickness = 16;
+        scaling = "solid_color";
+        show-failed-attempts = true;
+        # override default catppuccin colours
+        ring-color = lib.mkForce "313244";
+        bs-hl-color = lib.mkForce "f38ba8";
+        caps-lock-key-hl-color = lib.mkForce "f9e2af";
+        caps-lock-bs-hl-color = lib.mkForce "fab387";
+        key-hl-color = lib.mkForce "f5c2e7";
+      };
     };
   };
+
+  xdg = { configFile = { niri.source = ./niri; }; };
 
   services = {
     udiskie = {

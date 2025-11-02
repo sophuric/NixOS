@@ -18,7 +18,7 @@
 - [ ] Add tools
   - [ ] Add an app launcher like [fuzzel](https://codeberg.org/dnkl/fuzzel) or [Rofi](https://github.com/davatorium/rofi)
   - [ ] Add a notification daemon like [mako](https://github.com/emersion/mako) or [dunst](https://github.com/dunst-project/dunst)
-  - [ ] Add screen locking tool like [swaylock](https://github.com/swaywm/swaylock)
+  - [x] Add [swaylock](https://github.com/swaywm/swaylock)
   - [x] Add [Waybar](https://github.com/Alexays/Waybar)
 - [ ] Configure deployment secrets so I don't need to run Nix with `--impure`
 - [ ] Theming
