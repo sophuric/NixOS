@@ -22,6 +22,16 @@ args@{ pkgs, ... }: {
 
   hardware.graphics = { enable = true; };
 
+  hardware.bluetooth = {
+    # https://nixos.wiki/wiki/Bluetooth
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General.Experimental = true; # Battery charge
+      Policy.AutoEnable = true;
+    };
+  };
+
   boot.blacklistedKernelModules = [ "pcspkr" ];
 
   documentation.dev.enable = true;
@@ -39,6 +49,8 @@ args@{ pkgs, ... }: {
   };
 
   services = {
+    blueman.enable = true;
+
     printing.enable = true;
 
     pipewire = {
