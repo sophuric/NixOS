@@ -100,6 +100,7 @@ in {
       notify = true;
       tray = "always";
     };
+    blueman-applet.enable = true;
   };
 
   systemd.user.services = lib.attrsets.mapAttrs (name:
