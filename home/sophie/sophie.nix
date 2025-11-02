@@ -1,14 +1,5 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-args@{ util, lib, pkgs, ... }:
-let
-  defaultFonts = {
-    serif = [ "Liberation Serif" ];
-    sansSerif = [ "Ubuntu Sans" "Cantarell" "FreeSans" ];
-    monospace =
-      [ "Cartograph CF" "Fira Code" "FiraCode Nerd Font Mono" "Fira Mono" ];
-    emoji = [ "Twitter Color Emoji" ];
-  };
-in {
+args@{ util, lib, pkgs, ... }: {
   imports = [
     args.zen-browser.homeModules.twilight
     ./nvim.nix
@@ -26,7 +17,13 @@ in {
 
   fonts.fontconfig = {
     enable = true;
-    inherit defaultFonts;
+    defaultFonts = {
+      serif = [ "Liberation Serif" ];
+      sansSerif = [ "Ubuntu Sans" ];
+      monospace =
+        [ "Cartograph CF" "Fira Code" "FiraCode Nerd Font Mono" "Fira Mono" ];
+      emoji = [ "Twitter Color Emoji" ];
+    };
   };
 
   catppuccin = util.merge [
@@ -46,7 +43,6 @@ in {
       twitter-color-emoji
       fira-mono
       fira-code
-      cantarell-fonts
       nerd-fonts.fira-code
       # desktop tools
       niri

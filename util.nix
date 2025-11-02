@@ -32,4 +32,5 @@ with builtins; rec {
       acc
     else
       elem)) [ ];
+  escapeCss = x: ''"${lib.strings.escape [ ''"'' "\n" ] x}"'';
 }

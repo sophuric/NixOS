@@ -1,5 +1,5 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-{ util, lib, ... }: {
+{ config, util, lib, ... }: {
   catppuccin.vesktop.enable = true;
   programs.vesktop = {
     enable = true;
@@ -17,12 +17,15 @@
     };
     vencord = {
       themes = {
-        custom = ''
+        custom = let
+          escapeFont = x:
+            builtins.concatStringsSep " " (builtins.map (util.escapeCss) x);
+        in with config.fonts.fontconfig.defaultFonts; ''
           :root {
-            --font-code: monospace !important;
-            --font-primary: sans-serif !important;
-            --font-display: sans-serif !important;
-            --font-headline: sans-serif !important;
+            --font-code: ${escapeFont monospace} !important;
+            --font-primary: ${escapeFont sansSerif} !important;
+            --font-display: ${escapeFont sansSerif} !important;
+            --font-headline: ${escapeFont sansSerif} !important;
           }
         '';
       };
