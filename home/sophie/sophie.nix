@@ -30,10 +30,20 @@ args@{ config, util, lib, pkgs, ... }: {
     {
       accent = "pink";
       flavor = "mocha";
+      kvantum = {
+        apply = true;
+        enable = true;
+      };
     }
     (lib.attrsets.genAttrs [ "cursors" "mpv" "obs" "swaylock" "fuzzel" ]
       (_: { enable = true; }))
   ];
+
+  qt = {
+    platformTheme.name = "kvantum";
+    style.name = "kvantum";
+    enable = true;
+  };
 
   home = {
     packages = with pkgs; [
