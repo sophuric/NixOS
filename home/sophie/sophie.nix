@@ -56,6 +56,7 @@ args@{ config, util, lib, pkgs, ... }: {
       libsForQt5.ksshaskpass
       gimp
       prismlauncher
+      qpdfview
     ];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
