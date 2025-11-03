@@ -1,11 +1,12 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-{ pkgs, ... }: {
+{ pkgs, util, config, ... }: {
   home.packages = [ pkgs.waybar-mpris ];
   catppuccin.waybar = {
     enable = true;
     mode = "createLink";
   };
-  programs.waybar = {
+  programs.waybar = let palette = util.getPalette config;
+  in {
     enable = true;
     style = ./waybar.css;
     settings = {
@@ -43,11 +44,12 @@
           };
           calendar = {
             format = {
-              days = "<span color='#89b4fa'>{}</span>";
-              months = "<span color='#f9e2af'>{}</span>";
-              today = "<span color='#f5c2e7'><b><u>{}</u></b></span>";
-              weekdays = "<span color='#fab387'>{}</span>";
-              weeks = "<span color='#94e2d5'>w{}</span>";
+              days = "<span color='${palette.blue.hex}'>{}</span>";
+              months = "<span color='${palette.yellow.hex}'>{}</span>";
+              today =
+                "<span color='${palette.pink.hex}'><b><u>{}</u></b></span>";
+              weekdays = "<span color='${palette.peach.hex}'>{}</span>";
+              weeks = "<span color='${palette.teal.hex}'>w{}</span>";
             };
             mode = "year";
             mode-mon-col = 3;

@@ -1,5 +1,5 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-args@{ util, lib, pkgs, ... }: {
+args@{ config, util, lib, pkgs, ... }: {
   imports = [
     args.zen-browser.homeModules.twilight
     ./nvim.nix
@@ -87,7 +87,8 @@ args@{ util, lib, pkgs, ... }: {
 
     swaylock = {
       enable = true;
-      settings = {
+      settings = let palette = util.getPalette config;
+      in {
         font-size = 24;
         show-keyboard-layout = true;
         indicator-idle-visible = false;
@@ -96,11 +97,11 @@ args@{ util, lib, pkgs, ... }: {
         scaling = "solid_color";
         show-failed-attempts = true;
         # override default catppuccin colours
-        ring-color = lib.mkForce "313244";
-        bs-hl-color = lib.mkForce "f38ba8";
-        caps-lock-key-hl-color = lib.mkForce "f9e2af";
-        caps-lock-bs-hl-color = lib.mkForce "fab387";
-        key-hl-color = lib.mkForce "f5c2e7";
+        ring-color = lib.mkForce palette.surface0.hex;
+        bs-hl-color = lib.mkForce palette.red.hex;
+        caps-lock-key-hl-color = lib.mkForce palette.yellow.hex;
+        caps-lock-bs-hl-color = lib.mkForce palette.peach.hex;
+        key-hl-color = lib.mkForce palette.pink.hex;
       };
     };
 

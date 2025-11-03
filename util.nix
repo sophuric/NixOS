@@ -33,4 +33,8 @@ with builtins; rec {
     else
       elem)) [ ];
   escapeCss = x: ''"${lib.strings.escape [ ''"'' "\n" ] x}"'';
+  # https://github.com/catppuccin/nix/blob/06f0ea19/modules/home-manager/fzf.nix#L8
+  getPalette = config:
+    (lib.importJSON
+      "${config.catppuccin.sources.palette}/palette.json").${config.catppuccin.flavor}.colors;
 }

@@ -3,10 +3,11 @@
   catppuccin.vesktop.enable = true;
   programs.vesktop = {
     enable = true;
-    settings = {
+    settings = let palette = util.getPalette config;
+    in {
       discordBranch = "stable";
-      splashColor = "rgb(205, 214, 244)";
-      splashBackground = "rgb(30, 30, 46)";
+      splashColor = palette.text.rgb;
+      splashBackground = palette.base.rgb;
       spellCheckLanguages = [ "en-GB" "en-AU" "en" ];
       audio = {
         granularSelect = false;

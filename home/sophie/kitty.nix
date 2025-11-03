@@ -1,9 +1,10 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-{ self, config, pkgs, lib, ... }: {
+{ self, config, util, pkgs, lib, ... }: {
   catppuccin.kitty.enable = true;
   programs.kitty = {
     enable = true;
-    settings = {
+    settings = let palette = util.getPalette config;
+    in {
       kitty_mod = "ctrl+shift";
       clear_all_shortcuts = true;
       confirm_os_window_close = 1;
@@ -12,13 +13,13 @@
       tab_bar_style = "powerline";
       tab_bar_align = "left";
       tab_bar_min_tabs = 2;
-      active_tab_foreground = "#11111b";
-      active_tab_background = "#f5c2e7";
+      active_tab_foreground = palette.crust.hex;
+      active_tab_background = palette.pink.hex;
       active_tab_font_style = "bold";
-      inactive_tab_foreground = "#f5c2e7";
-      inactive_tab_background = "#181825";
+      inactive_tab_foreground = palette.pink.hex;
+      inactive_tab_background = palette.mantle.hex;
       inactive_tab_font_style = "normal";
-      selection_background = "#f5c2e7";
+      selection_background = palette.pink.hex;
       paste_actions = "quote-urls-at-prompt,confirm,confirm-if-large";
       strip_trailing_spaces = "smart";
       remember_window_size = false;
