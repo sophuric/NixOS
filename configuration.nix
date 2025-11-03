@@ -64,6 +64,10 @@ args@{ pkgs, ... }: {
     gpm.enable = true;
 
     udisks2.enable = true;
+
+    tailscale = {
+      enable = true;
+    };
   };
 
   environment = {
