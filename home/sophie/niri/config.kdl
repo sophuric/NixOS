@@ -293,7 +293,7 @@ binds {
 	Mod+Shift+Slash { show-hotkey-overlay; }
 
 	Mod+T hotkey-overlay-title="Open Terminal"     { spawn "kitty"; }
-	Super+L hotkey-overlay-title="Lock Screen"     { spawn "swaylock"; }
+	Mod+L hotkey-overlay-title="Lock Screen"       { spawn "swaylock"; }
 
 	Mod+N hotkey-overlay-title="Open File Manager" { spawn "nemo"; }
 	Mod+R hotkey-overlay-title="Open Fuzzel"       { spawn "fuzzel"; }
