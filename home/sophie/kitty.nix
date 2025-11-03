@@ -17,7 +17,7 @@
       active_tab_background = palette.pink.hex;
       active_tab_font_style = "bold";
       inactive_tab_foreground = palette.pink.hex;
-      inactive_tab_background = palette.mantle.hex;
+      inactive_tab_background = palette.base.hex;
       inactive_tab_font_style = "normal";
       selection_background = palette.pink.hex;
       paste_actions = "quote-urls-at-prompt,confirm,confirm-if-large";
