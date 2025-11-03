@@ -6,8 +6,8 @@
     settings = let palette = util.getPalette config;
     in {
       discordBranch = "stable";
-      splashColor = palette.text.rgb;
-      splashBackground = palette.base.rgb;
+      splashColor = palette.text.hex;
+      splashBackground = palette.base.hex;
       spellCheckLanguages = [ "en-GB" "en-AU" "en" ];
       audio = {
         granularSelect = false;
