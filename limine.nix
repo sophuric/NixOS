@@ -27,13 +27,6 @@
       graphicalTerminal = {
         margin = 64;
         marginGradient = 24;
-        palette = "1e1e2e;f38ba8;a6e3a1;f9e2af;89b4fa;f5c2e7;94e2d5;cdd6f4";
-        brightPalette =
-          "585b70;f38ba8;a6e3a1;f9e2af;89b4fa;f5c2e7;94e2d5;cdd6f4";
-        background = "1e1e2e";
-        brightBackground = "585b70";
-        foreground = "cdd6f4";
-        brightForeground = "cdd6f4";
       };
     };
   };
