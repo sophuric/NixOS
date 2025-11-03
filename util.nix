@@ -37,4 +37,7 @@ with builtins; rec {
   getPalette = config:
     (lib.importJSON
       "${config.catppuccin.sources.palette}/palette.json").${config.catppuccin.flavor}.colors;
+  toRGB = { r, g, b }: "rgb(${toString r}, ${toString g}, ${toString b})";
+  toHSL = { h, s, l }:
+    "hsl(${toString h}deg, ${toString (s * 100)}%, ${toString (l * 100)}%)";
 }
