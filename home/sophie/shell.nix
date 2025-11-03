@@ -14,6 +14,7 @@ args@{ self, config, lib, pkgs, ... }: {
       killall
       btop
       pv
+      rsync
     ];
     shell.enableShellIntegration = true;
     shellAliases = {
@@ -43,6 +44,8 @@ args@{ self, config, lib, pkgs, ... }: {
       pull = "git pull";
       clone = "git clone";
       ca = "git commit";
+      rsy =
+        "rsync --one-file-system --xattrs --acls --archive --hard-links --atimes --times --numeric-ids --info=progress2"; # preserves literally everything about files
     };
   };
 
