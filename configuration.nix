@@ -106,6 +106,8 @@ args@{ pkgs, ... }: {
   };
 
   services = {
+    gvfs.enable = true;
+
     openssh = {
       enable = true;
       ports = [ 13519 ];
@@ -121,6 +123,7 @@ args@{ pkgs, ... }: {
       };
       allowSFTP = true;
     };
+
     greetd = {
       vt = 7;
       enable = true;
