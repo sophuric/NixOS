@@ -142,6 +142,26 @@ args@{ config, util, lib, pkgs, ... }: {
       notify = true;
       tray = "always";
     };
+
+    swayidle = let lock = "${lib.getExe' pkgs.swaylock "swaylock"} --daemonize";
+    in {
+      enable = true;
+      events = [
+        {
+          event = "lock";
+          command = lock;
+        }
+        {
+          event = "before-sleep";
+          command = lock;
+        }
+      ];
+      timeouts = [{
+        timeout = 60;
+        command = lock;
+      }];
+    };
+
     blueman-applet.enable = true;
   };
 
