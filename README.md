@@ -30,5 +30,5 @@
   - [x] [Prism Launcher](https://prismlauncher.org/)
   - [x] [Vesktop](https://github.com/Vencord/Vesktop)
   - [ ] [IntelliJ IDEA](https://www.jetbrains.com/idea/)
-  - [ ] [Nemo](https://github.com/linuxmint/nemo)
+  - [x] [Nemo](https://github.com/linuxmint/nemo)
   - [x] [Syncthing](https://syncthing.net/)

@@ -67,6 +67,7 @@ args@{ config, util, lib, pkgs, ... }: {
       gimp
       prismlauncher
       qpdfview
+      nemo
     ];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";

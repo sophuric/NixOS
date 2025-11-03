@@ -292,13 +292,14 @@ layer-rule {
 binds {
 	Mod+Shift+Slash { show-hotkey-overlay; }
 
-	Mod+T hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
-	Super+L hotkey-overlay-title="Lock Screen" { spawn "swaylock"; }
+	Mod+T hotkey-overlay-title="Open Terminal"     { spawn "kitty"; }
+	Super+L hotkey-overlay-title="Lock Screen"     { spawn "swaylock"; }
 
-	Mod+R hotkey-overlay-title="Open Fuzzel"    { spawn "fuzzel"; }
-	Mod+Y hotkey-overlay-title="Open Browser"   { spawn "zen"; }
-	Mod+K hotkey-overlay-title="Open KeePassXC" { spawn "keepassxc"; }
-	Mod+G hotkey-overlay-title="Open GIMP"      { spawn "gimp"; }
+	Mod+N hotkey-overlay-title="Open File Manager" { spawn "nemo"; }
+	Mod+R hotkey-overlay-title="Open Fuzzel"       { spawn "fuzzel"; }
+	Mod+Y hotkey-overlay-title="Open Browser"      { spawn "zen"; }
+	Mod+K hotkey-overlay-title="Open KeePassXC"    { spawn "keepassxc"; }
+	Mod+G hotkey-overlay-title="Open GIMP"         { spawn "gimp"; }
 
 	XF86AudioRaiseVolume  allow-when-locked=true { spawn "swayosd-client" "--output-volume" "+5"; }
 	XF86AudioLowerVolume  allow-when-locked=true { spawn "swayosd-client" "--output-volume" "-5"; }
