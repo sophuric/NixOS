@@ -71,9 +71,7 @@ args@{ pkgs, ... }: {
 
     udisks2.enable = true;
 
-    tailscale = {
-      enable = true;
-    };
+    tailscale.enable = true;
   };
 
   environment = {
