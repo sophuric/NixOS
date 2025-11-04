@@ -82,6 +82,8 @@ args@{ config, util, lib, pkgs, ... }: {
   };
 
   programs = {
+    feh.enable = true;
+
     mpv.enable = true;
 
     obs-studio = {
