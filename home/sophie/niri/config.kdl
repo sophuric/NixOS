@@ -334,7 +334,6 @@ binds {
 
 	Ctrl+Alt+End repeat=false { close-window; }
 	Ctrl+Alt+MouseRight { close-window; }
-	Mod+Q repeat=false { close-window; }
 
 	// General rule of thumb is that Ctrl will move the window/column with the focus
 
