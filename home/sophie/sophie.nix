@@ -142,11 +142,14 @@ args@{ config, util, lib, pkgs, ... }: {
     mako = {
       enable = true;
       settings = {
-        anchor = "top-right";
+        anchor = "bottom-right";
+        output = "DP-1";
         border-radius = 12;
         font = "sans-serif 12";
         icons = true;
-        margin = 10;
+        margin = 16;
+        outer-margin = 24;
+        padding = 8;
         default-timeout = 10000;
         on-button-left = "invoke-default-action";
         on-button-middle = "none";
