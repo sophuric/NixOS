@@ -35,7 +35,7 @@ args@{ config, util, lib, pkgs, ... }: {
         enable = true;
       };
     }
-    (lib.attrsets.genAttrs [ "cursors" "mpv" "obs" "swaylock" "fuzzel" ]
+    (lib.attrsets.genAttrs [ "cursors" "mpv" "obs" "swaylock" "fuzzel" "mako" ]
       (_: { enable = true; }))
   ];
 
@@ -68,6 +68,7 @@ args@{ config, util, lib, pkgs, ... }: {
       prismlauncher
       qpdfview
       nemo
+      libnotify
     ];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
@@ -138,6 +139,23 @@ args@{ config, util, lib, pkgs, ... }: {
   xdg = { configFile = { niri.source = ./niri; }; };
 
   services = {
+    mako = {
+      enable = true;
+      settings = {
+        anchor = "top-right";
+        border-radius = 12;
+        font = "sans-serif 12";
+        icons = true;
+        margin = 10;
+        default-timeout = 10000;
+        on-button-left = "invoke-default-action";
+        on-button-middle = "none";
+        on-button-right = "dismiss";
+        on-touch = "dismiss";
+        on-notify = "none";
+      };
+    };
+
     udiskie = {
       automount = false;
       enable = true;
