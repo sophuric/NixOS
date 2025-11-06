@@ -290,49 +290,44 @@ layer-rule {
 }
 
 binds {
-	Mod+Shift+Slash { show-hotkey-overlay; }
+	Mod+Shift+Slash repeat=false { show-hotkey-overlay; }
 
-	Mod+T hotkey-overlay-title="Open Terminal"     { spawn "kitty"; }
-	Mod+L hotkey-overlay-title="Lock Screen"       { spawn "swaylock"; }
+	Mod+T repeat=false hotkey-overlay-title="Open Terminal"     { spawn "kitty"; }
+	Mod+L repeat=false hotkey-overlay-title="Lock Screen"       { spawn "swaylock"; }
 
-	Mod+N hotkey-overlay-title="Open File Manager" { spawn "nemo"; }
-	Mod+R hotkey-overlay-title="Open Fuzzel"       { spawn "fuzzel"; }
-	Mod+Y hotkey-overlay-title="Open Browser"      { spawn "zen"; }
-	Mod+K hotkey-overlay-title="Open KeePassXC"    { spawn "keepassxc"; }
-	Mod+G hotkey-overlay-title="Open GIMP"         { spawn "gimp"; }
+	Mod+N repeat=false hotkey-overlay-title="Open File Manager" { spawn "nemo"; }
+	Mod+R repeat=false hotkey-overlay-title="Open Fuzzel"       { spawn "fuzzel"; }
+	Mod+Y repeat=false hotkey-overlay-title="Open Browser"      { spawn "zen"; }
+	Mod+K repeat=false hotkey-overlay-title="Open KeePassXC"    { spawn "keepassxc"; }
+	Mod+G repeat=false hotkey-overlay-title="Open GIMP"         { spawn "gimp"; }
 
-	XF86AudioRaiseVolume  allow-when-locked=true { spawn "swayosd-client" "--output-volume" "+5"; }
-	XF86AudioLowerVolume  allow-when-locked=true { spawn "swayosd-client" "--output-volume" "-5"; }
-	XF86AudioMute         allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
-	XF86AudioMicMute      allow-when-locked=true { spawn "swayosd-client" "--input-volume"  "mute-toggle"; }
+	XF86AudioRaiseVolume  allow-when-locked=true hotkey-overlay-title="Raise Volume"     { spawn "swayosd-client" "--output-volume" "+5"; }
+	XF86AudioLowerVolume  allow-when-locked=true hotkey-overlay-title="Lower Volume"     { spawn "swayosd-client" "--output-volume" "-5"; }
+	XF86AudioMute         allow-when-locked=true hotkey-overlay-title="Toggle Mute"      { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+	XF86AudioMicMute      allow-when-locked=true hotkey-overlay-title="Toggle Mic Mute"  { spawn "swayosd-client" "--input-volume"  "mute-toggle"; }
 
-	XF86MonBrightnessUp   allow-when-locked=true { spawn "swayosd-client" "--brightness" "raise"; }
-	XF86MonBrightnessDown allow-when-locked=true { spawn "swayosd-client" "--brightness" "lower"; }
+	XF86MonBrightnessUp   allow-when-locked=true hotkey-overlay-title="Raise Brightness" { spawn "swayosd-client" "--brightness" "raise"; }
+	XF86MonBrightnessDown allow-when-locked=true hotkey-overlay-title="Lower Brightness" { spawn "swayosd-client" "--brightness" "lower"; }
 
-	Mod+KP_Up             allow-when-locked=true { spawn "swayosd-client" "--output-volume" "+5"; }
-	Mod+KP_Down           allow-when-locked=true { spawn "swayosd-client" "--output-volume" "-5"; }
-	Mod+KP_Begin          allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
-	Mod+KP_Left           allow-when-locked=true { spawn "swayosd-client" "--input-volume"  "mute-toggle"; }
+	Mod+KP_Up             allow-when-locked=true hotkey-overlay-title="Raise Volume"     { spawn "swayosd-client" "--output-volume" "+5"; }
+	Mod+KP_Down           allow-when-locked=true hotkey-overlay-title="Lower Volume"     { spawn "swayosd-client" "--output-volume" "-5"; }
+	Mod+KP_Begin          allow-when-locked=true hotkey-overlay-title="Toggle Mute"      { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+	Mod+KP_Left           allow-when-locked=true hotkey-overlay-title="Toggle Mic Mute"  { spawn "swayosd-client" "--input-volume"  "mute-toggle"; }
 
-	Mod+KP_Prior          allow-when-locked=true { spawn "swayosd-client" "--brightness" "raise"; }
-	Mod+KP_Next           allow-when-locked=true { spawn "swayosd-client" "--brightness" "lower"; }
+	Mod+KP_Prior          allow-when-locked=true hotkey-overlay-title="Raise Brightness" { spawn "swayosd-client" "--brightness" "raise"; }
+	Mod+KP_Next           allow-when-locked=true hotkey-overlay-title="Lower Brightness" { spawn "swayosd-client" "--brightness" "lower"; }
 
-	Mod+KP_8              allow-when-locked=true { spawn "swayosd-client" "--output-volume" "+5"; }
-	Mod+KP_2              allow-when-locked=true { spawn "swayosd-client" "--output-volume" "-5"; }
-	Mod+KP_5              allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
-	Mod+KP_4              allow-when-locked=true { spawn "swayosd-client" "--input-volume"  "mute-toggle"; }
+	Mod+KP_8              allow-when-locked=true hotkey-overlay-title="Raise Volume"     { spawn "swayosd-client" "--output-volume" "+5"; }
+	Mod+KP_2              allow-when-locked=true hotkey-overlay-title="Lower Volume"     { spawn "swayosd-client" "--output-volume" "-5"; }
+	Mod+KP_5              allow-when-locked=true hotkey-overlay-title="Toggle Mute"      { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+	Mod+KP_4              allow-when-locked=true hotkey-overlay-title="Toggle Mic Mute"  { spawn "swayosd-client" "--input-volume"  "mute-toggle"; }
 
-	Mod+KP_9              allow-when-locked=true { spawn "swayosd-client" "--brightness" "raise"; }
-	Mod+KP_3              allow-when-locked=true { spawn "swayosd-client" "--brightness" "lower"; }
+	Mod+KP_9              allow-when-locked=true hotkey-overlay-title="Raise Brightness" { spawn "swayosd-client" "--brightness" "raise"; }
+	Mod+KP_3              allow-when-locked=true hotkey-overlay-title="Lower Brightness" { spawn "swayosd-client" "--brightness" "lower"; }
 
 	Mod+Space hotkey-overlay-title="Clear Clipboard" { spawn-sh "true | wl-copy"; }
 
-	// Open/close the Overview: a zoomed-out view of workspaces and windows.
-	// You can also move the mouse into the top-left hot corner,
-	// or do a four-finger swipe up on a touchpad.
-	Mod+O repeat=false { toggle-overview; }
-
-	Ctrl+Alt+End repeat=false { close-window; }
+	Ctrl+Alt+End repeat=false repeat=false { close-window; }
 	Ctrl+Alt+MouseRight { close-window; }
 
 	// General rule of thumb is that Ctrl will move the window/column with the focus
@@ -433,7 +428,7 @@ binds {
 
 	Mod+Ctrl+F { expand-column-to-available-width; }
 
-	Mod+C { toggle-overview; }
+	Mod+C repeat=false { toggle-overview; }
 
 	Mod+Minus { set-column-width "-10%"; }
 	Mod+Equal { set-column-width "+10%"; }
@@ -442,12 +437,12 @@ binds {
 	Mod+Shift+Equal { set-window-height "+10%"; }
 
 	// I know this is opposite of the Ctrl thing, but this is what I'm used to
-	Mod+V      { toggle-window-floating; }
-	Mod+Ctrl+V { switch-focus-between-floating-and-tiling; }
+	Mod+V      repeat=false { toggle-window-floating; }
+	Mod+Ctrl+V repeat=false { switch-focus-between-floating-and-tiling; }
 
-	Print { screenshot; }
+	Print      { screenshot; }
 	Ctrl+Print { screenshot-screen; }
-	Alt+Print { screenshot-window; }
+	Alt+Print  { screenshot-window; }
 
 	Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
