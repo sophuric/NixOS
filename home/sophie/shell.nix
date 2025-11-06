@@ -15,6 +15,7 @@ args@{ self, config, lib, pkgs, ... }: {
       btop
       pv
       rsync
+      libarchive
     ];
     shell.enableShellIntegration = true;
     shellAliases = {
