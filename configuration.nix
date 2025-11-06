@@ -96,6 +96,8 @@ args@{ pkgs, ... }: {
   users.defaultUserShell = pkgs.zsh;
 
   programs = {
+    virt-manager.enable = true;
+
     neovim.enable = true;
     neovim.defaultEditor = true;
 
@@ -138,12 +140,20 @@ args@{ pkgs, ... }: {
     };
   };
 
-  users.groups = { ssh = { }; };
+  users.groups = {
+    ssh = { };
+    libvirtd = { };
+  };
 
   users.users.sophie = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "ssh" ];
+    extraGroups = [ "wheel" "ssh" "libvirtd" ];
   };
+
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+  services.qemuGuest.enable = true;
+  services.spice-vdagentd.enable = true;
 
   networking.firewall.allowedTCPPorts = [ ];
   networking.firewall.allowedUDPPorts = [ ];

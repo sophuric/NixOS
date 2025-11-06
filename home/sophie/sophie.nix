@@ -198,6 +198,13 @@ args@{ config, util, lib, pkgs, ... }: {
     blueman-applet.enable = true;
   };
 
+  dconf.settings = {
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = [ "qemu:///system" ];
+      uris = [ "qemu:///system" ];
+    };
+  };
+
   systemd.user.services = lib.attrsets.mapAttrs (name:
     value@{ package, bin }:
     util.merge [
