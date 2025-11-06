@@ -69,6 +69,7 @@ args@{ config, util, lib, pkgs, ... }: {
       qpdfview
       nemo
       libnotify
+      dconf
     ];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
@@ -78,8 +79,15 @@ args@{ config, util, lib, pkgs, ... }: {
     pointerCursor = {
       enable = true;
       dotIcons.enable = true;
+      gtk.enable = true;
       size = 32;
     };
+  };
+
+  gtk = {
+    enable = true;
+    font.name = util.first config.fonts.fontconfig.defaultFonts.sansSerif;
+    font.size = 12;
   };
 
   programs = {
