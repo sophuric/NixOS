@@ -82,6 +82,8 @@ args@{ config, util, lib, pkgs, ... }: {
       gtk.enable = true;
       size = 32;
     };
+
+    preferXdgDirectories = true;
   };
 
   gtk = {
