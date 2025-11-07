@@ -435,15 +435,15 @@ in {
     in {
       assertion = util.listEquals attr.permissions
         (removeUrlPermissions ext.meta.mozPermissions);
-      message = "Extension ${extension} wants permissions ${
+      message = "Extension ${extension} wants permissions [${
           builtins.concatStringsSep " "
           (builtins.map lib.strings.escapeNixString
             (builtins.sort builtins.lessThan
               (removeUrlPermissions ext.meta.mozPermissions)))
-        } but ${
+        }] but [${
           builtins.concatStringsSep " "
           (builtins.map lib.strings.escapeNixString
             (builtins.sort builtins.lessThan attr.permissions))
-        } was specified";
+        }] was specified. See https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/manifest.json/permissions#api_permissions for a list of permissions.";
     })) extensions;
 }
