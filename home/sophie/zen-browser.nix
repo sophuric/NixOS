@@ -76,12 +76,13 @@ let
         "webRequestBlocking"
       ];
     };
-    ublock-origin = {
+    adnauseam = {
       permissions = [
         "<all_urls>"
         "alarms"
         "dns"
         "file://*/*"
+        "management"
         "menus"
         "privacy"
         "storage"
@@ -184,7 +185,7 @@ in {
                 "vertical-spacer"
                 "urlbar-container"
                 "unified-extensions-button"
-                "ublock0_raymondhill_net-browser-action"
+                "adnauseam_rednoise_org-browser-action"
                 "_73a6fe31-595d-460b-a920-fcc0f8843232_-browser-action"
                 "_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-browser-action"
               ];
