@@ -123,7 +123,7 @@ in {
     policies = {
       AutofillAddressEnabled = true;
       AutofillCreditCardEnabled = false;
-      DisableAppUpdate = true;
+      DisableAppUpdate = true; # Managed by Home Manager
       DisableFeedbackCommands = true;
       DisableFirefoxStudies = true;
       DisablePocket = true;
@@ -134,10 +134,18 @@ in {
       DisableSetDesktopBackground = true;
       DNSOverHTTPS.Enabled = false; # use system-level DoH
       EnableTrackingProtection = {
-        Value = true;
+        Value =
+          false; # This is disabled to allow AdNauseam to load ads in the background
         Locked = true;
         Cryptomining = true;
         Fingerprinting = true;
+        SuspectedFingerprinting = true;
+        ConvenienceExceptions = false;
+        BaselineExceptions = false;
+      };
+      Cookies = {
+        Behavior = "reject-tracker-and-partition-foreign";
+        BehaviorPrivateBrowsing = "reject-tracker-and-partition-foreign";
       };
       PasswordManagerEnabled = false;
       Homepage = "homepage-locked";
