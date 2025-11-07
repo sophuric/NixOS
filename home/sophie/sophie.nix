@@ -1,7 +1,6 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
 args@{ config, util, lib, pkgs, ... }: {
   imports = [
-    args.zen-browser.homeModules.twilight
     ./nvim.nix
     ./shell.nix
     ./vesktop.nix
