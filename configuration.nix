@@ -20,6 +20,8 @@ args@{ pkgs, ... }: {
     limine.enable = true;
   };
 
+  swapDevices = [{ device = "/swap/swapfile"; }];
+
   hardware.graphics = { enable = true; };
 
   hardware.bluetooth = {
