@@ -110,7 +110,7 @@ let
   };
 in {
   # catppuccin.zen-browser.enable = true;
-  imports = [ args.zen-browser.homeModules.twilight ];
+  imports = [ args.zen-browser.homeModules.default ];
   home.sessionVariables = {
     MOZ_USE_XINPUT2 = "1";
     MOZ_ENABLE_WAYLAND = "1";
