@@ -16,6 +16,7 @@ args@{ self, config, lib, pkgs, ... }: {
       rsync
       libarchive
       nodejs
+      wl-clipboard
     ];
     shell.enableShellIntegration = true;
     shellAliases = {
@@ -47,6 +48,9 @@ args@{ self, config, lib, pkgs, ... }: {
       ca = "git commit";
       rsy =
         "rsync --one-file-system --xattrs --acls --archive --hard-links --atimes --times --numeric-ids --info=progress2"; # preserves literally everything about files
+      clip = "wl-copy";
+      copy = "wl-copy";
+      paste = "wl-paste";
     };
   };
 

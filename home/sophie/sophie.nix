@@ -61,7 +61,6 @@ args@{ config, util, lib, pkgs, ... }: {
       xdg-desktop-portal-gnome
       xdg-desktop-portal-gtk
       pavucontrol
-      wl-clipboard
       libsForQt5.ksshaskpass
       gimp
       prismlauncher
