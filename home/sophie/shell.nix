@@ -12,7 +12,6 @@ args@{ self, config, lib, pkgs, ... }: {
       unzip
       less
       killall
-      btop
       pv
       rsync
       libarchive
@@ -51,6 +50,20 @@ args@{ self, config, lib, pkgs, ... }: {
   };
 
   programs = {
+    btop = {
+      enable = true;
+      settings = {
+        theme_background = true;
+        truecolor = true;
+        presets =
+          "cpu:1:default,proc:0:default cpu:0:default,mem:0:default,net:0:default cpu:0:block,net:0:tty";
+        vim_keys = true;
+        rounded_corners = true;
+        graph_symbol = "braille";
+        update_ms = 2000;
+      };
+    };
+
     zsh = {
       enable = true;
       enableCompletion = true;
