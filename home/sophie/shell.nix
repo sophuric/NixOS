@@ -51,6 +51,8 @@ args@{ self, config, lib, pkgs, ... }: {
       clip = "wl-copy";
       copy = "wl-copy";
       paste = "wl-paste";
+      mpvlive = "mpv --profile=low-latency --cache=no --untimed";
+      mpva = "mpv --no-video";
     };
   };
 
