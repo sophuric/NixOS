@@ -15,6 +15,7 @@ args@{ self, config, lib, pkgs, ... }: {
       pv
       rsync
       libarchive
+      nodejs
     ];
     shell.enableShellIntegration = true;
     shellAliases = {
