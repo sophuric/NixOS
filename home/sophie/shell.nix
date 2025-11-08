@@ -57,6 +57,22 @@ args@{ self, config, lib, pkgs, ... }: {
   };
 
   programs = {
+    yt-dlp = {
+      enable = true;
+      settings = {
+        output = "%(title)s.%(ext)s";
+        write-description = false;
+        write-thumbnail = false;
+        embed-thumbnail = true;
+        embed-subs = true;
+        embed-metadata = true;
+        embed-chapters = true;
+        embed-info-json = false;
+        windows-filenames = true; # I often sync my files with Windows devices
+        restrict-filenames = false;
+      };
+    };
+
     btop = {
       enable = true;
       settings = {
