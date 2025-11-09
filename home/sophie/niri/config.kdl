@@ -332,6 +332,7 @@ binds {
 
 	Mod+P                   repeat=false hotkey-overlay-title="Open Last Screenshot"     { spawn "open-last-screenshot.sh"; }
 	Mod+Shift+P             repeat=false hotkey-overlay-title="Scan Last Screenshot"     { spawn "scan-last-screenshot.sh"; }
+	Mod+Shift+C             repeat=false hotkey-overlay-title="Copy Last Screenshot"     { spawn "copy-last-screenshot.sh"; }
 
 	Mod+Space hotkey-overlay-title="Clear Clipboard" { spawn-sh "true | wl-copy"; }
 

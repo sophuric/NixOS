@@ -79,6 +79,11 @@ args@{ config, util, lib, pkgs, ... }: {
         text = ''feh --class=feh-float - < "$(get-last-screenshot.sh)"'';
       })
       (pkgs.writeShellApplication {
+        name = "copy-last-screenshot.sh";
+        runtimeInputs = [ pkgs.wl-clipboard ];
+        text = ''wl-copy < "$(get-last-screenshot.sh)"'';
+      })
+      (pkgs.writeShellApplication {
         name = "scan-last-screenshot.sh";
         runtimeInputs =
           [ pkgs.zbar pkgs.neovim pkgs.libnotify pkgs.wl-clipboard pkgs.kitty ];
