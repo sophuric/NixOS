@@ -93,7 +93,21 @@ args@{ config, util, lib, pkgs, ... }: {
   programs = {
     feh.enable = true;
 
-    mpv.enable = true;
+    mpv = {
+      enable = true;
+      config = {
+        vo = "gpu";
+        hwdec = "auto";
+        profile = "gpu-hq";
+        gpu-context = "wayland";
+        script-opts = "osc-timems=yes";
+        keep-open = true;
+        audio-display = false;
+        prefetch-playlist = true;
+        save-position-on-quit = true;
+        resume-playback = true;
+      };
+    };
 
     obs-studio = {
       enable = true;
