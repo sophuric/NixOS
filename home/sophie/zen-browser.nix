@@ -309,6 +309,10 @@ in {
             "nixos-options"
             "nix-flakes"
             "nix-home-manager-options"
+            "minecraft-wiki"
+            "modrinth"
+            "skyblock-official-wiki"
+            "skyblock-fandom-wiki"
           ];
           engines = (lib.attrsets.genAttrs [
             # from firefox source code ./services/settings/dumps/main/search-config-v2.json
@@ -421,6 +425,40 @@ in {
               }];
               iconMapObj."16" = "https://search.nixos.org/favicon.png";
               definedAliases = [ "nixhome" "home" ];
+            };
+            minecraft-wiki = {
+              name = "Minecraft Wiki";
+              urls = [{
+                template =
+                  "https://minecraft.wiki/w/Special:Search?search={searchTerms}";
+              }];
+              iconMapObj."16" = "https://minecraft.wiki/images/Favicon.ico";
+              definedAliases = [ "mc" ];
+            };
+            modrinth = {
+              name = "Modrinth";
+              urls =
+                [{ template = "https://modrinth.com/mods?q={searchTerms}"; }];
+              iconMapObj."16" = "https://modrinth.com/favicon.ico";
+              definedAliases = [ "mod" ];
+            };
+            skyblock-official-wiki = {
+              name = "Official SkyBlock Wiki";
+              urls = [{
+                template =
+                  "https://wiki.hypixel.net/index.php?search={searchTerms}";
+              }];
+              iconMapObj."16" = "https://hypixel.net/favicon-32x32.png";
+              definedAliases = [ "sbh" ];
+            };
+            skyblock-fandom-wiki = {
+              name = "Fandom SkyBlock Wiki";
+              urls = [{
+                template =
+                  "https://hypixel-skyblock.fandom.com/wiki/Special:Search?query={searchTerms}";
+              }];
+              iconMapObj."16" = "https://hypixel.net/favicon-32x32.png";
+              definedAliases = [ "sbf" ];
             };
           };
           force = true;
