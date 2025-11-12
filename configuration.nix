@@ -112,6 +112,8 @@ args@{ pkgs, lib, config, ... }: {
 
     users.defaultUserShell = pkgs.zsh;
 
+    allowUnfreePackages = [ "steam" "steam-original" "steam-unwrapped" "steam-run" ];
+
     programs = {
       virt-manager.enable = true;
 
@@ -123,6 +125,13 @@ args@{ pkgs, lib, config, ... }: {
       gnupg.agent.pinentryPackage = pkgs.pinentry-tty;
       gnupg.agent.enable = true;
       gnupg.agent.enableSSHSupport = true;
+
+      steam = {
+        enable = true;
+        remotePlay.openFirewall = true;
+        dedicatedServer.openFirewall = true;
+        localNetworkGameTransfers.openFirewall = true;
+      };
 
       # Some programs need SUID wrappers, can be configured further or are
       # started in user sessions.
