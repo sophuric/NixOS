@@ -1,18 +1,13 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, util, ... }:
 
 {
-  nixpkgs.config.allowUnfreePredicate =
-    let ensureList = x: if builtins.isList x then x else [ x ];
-    in pkg:
-    builtins.elem (lib.getName pkg) [ "nvidia-x11" ] || builtins.all (license:
-      license.free || builtins.elem license.shortName [
-        "CUDA EULA"
-        "cuDNN EULA"
-        "cuSPARSELt EULA"
-        "cuTENSOR EULA"
-        "NVidia OptiX EULA"
-      ]) (ensureList pkg.meta.license);
+  allowUnfreePackages = [
+    "nvidia-x11"
+    (pkg:
+      builtins.all (license: license.free) (util.ensureList pkg.meta.license)
+      || pkgs._cuda.lib.allowUnfreeCudaPredicate pkg)
+  ];
   services.xserver.videoDrivers = [ "nvidia" ];
   boot.blacklistedKernelModules = [ "nouveau" "amdgpu" ];
   boot.kernelModules = [ "nvidia" ];

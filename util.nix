@@ -2,6 +2,7 @@
 
 args@{ lib, ... }:
 with builtins; rec {
+  ensureList = x: if builtins.isList x then x else [ x ];
   trimNewlines = x: (replaceStrings [ "\n" "\r" ] [ "" "" ] x);
   first = x: (elemAt x 0);
   startsWith = string: substring:
