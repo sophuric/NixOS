@@ -336,6 +336,12 @@ binds {
 	Mod+Shift+P             repeat=false hotkey-overlay-title="Scan Last Screenshot"     { spawn "scan-last-screenshot.sh"; }
 	Mod+Shift+C             repeat=false hotkey-overlay-title="Copy Last Screenshot"     { spawn "copy-last-screenshot.sh"; }
 
+	XF86AudioPrev        allow-when-locked=true hotkey-overlay-title="Previous Track"         { spawn "playerctl" "previous"; }
+	XF86AudioNext        allow-when-locked=true hotkey-overlay-title="Next Track"             { spawn "playerctl" "next"; }
+	Mod+XF86AudioPrev    allow-when-locked=true hotkey-overlay-title="Back 5 Seconds"         { spawn "playerctl" "position" "5-"; }
+	Mod+XF86AudioNext    allow-when-locked=true hotkey-overlay-title="Forward 5 Seconds"      { spawn "playerctl" "position" "5+"; }
+	XF86AudioPlay        allow-when-locked=true hotkey-overlay-title="Pause/Resume Audio"     { spawn "playerctl" "play-pause"; }
+
 	Mod+Space hotkey-overlay-title="Clear Clipboard" { spawn-sh "true | wl-copy"; }
 
 	Ctrl+Alt+End repeat=false repeat=false { close-window; }

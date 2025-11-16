@@ -70,6 +70,7 @@ args@{ config, util, lib, pkgs, ... }: {
       dconf
       songrec
       localsend
+      playerctl
       (pkgs.writeShellApplication {
         name = "get-last-screenshot.sh";
         text =
