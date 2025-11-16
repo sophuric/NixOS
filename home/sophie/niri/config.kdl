@@ -306,6 +306,8 @@ binds {
 	Mod+K repeat=false hotkey-overlay-title="Open KeePassXC"    { spawn "keepassxc"; }
 	Mod+G repeat=false hotkey-overlay-title="Open GIMP"         { spawn "gimp"; }
 
+	Mod+Z repeat=false hotkey-overlay-title="Show last notification" { spawn "makoctl" "restore"; }
+
 	XF86AudioRaiseVolume  allow-when-locked=true hotkey-overlay-title="Raise Volume"     { spawn "swayosd-client" "--output-volume" "+5"; }
 	XF86AudioLowerVolume  allow-when-locked=true hotkey-overlay-title="Lower Volume"     { spawn "swayosd-client" "--output-volume" "-5"; }
 	XF86AudioMute         allow-when-locked=true hotkey-overlay-title="Toggle Mute"      { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
