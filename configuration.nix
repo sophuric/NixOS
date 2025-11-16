@@ -116,6 +116,8 @@ args@{ pkgs, lib, config, ... }: {
       [ "steam" "steam-original" "steam-unwrapped" "steam-run" ];
 
     programs = {
+      localsend.enable = true;
+
       virt-manager.enable = true;
 
       neovim.enable = true;
@@ -182,8 +184,8 @@ args@{ pkgs, lib, config, ... }: {
     services.qemuGuest.enable = true;
     services.spice-vdagentd.enable = true;
 
-    networking.firewall.allowedTCPPorts = [ 53317 ];
-    networking.firewall.allowedUDPPorts = [ 53317 ];
+    networking.firewall.allowedTCPPorts = [ ];
+    networking.firewall.allowedUDPPorts = [ ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

@@ -69,7 +69,6 @@ args@{ config, util, lib, pkgs, ... }: {
       libnotify
       dconf
       songrec
-      localsend
       playerctl
       (pkgs.writeShellApplication {
         name = "get-last-screenshot.sh";
