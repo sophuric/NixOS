@@ -112,7 +112,8 @@ args@{ pkgs, lib, config, ... }: {
 
     users.defaultUserShell = pkgs.zsh;
 
-    allowUnfreePackages = [ "steam" "steam-original" "steam-unwrapped" "steam-run" ];
+    allowUnfreePackages =
+      [ "steam" "steam-original" "steam-unwrapped" "steam-run" ];
 
     programs = {
       virt-manager.enable = true;
