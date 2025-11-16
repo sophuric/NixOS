@@ -181,8 +181,8 @@ args@{ pkgs, lib, config, ... }: {
     services.qemuGuest.enable = true;
     services.spice-vdagentd.enable = true;
 
-    networking.firewall.allowedTCPPorts = [ ];
-    networking.firewall.allowedUDPPorts = [ ];
+    networking.firewall.allowedTCPPorts = [ 53317 ];
+    networking.firewall.allowedUDPPorts = [ 53317 ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
