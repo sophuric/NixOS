@@ -17,6 +17,7 @@ args@{ self, config, lib, pkgs, ... }: {
       libarchive
       nodejs
       wl-clipboard
+      android-tools
     ];
     shell.enableShellIntegration = true;
     shellAliases = {
