@@ -68,6 +68,7 @@ args@{ config, util, lib, pkgs, ... }: {
       nemo
       libnotify
       dconf
+      songrec
       (pkgs.writeShellApplication {
         name = "get-last-screenshot.sh";
         text =
