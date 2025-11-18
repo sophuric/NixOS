@@ -18,6 +18,7 @@ args@{ self, config, lib, pkgs, ... }: {
       nodejs
       wl-clipboard
       android-tools
+      scrcpy
     ];
     shell.enableShellIntegration = true;
     shellAliases = {
