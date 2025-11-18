@@ -9,6 +9,7 @@ args@{ config, util, lib, pkgs, ... }: {
     ./kitty.nix
     ./syncthing.nix
     ./waybar.nix
+    ./jetbrains/jetbrains.nix
   ];
 
   manual.html.enable = true;

@@ -41,6 +41,6 @@
 - [ ] Add programs
   - [x] [Prism Launcher](https://prismlauncher.org/)
   - [x] [Vesktop](https://github.com/Vencord/Vesktop)
-  - [ ] [IntelliJ IDEA](https://www.jetbrains.com/idea/)
+  - [x] [IntelliJ IDEA](https://www.jetbrains.com/idea/)
   - [x] [Nemo](https://github.com/linuxmint/nemo)
   - [x] [Syncthing](https://syncthing.net/)

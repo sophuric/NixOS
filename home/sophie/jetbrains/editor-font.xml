@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<application>
+  <component name="DefaultFont">
+    <option name="VERSION" value="1"/>
+    <option name="FONT_SIZE" value="14"/>
+    <option name="FONT_SIZE_2D" value="14.0"/>
+    <option name="FONT_FAMILY" value="Cartograph CF"/>
+    <option name="USE_LIGATURES" value="true"/>
+  </component>
+</application>
