@@ -89,7 +89,27 @@ args@{ pkgs, lib, config, ... }: {
       udisks2.enable = true;
 
       tailscale.enable = true;
+
+      webdav = {
+        enable = true;
+        environmentFile = "/root/webdav.env";
+        settings = {
+          address = "localhost";
+          port = 57259;
+          users = [{
+            username = "sophie";
+            password = "{env}SOPHIE_PASS";
+            directory = "${config.users.users.sophie.home}/.webdav";
+            permissions = "CRUD";
+          }];
+        };
+      };
     };
+
+    systemd.user.tmpfiles.users.sophie.rules = [
+      "a %h - - - - u:webdav:r-x" # allow webdav to read home dir
+      "A %h/.webdav - - - - u:webdav:rwx" # allow webdav to read/modify ~/.webdav
+    ];
 
     environment = {
       # List packages installed in system profile.
