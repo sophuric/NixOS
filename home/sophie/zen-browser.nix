@@ -270,6 +270,9 @@ in {
           "network.IDN_show_punycode" = true; # Prevent IDN homograph attacks
           "network.prefetch-next" = false;
           "permissions.default.geo" = 2;
+          "privacy.clearOnShutdown_v2.cache" = true;
+          "privacy.clearOnShutdown_v2.cookiesAndStorage" = true;
+          "privacy.sanitize.sanitizeOnShutdown" = true; # Clear data when closing
           "privacy.userContext.enabled" = true; # Container tabs
           "sidebar.visibility" = "hide-sidebar";
           "widget.gtk.overlay-scrollbars.enabled" =
