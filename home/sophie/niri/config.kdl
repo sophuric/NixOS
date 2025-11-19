@@ -305,6 +305,7 @@ binds {
 	Mod+Y repeat=false hotkey-overlay-title="Open Browser"      { spawn "zen"; }
 	Mod+K repeat=false hotkey-overlay-title="Open KeePassXC"    { spawn "keepassxc"; }
 	Mod+G repeat=false hotkey-overlay-title="Open GIMP"         { spawn "gimp"; }
+	Mod+A repeat=false hotkey-overlay-title="Pick Emoji"        { spawn "emoji-picker"; }
 
 	Mod+Z repeat=false hotkey-overlay-title="Show last notification" { spawn "makoctl" "restore"; }
 

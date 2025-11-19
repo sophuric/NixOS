@@ -72,6 +72,24 @@ args@{ config, util, lib, pkgs, ... }: {
       songrec
       playerctl
       (pkgs.writeShellApplication {
+        name = "emoji-picker";
+        runtimeInputs = [ pkgs.wl-clipboard pkgs.fuzzel pkgs.libnotify ];
+        text = ''
+          OUT="$(fuzzel --match-mode=fuzzy --dmenu --prompt 'Select Emoji > ' < ${
+            pkgs.fetchurl {
+              url =
+                "https://github.com/sophuric/emojipicker/raw/7cc87962da618285ac102a8908243e662f180788/emojis";
+              hash = "sha256-wy7IcZ5ikT6xr8je46vG3P0Os9S4r2Hn2/abJpfrkrg=";
+            }
+          })"
+          test -n "$OUT"
+          EMOJI="$(cut -d' ' -f1 <<< "$OUT")"
+          DESC="$(cut -d' ' -f2- <<< "$OUT")"
+          notify-send -- "Copied Emoji: $EMOJI" "$DESC"
+          printf "%s" "$EMOJI" | wl-copy
+        '';
+      })
+      (pkgs.writeShellApplication {
         name = "get-last-screenshot.sh";
         text =
           "find ~/screenshots -type f -printf '%T@ %p\\n' | sort --numeric-sort --reverse | cut -d' ' -f2- | head -1";
