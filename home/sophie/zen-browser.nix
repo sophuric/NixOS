@@ -76,13 +76,12 @@ let
         "webRequestBlocking"
       ];
     };
-    adnauseam = {
+    ublock-origin = {
       permissions = [
         "<all_urls>"
         "alarms"
         "dns"
         "file://*/*"
-        "management"
         "menus"
         "privacy"
         "storage"
@@ -134,8 +133,7 @@ in {
       DisableSetDesktopBackground = true;
       DNSOverHTTPS.Enabled = false; # use system-level DoH
       EnableTrackingProtection = {
-        Value =
-          false; # This is disabled to allow AdNauseam to load ads in the background
+        Value = true;
         Locked = true;
         Cryptomining = true;
         Fingerprinting = true;
@@ -193,7 +191,7 @@ in {
                 "vertical-spacer"
                 "urlbar-container"
                 "unified-extensions-button"
-                "adnauseam_rednoise_org-browser-action"
+                "ublock0_raymondhill_net-browser-action"
                 "_73a6fe31-595d-460b-a920-fcc0f8843232_-browser-action"
                 "_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-browser-action"
               ];
@@ -272,7 +270,8 @@ in {
           "permissions.default.geo" = 2;
           "privacy.clearOnShutdown_v2.cache" = true;
           "privacy.clearOnShutdown_v2.cookiesAndStorage" = true;
-          "privacy.sanitize.sanitizeOnShutdown" = true; # Clear data when closing
+          "privacy.sanitize.sanitizeOnShutdown" =
+            true; # Clear data when closing
           "privacy.userContext.enabled" = true; # Container tabs
           "sidebar.visibility" = "hide-sidebar";
           "widget.gtk.overlay-scrollbars.enabled" =
