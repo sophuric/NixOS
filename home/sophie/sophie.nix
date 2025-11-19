@@ -160,6 +160,7 @@ args@{ config, util, lib, pkgs, ... }: {
 
     mpv = {
       enable = true;
+      scripts = with pkgs.mpvScripts; [ mpris sponsorblock ];
       config = {
         vo = "gpu";
         hwdec = "auto";
