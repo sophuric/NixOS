@@ -124,6 +124,17 @@ args@{ config, util, lib, pkgs, ... }: {
     enable = true;
     font.name = util.first config.fonts.fontconfig.defaultFonts.sansSerif;
     font.size = 12;
+    theme = let size = "standard";
+    in with config.catppuccin; {
+      # https://www.reddit.com/r/NixOS/comments/1dlqoem/comment/l9qr2hw/
+      name = "catppuccin-${flavor}-${accent}-${size}";
+      # Catppuccin Nix is deprecated but there's no other choice
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ accent ];
+        variant = flavor;
+        inherit size;
+      };
+    };
   };
 
   programs = {
