@@ -151,7 +151,7 @@ hotkey-overlay { skip-at-startup; }
 screenshot-path "~/screenshots/niri-%Y-%m-%d-%H-%M-%S.png"
 
 environment {
-	SDL_VIDEODRIVER "wayland"
+	SDL_VIDEODRIVER "wayland,x11"
 	MOZ_ENABLE_WAYLAND "1"
 	_JAVA_AWT_WM_NONREPARENTING "1"
 	ELECTRON_OZONE_PLATFORM_HINT "auto"
