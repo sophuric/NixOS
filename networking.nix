@@ -1,15 +1,8 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-{ ... }:
-
-let
-  hostName = "sophie";
-  nextdnsProfile = "24d2dd";
-in {
+{ config, ... }: {
   imports = [ ./wireless.nix ];
 
   networking = {
-    hostName = hostName;
-
     # proxy.default = "http://user:password@proxy:port/";
     # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
@@ -46,7 +39,10 @@ in {
       };
       forward-zone = [{
         name = ".";
-        forward-addr = [
+        forward-addr = let
+          hostName = config.networking.hostName;
+          nextdnsProfile = "24d2dd";
+        in [
           # Change this
           "45.90.28.0#nixOS--${hostName}-${nextdnsProfile}.dns.nextdns.io"
           "2a07:a8c0::#nixOS--${hostName}-${nextdnsProfile}.dns.nextdns.io"

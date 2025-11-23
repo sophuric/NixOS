@@ -31,11 +31,12 @@
         util = import ./util.nix (args // { lib = args.nixpkgs.lib; });
       };
     in {
-      nixosConfigurations.desktop = args.nixpkgs.lib.nixosSystem {
+      nixosConfigurations.sophie-desktop = args.nixpkgs.lib.nixosSystem {
         specialArgs = inputs;
         modules = [
           ./profiles/desktop/configuration.nix
           {
+            networking.hostName = "sophie-desktop";
             home-manager = {
               extraSpecialArgs = inputs;
               users.sophie.imports = [ ./home/home-desktop.nix ];
