@@ -1,7 +1,5 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-{ pkgs, ... }:
-
-{
+{ pkgs, ... }: {
   boot.loader.timeout = 3;
   boot.loader.limine = {
     enable = true;
@@ -30,5 +28,5 @@
       };
     };
   };
-
+  catppuccin.limine.enable = true;
 }

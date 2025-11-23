@@ -11,7 +11,7 @@
 > [!IMPORTANT]
 > These are my personal config files and are not intended to be used by others. They are provided as-is and may not work on your system.
 >
-> If you really want to use these, you will need to edit many files such as monitor config. I do plan on creating separate specialisations for my other devices. You can create a personal fork and sync changes with git merge. Use at your own risk.
+> If you really want to use these, you will need to edit many files such as monitor config. You can create a personal fork and sync changes with git merge. Use at your own risk.
 
 ### Program List:
 #### Desktop environment
@@ -32,11 +32,11 @@
 ### To-Do List:
 - [ ] Add preview images to README
 - [ ] Port [my old Hyprland config](https://github.com/sophuric/dotfiles-old) to niri
-- [ ] Configure deployment secrets so I don't need to run Nix with `--impure`
+- [ ] Configure deployment secrets, so I don't need to run Nix with `--impure`
 - [ ] Potentially port [my old Neovim config](https://github.com/sophuric/nvim) to [Nixvim](https://github.com/nix-community/nixvim)
 - [ ] Configure zen-browser and its extensions
 - [ ] Set Zsh prompt and other settings
-- [ ] Add specialisations for my [laptop](https://nixos.wiki/wiki/Laptop)
+- [x] Add separate flake outputs for my other devices
 - [ ] Add icon theme and configure Nemo
 - [ ] Add programs
   - [x] [Prism Launcher](https://prismlauncher.org/)

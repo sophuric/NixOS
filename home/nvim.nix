@@ -1,6 +1,13 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
 { self, config, pkgs, lib, ... }: {
   catppuccin.nvim.enable = true;
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    withNodeJs = true;
+  };
   home.packages = with pkgs; [
     # language servers for nvim
     # TODO: migrate to nixvim

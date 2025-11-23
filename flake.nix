@@ -31,22 +31,15 @@
         util = import ./util.nix (args // { lib = args.nixpkgs.lib; });
       };
     in {
-      nixosConfigurations.sophie = args.nixpkgs.lib.nixosSystem {
+      nixosConfigurations.desktop = args.nixpkgs.lib.nixosSystem {
         specialArgs = inputs;
         modules = [
-          args.catppuccin.nixosModules.catppuccin
-          ./configuration.nix
-          args.home-manager.nixosModules.home-manager
+          ./profiles/desktop/configuration.nix
           {
             home-manager = {
               extraSpecialArgs = inputs;
-              users.sophie = {
-                imports = [
-                  args.nur.modules.homeManager.default
-                  args.catppuccin.homeModules.catppuccin
-                  ./home/sophie/sophie.nix
-                ];
-              };
+              users.sophie.imports = [ ./home/home-desktop.nix ];
+              backupFileExtension = "backup";
             };
           }
         ];

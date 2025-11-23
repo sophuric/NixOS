@@ -13,6 +13,19 @@ with builtins; rec {
         (stringLength substring) string) == substring)
     else
       false);
+  replacePrefix = string: substring: newSubstring:
+    (if startsWith string substring then
+      newSubstring
+      + (builtins.substring (stringLength substring) (stringLength string)
+        string)
+    else
+      string);
+  replaceSuffix = string: substring: newSubstring:
+    (if endsWith string substring then
+      (builtins.substring 0 ((stringLength string) - stringLength substring)
+        string) + newSubstring
+    else
+      string);
   listEquals = list1: list2: (sort lessThan list1) == (sort lessThan list2);
   # Recursively merge attrset or list
   # This is because {a.b=2;}//{a.c=3;} will produce {a={c=3;};} because // doesn't recursively merge an attrset

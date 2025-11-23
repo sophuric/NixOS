@@ -1,19 +1,15 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
 args@{ config, util, lib, pkgs, ... }: {
   imports = [
-    ./nvim.nix
-    ./shell.nix
+    ./home-headless.nix
+
     ./vesktop.nix
     ./zen-browser.nix
     ./keepassxc.nix
     ./kitty.nix
-    ./syncthing.nix
     ./waybar.nix
     ./jetbrains/jetbrains.nix
   ];
-
-  manual.html.enable = true;
-  manual.manpages.enable = true;
 
   fonts.fontconfig = {
     enable = true;
@@ -134,8 +130,6 @@ args@{ config, util, lib, pkgs, ... }: {
       gtk.enable = true;
       size = 32;
     };
-
-    preferXdgDirectories = true;
   };
 
   gtk = {
@@ -180,14 +174,6 @@ args@{ config, util, lib, pkgs, ... }: {
       plugins = [ pkgs.obs-studio-plugins.wlrobs ];
     };
 
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-      withNodeJs = true;
-    };
-
     swaylock = {
       enable = true;
       settings = let palette = util.getPalette config;
@@ -224,7 +210,7 @@ args@{ config, util, lib, pkgs, ... }: {
     };
   };
 
-  xdg = { configFile = { niri.source = ./niri; }; };
+  xdg.configFile = { niri.source = ./niri; };
 
   services = {
     mako = {
@@ -312,6 +298,4 @@ args@{ config, util, lib, pkgs, ... }: {
         bin = "keepassxc";
       };
     };
-
-  home.stateVersion = "25.05"; # Do not change
 }
