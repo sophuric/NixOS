@@ -6,10 +6,10 @@ with builtins; rec {
   trimNewlines = x: (replaceStrings [ "\n" "\r" ] [ "" "" ] x);
   first = x: (elemAt x 0);
   startsWith = string: substring:
-    ((builtins.substring 0 (stringLength substring) string) == string);
+    ((builtins.substring 0 (stringLength substring) string) == substring);
   endsWith = string: substring:
     (if stringLength string >= stringLength substring then
-      ((builtins.substring (stringLength string - stringLength substring)
+      ((builtins.substring ((stringLength string) - (stringLength substring))
         (stringLength substring) string) == substring)
     else
       false);
