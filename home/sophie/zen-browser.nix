@@ -310,6 +310,7 @@ in {
             "nix-packages"
             "nixos-options"
             "nix-flakes"
+            "nixos-wiki"
             "nix-home-manager-options"
             "minecraft-wiki"
             "modrinth"
@@ -408,7 +409,7 @@ in {
                   "https://search.nixos.org/options?query={searchTerms}";
               }];
               iconMapObj."16" = "https://search.nixos.org/favicon.png";
-              definedAliases = [ "nixopt" ];
+              definedAliases = [ "nixosopts" "nixopt" "nixopts" ];
             };
             nix-flakes = {
               name = "Nix Flakes";
@@ -419,6 +420,15 @@ in {
               iconMapObj."16" = "https://search.nixos.org/favicon.png";
               definedAliases = [ "nixflakes" ];
             };
+            nixos-wiki = {
+              name = "NixOS Wiki";
+              urls = [{
+                template =
+                  "https://wiki.nixos.org/w/index.php?search={searchTerms}";
+              }];
+              iconMapObj."16" = "https://search.nixos.org/favicon.png";
+              definedAliases = [ "nixoswiki" "nixwiki" "nw" ];
+            };
             nix-home-manager-options = {
               name = "Nix Home Manager Options";
               urls = [{
@@ -426,7 +436,7 @@ in {
                   "https://home-manager-options.extranix.com/?query={searchTerms}";
               }];
               iconMapObj."16" = "https://search.nixos.org/favicon.png";
-              definedAliases = [ "nixhome" "home" ];
+              definedAliases = [ "nixhome" "homemanager" ];
             };
             minecraft-wiki = {
               name = "Minecraft Wiki";
