@@ -22,18 +22,9 @@ args@{ config, util, lib, pkgs, ... }: {
     };
   };
 
-  catppuccin = util.merge [
-    {
-      accent = "pink";
-      flavor = "mocha";
-      kvantum = {
-        apply = true;
-        enable = true;
-      };
-    }
-    (lib.attrsets.genAttrs [ "cursors" "mpv" "obs" "swaylock" "fuzzel" "mako" ]
-      (_: { enable = true; }))
-  ];
+  catppuccin =
+    lib.attrsets.genAttrs [ "cursors" "mpv" "obs" "swaylock" "fuzzel" "mako" ]
+    (_: { enable = true; });
 
   qt = {
     platformTheme.name = "kvantum";

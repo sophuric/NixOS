@@ -8,6 +8,15 @@ args@{ ... }: {
     ./syncthing.nix
   ];
 
+  catppuccin = {
+    accent = "pink";
+    flavor = "mocha";
+    kvantum = {
+      apply = true;
+      enable = true;
+    };
+  };
+
   manual.html.enable = true;
   manual.manpages.enable = true;
   home.preferXdgDirectories = true;
