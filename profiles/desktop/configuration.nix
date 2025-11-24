@@ -18,6 +18,7 @@ args@{ self, util, pkgs, lib, config, ... }: {
       "openssh.nix"
       "greeter.nix"
       "steam.nix"
+      "removable-media.nix"
     ]));
 
   config = {
@@ -27,7 +28,6 @@ args@{ self, util, pkgs, lib, config, ... }: {
 
     security.pam.services.swaylock = { };
 
-    services.udisks2.enable = true;
     services.gvfs.enable = true;
 
     services.tailscale.enable = true;
