@@ -251,6 +251,8 @@ args@{ config, util, lib, pkgs, ... }: {
     };
 
     blueman-applet.enable = true;
+
+    gpg-agent.pinentry.package = lib.mkIf config.services.gpg-agent.enable pkgs.pinentry-qt;
   };
 
   dconf.settings = {

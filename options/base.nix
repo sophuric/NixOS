@@ -51,10 +51,6 @@
     programs = {
       neovim.enable = true;
       neovim.defaultEditor = true;
-
-      gnupg.agent.pinentryPackage = pkgs.pinentry-tty;
-      gnupg.agent.enable = true;
-      gnupg.agent.enableSSHSupport = true;
     };
 
     environment.systemPackages = with pkgs; [
@@ -63,7 +59,6 @@
       wget
       home-manager
       vlock
-      gnupg
       pinentry-tty
       pciutils
       trash-cli

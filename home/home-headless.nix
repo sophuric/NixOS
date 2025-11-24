@@ -1,5 +1,5 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-args@{ ... }: {
+args@{ lib, pkgs, ... }: {
   imports = [
     args.nur.modules.homeManager.default
     args.catppuccin.homeModules.catppuccin
