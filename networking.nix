@@ -2,15 +2,23 @@
 { config, ... }: {
   imports = [ ./wireless.nix ];
 
+  systemd.network.enable = false;
+
   networking = {
+    networkmanager.enable = false;
+
     # proxy.default = "http://user:password@proxy:port/";
     # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
     nameservers = [ "127.0.0.1" "::1" ];
 
-    # disable getting DNS from DHCP
-    dhcpcd.extraConfig = "nohook resolv.conf";
-    networkmanager.dns = "none";
+    useDHCP = true;
+
+    dhcpcd = {
+      enable = true;
+      extraConfig = "nohook resolv.conf"; # disable getting DNS from DHCP
+      setHostname = false;
+    };
   };
 
   services.unbound = {
