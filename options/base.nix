@@ -1,6 +1,9 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-{ catppuccin, config, pkgs, lib, ... }: {
-  imports = [ catppuccin.nixosModules.catppuccin ];
+args@{ config, pkgs, lib, ... }: {
+  imports = [
+    args.catppuccin.nixosModules.catppuccin
+    args.home-manager.nixosModules.home-manager
+  ];
 
   options = {
     allowUnfreePackages = lib.mkOption {
@@ -67,6 +70,11 @@
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+    home-manager = {
+      backupFileExtension = "backup";
+      extraSpecialArgs = args.original-args;
+    };
 
     system.stateVersion = "25.05"; # Do not change
   };

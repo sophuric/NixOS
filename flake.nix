@@ -24,27 +24,29 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
   outputs = args:
     let
-      inputs = args // {
+      inputs = (args: args // { original-args = args; }) (args // {
         util = import ./util.nix (args // { lib = args.nixpkgs.lib; });
-      };
+      });
     in {
-      nixosConfigurations.sophie-desktop = args.nixpkgs.lib.nixosSystem {
-        specialArgs = inputs;
-        modules = [
-          ./profiles/desktop/configuration.nix
-          args.home-manager.nixosModules.home-manager
-          {
-            networking.hostName = "sophie-desktop";
-            home-manager = {
-              extraSpecialArgs = inputs;
-              users.sophie.imports = [ ./home/home-desktop.nix ];
-              backupFileExtension = "backup";
-            };
-          }
-        ];
+      nixosConfigurations = {
+        sophie-desktop = args.nixpkgs.lib.nixosSystem {
+          specialArgs = inputs;
+          modules = [
+            ./profiles/desktop/configuration.nix
+            { networking.hostName = "sophie-desktop"; }
+          ];
+        };
+        sophie-raspberrypi = args.nixpkgs.lib.nixosSystem {
+          specialArgs = inputs;
+          modules = [
+            ./profiles/raspberrypi/configuration.nix
+            { networking.hostName = "sophie-raspberrypi"; }
+          ];
+        };
       };
     };
 }

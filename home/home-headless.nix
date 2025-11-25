@@ -5,7 +5,6 @@ args@{ lib, pkgs, ... }: {
     args.catppuccin.homeModules.catppuccin
     ./nvim.nix
     ./shell.nix
-    ./syncthing.nix
   ];
 
   catppuccin = {

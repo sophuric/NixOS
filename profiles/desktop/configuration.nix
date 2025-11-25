@@ -30,6 +30,8 @@ args@{ self, util, pkgs, lib, config, ... }: {
 
     programs.localsend.enable = true;
 
+    home-manager.users.sophie.imports = [ (self + /home/profiles/desktop.nix) ];
+
     users.users.sophie = {
       isNormalUser = true;
       extraGroups = [ "wheel" "ssh" "libvirtd" ];
