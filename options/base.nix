@@ -1,5 +1,7 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-{ config, pkgs, lib, ... }: {
+{ catppuccin, config, pkgs, lib, ... }: {
+  imports = [ catppuccin.nixosModules.catppuccin ];
+
   options = {
     allowUnfreePackages = lib.mkOption {
       type = lib.types.listOf lib.types.anything;

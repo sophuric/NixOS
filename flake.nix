@@ -35,6 +35,7 @@
         specialArgs = inputs;
         modules = [
           ./profiles/desktop/configuration.nix
+          args.home-manager.nixosModules.home-manager
           {
             networking.hostName = "sophie-desktop";
             home-manager = {

@@ -1,12 +1,8 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
 
 args@{ self, util, pkgs, lib, config, ... }: {
-  imports = [
-    args.catppuccin.nixosModules.catppuccin
-    args.home-manager.nixosModules.home-manager
-    ./hardware-configuration.nix
-  ] ++ builtins.map (x: self + /${x}) ([ "local.nix" "networking.nix" ]
-    ++ (builtins.map (x: "options/${x}") [
+  imports = [ ./hardware-configuration.nix ] ++ builtins.map (x: self + /${x})
+    ([ "local.nix" "networking.nix" ] ++ (builtins.map (x: "options/${x}") [
       "base.nix"
       "limine.nix"
       "nvidia.nix"
