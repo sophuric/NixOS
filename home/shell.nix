@@ -225,10 +225,13 @@ args@{ self, config, lib, pkgs, ... }: {
     gpg.enable = true;
   };
 
-  services.gpg-agent = {
-    enable = true;
-    pinentry.package = lib.mkDefault pkgs.pinentry-tty;
-    enableZshIntegration = true;
-    enableSshSupport = true;
+  services = {
+    ssh-agent.enable = true;
+    gpg-agent = {
+      enable = true;
+      pinentry.package = lib.mkDefault pkgs.pinentry-tty;
+      enableZshIntegration = true;
+      enableSshSupport = false;
+    };
   };
 }
