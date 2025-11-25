@@ -44,6 +44,6 @@
   xdg.configFile.nvim.source = pkgs.fetchgit {
     url = "https://github.com/sophuric/nvim.git";
     rev = "b74d2c0ce134aab26e8942b275139cd7ddc5efb3";
-    sha256 = "sha256-BtlqmGeOim2fCeOKBzTO+Ui+p04R52uf9SNbrVCQj1A=";
+    sha256 = "BtlqmGeOim2fCeOKBzTO+Ui+p04R52uf9SNbrVCQj1A=";
   };
 }
