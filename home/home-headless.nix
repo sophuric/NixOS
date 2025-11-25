@@ -21,5 +21,7 @@ args@{ lib, pkgs, ... }: {
   manual.manpages.enable = true;
   home.preferXdgDirectories = true;
 
+  programs.kitty.enable = true; # for terminfo
+
   home.stateVersion = "25.05"; # Do not change
 }
