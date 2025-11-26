@@ -67,6 +67,7 @@ args@{ config, pkgs, lib, ... }: {
       pinentry-tty
       pciutils
       trash-cli
+      cryptsetup
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
