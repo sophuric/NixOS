@@ -198,7 +198,7 @@ in {
               toolbar-menubar = [ "menubar-items" ];
               TabsToolbar = [ "tabbrowser-tabs" ];
               vertical-tabs = [ ];
-              PersonalToolbar = [ "import-button" "personal-bookmarks" ];
+              PersonalToolbar = [ "personal-bookmarks" ];
               zen-sidebar-top-buttons = [
                 "zen-expand-sidebar-button"
                 "print-button"
@@ -213,7 +213,7 @@ in {
               ];
             };
             currentVersion = 23;
-            newElementCount = 15;
+            newElementCount = 16;
           };
           "extensions.autoDisableScopes" =
             true; # Automatically install configured extensions
