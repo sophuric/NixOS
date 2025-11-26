@@ -50,6 +50,8 @@ args@{ self, config, lib, pkgs, ... }: {
       ca = "git commit";
       rsy =
         "rsync --one-file-system --xattrs --acls --archive --hard-links --atimes --times --numeric-ids --info=progress2"; # preserves literally everything about files
+      tarall =
+        "tar --one-file-system --xattrs --acls --numeric-owner --preserve-permissions --xattrs-include='*' --atime-preserve";
       clip = "wl-copy";
       copy = "wl-copy";
       paste = "wl-paste";
