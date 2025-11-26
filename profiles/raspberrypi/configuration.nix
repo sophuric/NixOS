@@ -33,6 +33,9 @@ args@{ self, util, pkgs, lib, config, ... }: {
       };
     };
 
+    boot.initrd.luks.devices.cryptroot.device =
+      "/dev/disk/by-uuid/3e8324f4-4c12-4f4f-a0e0-a96b8e3b831d";
+
     environment.systemPackages = with pkgs; [
       libraspberrypi
       raspberrypi-eeprom
