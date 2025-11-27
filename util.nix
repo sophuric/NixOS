@@ -26,6 +26,8 @@ with builtins; rec {
         string) + newSubstring
     else
       string);
+  indexesOf = string: substring: (builtins.map (x: substring == builtins.substring x (stringLength substring) string) (lib.lists.range 0 (stringLength string - stringLength substring)));
+  firstIndexOf = string: substring: (lib.lists.findFirstIndex (x: x) null (indexesOf string substring));
   listEquals = list1: list2: (sort lessThan list1) == (sort lessThan list2);
   # Recursively merge attrset or list
   # This is because {a.b=2;}//{a.c=3;} will produce {a={c=3;};} because // doesn't recursively merge an attrset

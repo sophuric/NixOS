@@ -7,5 +7,6 @@ args@{ ... }: {
     ../keepassxc.nix
     ../jetbrains/jetbrains.nix
     ../syncthing.nix
+    ../libreoffice/libreoffice.nix
   ];
 }

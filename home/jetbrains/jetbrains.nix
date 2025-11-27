@@ -18,5 +18,12 @@ in {
   xdg.configFile = util.merge (builtins.map (x: {
     "${getDataDirName pkgs.jetbrains.idea-community}/options/${x}".source =
       ./${x};
-  }) [ "colors.scheme.xml" "editor-font.xml" "ide.general.xml" "laf.xml" "vim_settings.xml" "linux/keymap.xml" ]);
+  }) [
+    "colors.scheme.xml"
+    "editor-font.xml"
+    "ide.general.xml"
+    "laf.xml"
+    "vim_settings.xml"
+    "linux/keymap.xml"
+  ]);
 }
