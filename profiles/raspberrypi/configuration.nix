@@ -47,6 +47,7 @@ args@{ self, util, pkgs, lib, config, ... }: {
       [ (self + /home/profiles/raspberrypi.nix) ];
 
     users.users.sophie = {
+      uid = 1000;
       isNormalUser = true;
       extraGroups = [ "wheel" "ssh" ];
     };

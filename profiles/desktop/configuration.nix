@@ -33,6 +33,7 @@ args@{ self, util, pkgs, lib, config, ... }: {
     home-manager.users.sophie.imports = [ (self + /home/profiles/desktop.nix) ];
 
     users.users.sophie = {
+      uid = 1000;
       isNormalUser = true;
       extraGroups = [ "wheel" "ssh" "libvirtd" ];
     };
