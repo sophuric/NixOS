@@ -20,6 +20,7 @@
     eslint_d
     tree-sitter
     typescript-language-server
+    clang-tools
     go
     libxml2
     shfmt
