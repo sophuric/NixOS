@@ -6,7 +6,10 @@
       pkgs.hunspellDicts.${builtins.substring 0 (util.firstIndexOf x ".") x})
       ([ cfg.i18n.defaultLocale ] ++ cfg.i18n.extraLocales));
   };
-  xdg.configFile = util.merge
-    (builtins.map (x: { "libreoffice/4/user/${x}".source = ./${x}; })
-      [ "registrymodifications.xcu" ]);
+  xdg.configFile = util.merge (builtins.map (x: {
+    "libreoffice/4/user/${x}" = {
+      source = ./${x};
+      force = true;
+    };
+  }) [ "registrymodifications.xcu" ]);
 }
