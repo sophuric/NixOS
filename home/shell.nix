@@ -19,6 +19,8 @@ args@{ self, config, lib, pkgs, ... }: {
       wl-clipboard
       android-tools
       scrcpy
+      usbutils
+      qpdf
     ];
     shell.enableShellIntegration = true;
     shellAliases = {
