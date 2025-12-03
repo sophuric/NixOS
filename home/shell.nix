@@ -21,6 +21,7 @@ args@{ self, config, lib, pkgs, ... }: {
       scrcpy
       usbutils
       qpdf
+      gdb
     ];
     shell.enableShellIntegration = true;
     shellAliases = {
