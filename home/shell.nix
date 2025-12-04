@@ -22,6 +22,7 @@ args@{ self, config, lib, pkgs, ... }: {
       usbutils
       qpdf
       gdb
+      valgrind
     ];
     shell.enableShellIntegration = true;
     shellAliases = {
