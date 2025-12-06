@@ -60,7 +60,8 @@
           interval = 1;
           tooltip = true;
           tooltip-format = ''
-            <tt><span font_size="200%">{:%Y}</span>\n<small>{calendar}</small></tt>'';
+            <tt><span font_size="200%">{:%Y}</span>
+            <small>{calendar}</small></tt>'';
         };
         tray = { spacing = 10; };
         pulseaudio = {
