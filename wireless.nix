@@ -3,7 +3,7 @@
 
 {
   networking.wireless = {
-    scanOnLowSignal = true;
+    scanOnLowSignal = false;
     fallbackToWPA2 = false;
     enable = true;
     # File should be simple key=value file, psk1=..., etc.
