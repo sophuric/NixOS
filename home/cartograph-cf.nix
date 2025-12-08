@@ -11,5 +11,5 @@ pkgs.stdenv.mkDerivation {
     sha256 = "P8cii7ez9bAE+c7tN+oWQy3/LQPFtGUmlwQsKevbl0M=";
   };
   installPhase =
-    "	mkdir -p $out/share/fonts/opentype\n	find $src -type f -name '*.otf' -exec cp {} $out/share/fonts/opentype/ \\;\n";
+    "	mkdir -p $out/share/fonts/opentype\n	find $src -type f -name '*.otf' -exec cp -- {} $out/share/fonts/opentype/ \\;\n";
 }
