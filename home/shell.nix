@@ -185,34 +185,39 @@ args@{ self, config, lib, pkgs, ... }: {
     git = {
       enable = true;
       lfs.enable = true;
-      aliases = {
-        sub = "submodule";
-        subc = "submodule update --init --recursive";
-        unstage = "restore --staged";
-        r = "remote";
-        rebase-preserve = ''
-          -c rebase.instructionFormat='%s%nexec GIT_COMMITTER_DATE="%cD" GIT_COMMITTER_NAME="%cn" GIT_COMMITTER_EMAIL="%ce" git commit --amend --no-edit --reset-author --date="%cD"' rebase -i''; # preserve commit date/username
-      };
-      userEmail = "48314599+sophuric@users.noreply.github.com";
-      userName = "sophur";
-      signing = {
-        key = "EAB0A643ABD82124552040FE39F3751CDD35BB5F";
-        signByDefault = true;
-      };
-      extraConfig = {
+      settings = {
+        alias = {
+          sub = "submodule";
+          subc = "submodule update --init --recursive";
+          unstage = "restore --staged";
+          r = "remote";
+          rebase-preserve = ''
+            -c rebase.instructionFormat='%s%nexec GIT_COMMITTER_DATE="%cD" GIT_COMMITTER_NAME="%cn" GIT_COMMITTER_EMAIL="%ce" git commit --amend --no-edit --reset-author --date="%cD"' rebase -i''; # preserve commit date/username
+        };
+        user = {
+          email = "48314599+sophuric@users.noreply.github.com";
+          name = "sophur";
+        };
         init.defaultBranch = "main";
         color.ui = "auto";
         format.pretty =
           "format:Commit %C(green)%H%C(auto)%(decorate)%C(default) %C(yellow)(%C(green)%G?%C(yellow))%nAuthor: %an %C(default)%C(dim)<%C(nodim)%C(default)%ae%C(default)%C(dim)> - %C(nodim)%ad%nCommit: %cn %C(default)<%ce%C(default)> - %cd%n%n%C(default)%C(dim)> %C(nodim)%C(magenta)%C(ul)%s%n%n%b%n%C(dim)---%C(nodim)%C(default)";
         url = { "https://github.com/" = { insteadOf = [ "gh:" "github:" ]; }; };
       };
+      signing = {
+        key = "EAB0A643ABD82124552040FE39F3751CDD35BB5F";
+        signByDefault = true;
+      };
     };
 
     ssh = {
+      enableDefaultConfig = false;
       enable = true;
-      addKeysToAgent = "yes";
       matchBlocks = {
-        "*" = { serverAliveInterval = 240; };
+        "*" = {
+          addKeysToAgent = "yes";
+          serverAliveInterval = 240;
+        };
         "github.com" = {
           identityFile = "~/.ssh/online_ed25519";
           user = "git";
