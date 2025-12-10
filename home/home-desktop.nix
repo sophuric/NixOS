@@ -1,6 +1,6 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
 args@{ config, util, lib, pkgs, ... }: {
-  imports = [ ./home-headless.nix ./kitty.nix ./waybar.nix ];
+  imports = [ ./home-headless.nix ./kitty.nix ./waybar.nix ./mime.nix ];
 
   fonts.fontconfig = {
     enable = true;
