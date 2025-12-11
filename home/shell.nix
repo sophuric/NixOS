@@ -27,6 +27,7 @@ args@{ self, config, lib, pkgs, ... }: {
     shell.enableShellIntegration = true;
     shellAliases = {
       "nixos-update" = "sudo nixos-rebuild switch --flake /etc/nixos --impure";
+      "nixos-pkgs" = "nix-store -qR /run/current-system";
       cd = "z";
       exa = "eza";
       ls = "eza";
