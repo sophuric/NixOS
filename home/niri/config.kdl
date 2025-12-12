@@ -306,6 +306,7 @@ binds {
 	Mod+K repeat=false hotkey-overlay-title="Open KeePassXC"    { spawn "keepassxc"; }
 	Mod+G repeat=false hotkey-overlay-title="Open GIMP"         { spawn "gimp"; }
 	Mod+A repeat=false hotkey-overlay-title="Pick Emoji"        { spawn "emoji-picker"; }
+	Mod+B repeat=false hotkey-overlay-title="Open as Video"     { spawn "sh" "-c" "exec mpv -- \"$(wl-paste -t text/plain)\""; }
 
 	Mod+Z repeat=false hotkey-overlay-title="Show last notification" { spawn "makoctl" "restore"; }
 
