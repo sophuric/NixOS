@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<application>
+  <component name="NotRoamableUiSettings">
+    <option name="fontFace" value="Ubuntu Sans"/>
+    <option name="fontSize" value="14.0"/>
+    <option name="presentationModeIdeScale" value="1.75"/>
+    <option name="overrideLafFonts" value="true"/>
+  </component>
+</application>

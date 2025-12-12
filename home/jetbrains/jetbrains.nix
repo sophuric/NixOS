@@ -24,5 +24,6 @@ in {
     "laf.xml"
     "vim_settings.xml"
     "linux/keymap.xml"
+    "other.xml"
   ]);
 }
