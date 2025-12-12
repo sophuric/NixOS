@@ -8,12 +8,11 @@ let
     }";
 in {
   home.packages = [
-    (pkgs.jetbrains.plugins.addPlugins
-      (pkgs.jetbrains.idea-community.override { jdk = pkgs.jdk; }) [
-        "catppuccin-theme"
-        "minecraft-development"
-        "ideavim"
-      ])
+    (pkgs.jetbrains.plugins.addPlugins pkgs.jetbrains.idea-community [
+      "catppuccin-theme"
+      "minecraft-development"
+      "ideavim"
+    ])
   ];
   xdg.configFile = util.merge (builtins.map (x: {
     "${getDataDirName pkgs.jetbrains.idea-community}/options/${x}".source =
