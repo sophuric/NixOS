@@ -37,6 +37,7 @@
           useQuickCss = true;
           themeLinks = [
             "https://raw.githubusercontent.com/mekb-turtle/discord-themes/refs/heads/main/no-nitro-annoyances.css"
+            "https://codeberg.org/ridge/Discord-Adblock/raw/branch/main/discord-adblock.css"
           ];
           enabledThemes = [ "custom.css" ];
           enableReactDevtools = false;
