@@ -23,6 +23,7 @@ args@{ self, config, lib, pkgs, ... }: {
       qpdf
       gdb
       valgrind
+      bc
     ];
     shell.enableShellIntegration = true;
     shellAliases = {
