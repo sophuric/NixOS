@@ -4,21 +4,8 @@ args@{ self, util, pkgs, lib, config, ... }: {
   imports = [
     args.nixos-hardware.nixosModules.raspberry-pi-4
     ./hardware-configuration.nix
-  ] ++ builtins.map (x: self + /${x}) ([ "local.nix" "networking.nix" ]
-    ++ (builtins.map (x: "options/${x}") [
-      "base.nix"
-      # "limine.nix"
-      # "nvidia.nix"
-      # "virtualisation.nix"
-      # "bluetooth.nix"
-      # "printing.nix"
-      # "webdav.nix"
-      # "audio.nix"
-      "openssh.nix"
-      # "greeter.nix"
-      # "steam.nix"
-      # "removable-media.nix"
-    ]));
+  ] ++ builtins.map (x: self + /${x}) ([ /local.nix /networking.nix ]
+    ++ (builtins.map (x: /options/${x}) [ /base.nix /openssh.nix ]));
 
   config = {
     # swapDevices = [{ device = "/swap/swapfile"; }];
