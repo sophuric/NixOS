@@ -43,6 +43,7 @@ args@{ config, pkgs, lib, ... }: {
     };
 
     security.sudo.extraConfig = "Defaults pwfeedback";
+    security.polkit.enable = true;
 
     services = {
       libinput.enable = true;

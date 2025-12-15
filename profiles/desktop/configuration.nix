@@ -15,6 +15,7 @@ args@{ self, util, pkgs, lib, config, ... }: {
       "greeter.nix"
       "steam.nix"
       "removable-media.nix"
+      "obs-virtual-camera.nix"
     ]));
 
   config = {
