@@ -67,6 +67,8 @@ args@{ self, config, lib, pkgs, ... }: {
   };
 
   programs = {
+    rclone.enable = true;
+
     yt-dlp = {
       enable = true;
       settings = {
