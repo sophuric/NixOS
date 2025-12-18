@@ -302,6 +302,17 @@ window-rule {
 window-rule {
 	match app-id=r#"^org\.keepassxc\.KeePassXC$"#
 	match app-id=r#"^org\.gnome\.World\.Secrets$"#
+	match app-id=r#"^vesktop$"#
+	match app-id=r#"^discord$"#
+
+	block-out-from "screen-capture"
+}
+
+layer-rule {
+	match namespace="^notifications$"
+	match namespace="^launcher$"
+	match namespace="^waybar$"
+
 	block-out-from "screen-capture"
 }
 
