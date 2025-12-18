@@ -172,6 +172,31 @@ overview {
 	}
 }
 
+recent-windows {
+	debounce-ms 750
+
+	open-delay-ms 500
+
+	highlight {
+		active-color "#f5c2e7"
+		urgent-color "#f38ba8"
+		padding 40
+		corner-radius 40
+	}
+
+	previews {
+		max-height 1080
+		max-scale 0.5
+	}
+
+	binds {
+		Alt+Tab         { next-window;     }
+		Alt+Shift+Tab   { previous-window; }
+		Alt+grave       { next-window     filter="app-id"; }
+		Alt+Shift+grave { previous-window filter="app-id"; }
+	}
+}
+
 gestures {
 	dnd-edge-view-scroll {
 		trigger-width 30
@@ -230,6 +255,10 @@ animations {
 
 	overview-open-close {
 		spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+	}
+
+	recent-windows-close {
+		spring damping-ratio=1.0 stiffness=800 epsilon=0.001
 	}
 }
 
