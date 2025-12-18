@@ -58,6 +58,8 @@ input {
 		map-to-output "HDMI-A-1"
 	}
 
+	disable-power-key-handling
+
 	warp-mouse-to-focus
 
 	focus-follows-mouse
