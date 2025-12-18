@@ -497,9 +497,8 @@ binds {
 	Mod+Shift+Minus { set-window-height "-10%"; }
 	Mod+Shift+Equal { set-window-height "+10%"; }
 
-	// I know this is opposite of the Ctrl thing, but this is what I'm used to
-	Mod+V      repeat=false { toggle-window-floating; }
-	Mod+Ctrl+V repeat=false { switch-focus-between-floating-and-tiling; }
+	Mod+Ctrl+V repeat=false { toggle-window-floating; }
+	Mod+V      repeat=false { switch-focus-between-floating-and-tiling; }
 
 	Print      { screenshot; }
 	Ctrl+Print { screenshot-screen; }
