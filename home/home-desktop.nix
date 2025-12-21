@@ -138,6 +138,7 @@ args@{ config, util, lib, pkgs, ... }: {
       enable = true;
       scripts = with pkgs.mpvScripts; [ mpris sponsorblock ];
       config = {
+        screenshot-dir = "~/screenshots/";
         vo = "gpu";
         hwdec = "auto";
         profile = "gpu-hq";
