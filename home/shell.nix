@@ -24,6 +24,7 @@ args@{ self, config, lib, pkgs, ... }: {
       gdb
       valgrind
       bc
+      ffmpeg
     ];
     shell.enableShellIntegration = true;
     shellAliases = {
