@@ -42,7 +42,7 @@ args@{ config, util, lib, pkgs, ... }: {
       pavucontrol
       kdePackages.ksshaskpass
       gimp
-      prismlauncher
+      (prismlauncher.override { jdks = [ jdk8 jdk17 jdk21 jdk25 ]; })
       qpdfview
       nemo
       libnotify
