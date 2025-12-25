@@ -49,6 +49,7 @@ args@{ config, util, lib, pkgs, ... }: {
       dconf
       songrec
       playerctl
+      signal-desktop
       (pkgs.writeShellApplication {
         name = "emoji-picker";
         runtimeInputs = [ pkgs.wl-clipboard pkgs.fuzzel pkgs.libnotify ];
