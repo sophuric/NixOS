@@ -301,10 +301,10 @@ in {
           "zen.workspaces.separate-essentials" = true;
         };
         search = {
-          default = "ddg";
-          privateDefault = "ddg";
+          default = "duckduckgo";
+          privateDefault = "duckduckgo";
           order = [
-            "ddg"
+            "duckduckgo"
             "wikipedia"
             "npm"
             "nix-packages"
@@ -381,8 +381,22 @@ in {
             "yahoo-jp"
             "yahoo-jp-auctions"
             "youtube"
+            "ddg"
+            "duckduckgo"
           ] (_: { metaData.hidden = true; })) // {
-            duckduckgo = { };
+            duckduckgo = {
+              name = "DuckDuckGo (modified)";
+              urls = [{
+                template = with builtins.mapAttrs
+                  (name: value: util.replacePrefix value.hex "#" "")
+                  (util.getPalette config);
+                # See https://duckduckgo.com/duckduckgo-help-pages/settings/params
+                  "https://noai.duckduckgo.com/?kae=d&kao=-1&kap=-1&kpsb=-1&kl=wt-wt&kax=-1&kak=-1&kau=-1&k1=-1&kay=b&kk=-1&kdcm=1&k5=2&kw=w&kav=1&kaq=-1&kaj=m&kdcs=1&kbe=0&kj=${mantle}&kaa=${mauve}&k21=${base}&k7=${base}&kx=${subtext1}&k9=${pink}&k8=${text}&kt=sans-serif&ka=sans-serif&kbg=-1&kbi=1&kbc=1&q={searchTerms}";
+              }];
+              iconMapObj."16" =
+                "https://static-production.npmjs.com/c426a1116301d1fd178c51522484127a.png";
+              definedAliases = [ "duckduckgo" "ddg" ];
+            };
             wikipedia = { };
             npm = {
               name = "npm";
