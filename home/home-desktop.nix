@@ -1,5 +1,5 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-args@{ config, util, lib, pkgs, ... }: {
+args@{ self, config, util, lib, pkgs, ... }: {
   imports = [ ./home-headless.nix ./kitty.nix ./waybar.nix ./mime.nix ];
 
   fonts.fontconfig = {
@@ -101,7 +101,12 @@ args@{ config, util, lib, pkgs, ... }: {
           rm -- "$TMP"
         '';
       })
-    ];
+      hunspell
+    ] ++ (let cfg = import (self + /local.nix); # This is hacky
+    in (builtins.map (x:
+      pkgs.hunspellDicts.${builtins.substring 0 (util.firstIndexOf x ".") x})
+      ([ cfg.i18n.defaultLocale ] ++ cfg.i18n.extraLocales)));
+
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
       SUDO_ASKPASS = "ksshaskpass";
