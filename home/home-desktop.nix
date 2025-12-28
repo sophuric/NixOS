@@ -50,6 +50,8 @@ args@{ self, config, util, lib, pkgs, ... }: {
       songrec
       playerctl
       signal-desktop
+      nemo-fileroller
+      file-roller
       (pkgs.writeShellApplication {
         name = "emoji-picker";
         runtimeInputs = [ pkgs.wl-clipboard pkgs.fuzzel pkgs.libnotify ];
