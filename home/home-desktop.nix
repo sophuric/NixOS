@@ -52,6 +52,7 @@ args@{ self, config, util, lib, pkgs, ... }: {
       signal-desktop
       nemo-fileroller
       file-roller
+      qdirstat
       (pkgs.writeShellApplication {
         name = "emoji-picker";
         runtimeInputs = [ pkgs.wl-clipboard pkgs.fuzzel pkgs.libnotify ];
