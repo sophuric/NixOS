@@ -17,6 +17,7 @@ args@{ config, pkgs, lib, ... }: {
 
   config = {
     networking.firewall.enable = true;
+    networking.firewall.allowedTCPPorts = [ 8080 ];
 
     nixpkgs.config.allowUnfreePredicate = (pkg:
       builtins.any

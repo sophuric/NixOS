@@ -31,6 +31,7 @@ args@{ self, config, lib, pkgs, ... }: {
         rev = "dab5a37fb772b3d1a3afa9f568eb0f5aa286d015";
         sha256 = "QQbppb62+PHpmK2S1C0cHX9nBEcto1HJpKphw8dRpmY=";
       }) { inherit (pkgs) system; }).ferium # Pin to version 4.7.0 since 4.7.1 hangs when updating a lot of mods
+      http-server
     ];
     shell.enableShellIntegration = true;
     shellAliases = {
