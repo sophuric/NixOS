@@ -257,6 +257,7 @@ in {
           "intl.regional_prefs.use_os_locales" = true;
           "layers.acceleration.disabled" = true; # Hardware acceleration
           "layout.css.always_underline_links" = false;
+          "layout.css.prefers-color-scheme.content-override" = 0; # Dark website appearance
           "media.hardwaremediakeys.enabled" = true;
           "media.videocontrols.picture-in-picture.video-toggle.enabled" = false;
           "network.cookie.cookieBehavior" = 5;
