@@ -38,8 +38,6 @@ args@{ self, config, util, lib, pkgs, ... }: {
         niri
         xwayland-satellite
         swayosd
-        xdg-desktop-portal-gnome
-        xdg-desktop-portal-gtk
         pavucontrol
         kdePackages.ksshaskpass
         gimp
@@ -114,7 +112,8 @@ args@{ self, config, util, lib, pkgs, ... }: {
       ] ++ (let cfg = import (self + /local.nix); # This is hacky
       in (builtins.map (x:
         pkgs.hunspellDicts.${builtins.substring 0 (util.firstIndexOf x ".") x})
-        ([ cfg.i18n.defaultLocale ] ++ cfg.i18n.extraLocales)));
+        ([ cfg.i18n.defaultLocale ] ++ cfg.i18n.extraLocales)))
+      ++ config.xdg.portal.extraPortals;
 
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
@@ -127,6 +126,15 @@ args@{ self, config, util, lib, pkgs, ... }: {
       gtk.enable = true;
       size = 32;
     };
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gnome
+      xdg-desktop-portal-gtk
+    ];
+    config.niri."org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
   };
 
   gtk = {
