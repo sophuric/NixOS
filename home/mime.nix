@@ -11,8 +11,6 @@
       neovim
       libreoffice-qt
     ];
-    defaultApplications = {
-      "application/json" = [ "nvim.desktop" ];
-    };
+    defaultApplications = { "application/json" = [ "nvim.desktop" ]; };
   };
 }

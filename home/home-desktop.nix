@@ -24,91 +24,97 @@ args@{ self, config, util, lib, pkgs, ... }: {
   };
 
   home = {
-    packages = with pkgs; [
-      # fonts
-      (import ./cartograph-cf.nix args)
-      liberation_ttf
-      ubuntu-sans
-      twitter-color-emoji
-      fira-mono
-      fira-code
-      nerd-fonts.fira-code
-      # desktop tools
-      niri
-      xwayland-satellite
-      swayosd
-      xdg-desktop-portal-gnome
-      xdg-desktop-portal-gtk
-      pavucontrol
-      kdePackages.ksshaskpass
-      gimp
-      (prismlauncher.override { jdks = [ jdk8 jdk17 jdk21 jdk25 ]; })
-      qpdfview
-      nemo
-      libnotify
-      dconf
-      songrec
-      playerctl
-      signal-desktop
-      nemo-fileroller
-      file-roller
-      qdirstat
-      (pkgs.writeShellApplication {
-        name = "emoji-picker";
-        runtimeInputs = [ pkgs.wl-clipboard pkgs.fuzzel pkgs.libnotify ];
-        text = ''
-          OUT="$(fuzzel --match-mode=fuzzy --dmenu --prompt 'Select Emoji > ' < ${
-            pkgs.fetchurl {
-              url =
-                "https://github.com/sophuric/emojipicker/raw/7cc87962da618285ac102a8908243e662f180788/emojis";
-              hash = "sha256-wy7IcZ5ikT6xr8je46vG3P0Os9S4r2Hn2/abJpfrkrg=";
+    packages = with pkgs;
+      [
+        # fonts
+        (import ./cartograph-cf.nix args)
+        liberation_ttf
+        ubuntu-sans
+        twitter-color-emoji
+        fira-mono
+        fira-code
+        nerd-fonts.fira-code
+        # desktop tools
+        niri
+        xwayland-satellite
+        swayosd
+        xdg-desktop-portal-gnome
+        xdg-desktop-portal-gtk
+        pavucontrol
+        kdePackages.ksshaskpass
+        gimp
+        (prismlauncher.override { jdks = [ jdk8 jdk17 jdk21 jdk25 ]; })
+        qpdfview
+        nemo
+        libnotify
+        dconf
+        songrec
+        playerctl
+        signal-desktop
+        nemo-fileroller
+        file-roller
+        qdirstat
+        (pkgs.writeShellApplication {
+          name = "emoji-picker";
+          runtimeInputs = [ pkgs.wl-clipboard pkgs.fuzzel pkgs.libnotify ];
+          text = ''
+            OUT="$(fuzzel --match-mode=fuzzy --dmenu --prompt 'Select Emoji > ' < ${
+              pkgs.fetchurl {
+                url =
+                  "https://github.com/sophuric/emojipicker/raw/7cc87962da618285ac102a8908243e662f180788/emojis";
+                hash = "sha256-wy7IcZ5ikT6xr8je46vG3P0Os9S4r2Hn2/abJpfrkrg=";
+              }
+            })"
+            test -n "$OUT"
+            EMOJI="$(cut -d' ' -f1 <<< "$OUT")"
+            DESC="$(cut -d' ' -f2- <<< "$OUT")"
+            notify-send -- "Copied Emoji: $EMOJI" "$DESC"
+            printf "%s" "$EMOJI" | wl-copy
+          '';
+        })
+        (pkgs.writeShellApplication {
+          name = "get-last-screenshot.sh";
+          text =
+            "find ~/screenshots -type f -printf '%T@ %p\\n' | sort --numeric-sort --reverse | cut -d' ' -f2- | head -1";
+        })
+        (pkgs.writeShellApplication {
+          name = "open-last-screenshot.sh";
+          runtimeInputs = [ pkgs.feh ];
+          text = ''feh --class=feh-float - < "$(get-last-screenshot.sh)"'';
+        })
+        (pkgs.writeShellApplication {
+          name = "copy-last-screenshot.sh";
+          runtimeInputs = [ pkgs.wl-clipboard ];
+          text = ''wl-copy < "$(get-last-screenshot.sh)"'';
+        })
+        (pkgs.writeShellApplication {
+          name = "scan-last-screenshot.sh";
+          runtimeInputs = [
+            pkgs.zbar
+            pkgs.neovim
+            pkgs.libnotify
+            pkgs.wl-clipboard
+            pkgs.kitty
+          ];
+          text = ''
+            TMP="$(mktemp)"
+            zbarimg --quiet --raw - < "$(get-last-screenshot.sh)" > "$TMP" || {
+              [[ "$?" == "4" ]] && {
+                notify-send "No barcodes were detected"
+                rm -- "$TMP"
+                false
+              }
             }
-          })"
-          test -n "$OUT"
-          EMOJI="$(cut -d' ' -f1 <<< "$OUT")"
-          DESC="$(cut -d' ' -f2- <<< "$OUT")"
-          notify-send -- "Copied Emoji: $EMOJI" "$DESC"
-          printf "%s" "$EMOJI" | wl-copy
-        '';
-      })
-      (pkgs.writeShellApplication {
-        name = "get-last-screenshot.sh";
-        text =
-          "find ~/screenshots -type f -printf '%T@ %p\\n' | sort --numeric-sort --reverse | cut -d' ' -f2- | head -1";
-      })
-      (pkgs.writeShellApplication {
-        name = "open-last-screenshot.sh";
-        runtimeInputs = [ pkgs.feh ];
-        text = ''feh --class=feh-float - < "$(get-last-screenshot.sh)"'';
-      })
-      (pkgs.writeShellApplication {
-        name = "copy-last-screenshot.sh";
-        runtimeInputs = [ pkgs.wl-clipboard ];
-        text = ''wl-copy < "$(get-last-screenshot.sh)"'';
-      })
-      (pkgs.writeShellApplication {
-        name = "scan-last-screenshot.sh";
-        runtimeInputs =
-          [ pkgs.zbar pkgs.neovim pkgs.libnotify pkgs.wl-clipboard pkgs.kitty ];
-        text = ''
-          TMP="$(mktemp)"
-          zbarimg --quiet --raw - < "$(get-last-screenshot.sh)" > "$TMP" || {
-            [[ "$?" == "4" ]] && {
-              notify-send "No barcodes were detected"
-              rm -- "$TMP"
-              false
-            }
-          }
-          wl-copy -t text/plain < "$TMP"
-          if [[ -n "$(notify-send --action default=Open -- "$(<"$TMP")" "Decoded data copied to clipboard - Click to open in neovim")" ]]; then kitty -- nvim -MR -- "$TMP"; fi
-          rm -- "$TMP"
-        '';
-      })
-      hunspell
-    ] ++ (let cfg = import (self + /local.nix); # This is hacky
-    in (builtins.map (x:
-      pkgs.hunspellDicts.${builtins.substring 0 (util.firstIndexOf x ".") x})
-      ([ cfg.i18n.defaultLocale ] ++ cfg.i18n.extraLocales)));
+            wl-copy -t text/plain < "$TMP"
+            if [[ -n "$(notify-send --action default=Open -- "$(<"$TMP")" "Decoded data copied to clipboard - Click to open in neovim")" ]]; then kitty -- nvim -MR -- "$TMP"; fi
+            rm -- "$TMP"
+          '';
+        })
+        hunspell
+      ] ++ (let cfg = import (self + /local.nix); # This is hacky
+      in (builtins.map (x:
+        pkgs.hunspellDicts.${builtins.substring 0 (util.firstIndexOf x ".") x})
+        ([ cfg.i18n.defaultLocale ] ++ cfg.i18n.extraLocales)));
 
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
