@@ -24,6 +24,7 @@ args@{ self, config, lib, pkgs, ... }: {
       gdb
       valgrind
       bc
+      xxd
       ffmpeg
       (import (pkgs.fetchFromGitHub {
         owner = "NixOS";

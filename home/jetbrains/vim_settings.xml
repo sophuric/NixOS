@@ -1,45 +1,63 @@
+<?xml version="1.0"?>
 <application>
   <component name="VimEditorSettings">
-    <editor />
+    <editor/>
   </component>
   <component name="VimKeySettings">
     <shortcut-conflicts>
       <shortcut-conflict owner="vim">
         <text encoding="base64">Y3RybCBwcmVzc2VkIFY=</text>
+        <!-- ctrl+V -->
       </shortcut-conflict>
       <shortcut-conflict owner="ide">
         <text encoding="base64">Y3RybCBwcmVzc2VkIEw=</text>
+        <!-- ctrl+L -->
       </shortcut-conflict>
       <shortcut-conflict owner="ide">
         <text encoding="base64">Y3RybCBwcmVzc2VkIEM=</text>
+        <!-- ctrl+C -->
       </shortcut-conflict>
       <shortcut-conflict owner="ide">
         <text encoding="base64">Y3RybCBwcmVzc2VkIFk=</text>
+        <!-- ctrl+Y -->
       </shortcut-conflict>
       <shortcut-conflict owner="ide">
         <text encoding="base64">Y3RybCBwcmVzc2VkIE8=</text>
+        <!-- ctrl+O -->
       </shortcut-conflict>
       <shortcut-conflict owner="ide">
         <text encoding="base64">Y3RybCBwcmVzc2VkIFA=</text>
+        <!-- ctrl+P -->
       </shortcut-conflict>
       <shortcut-conflict owner="vim">
         <text encoding="base64">Y3RybCBwcmVzc2VkIEY=</text>
+        <!-- ctrl+F -->
       </shortcut-conflict>
       <shortcut-conflict owner="vim">
         <text encoding="base64">Y3RybCBwcmVzc2VkIFI=</text>
+        <!-- ctrl+R -->
       </shortcut-conflict>
       <shortcut-conflict owner="ide">
         <text encoding="base64">Y3RybCBwcmVzc2VkIFM=</text>
+        <!-- ctrl+S -->
+      </shortcut-conflict>
+      <shortcut-conflict owner="ide">
+        <text encoding="base64">Y3RybCBwcmVzc2VkIEs=</text>
+        <!-- ctrl+K -->
+      </shortcut-conflict>
+      <shortcut-conflict owner="ide">
+        <text encoding="base64">Y3RybCBwcmVzc2VkIEQ=</text>
+        <!-- ctrl+D -->
       </shortcut-conflict>
     </shortcut-conflicts>
   </component>
   <component name="VimSettings">
-    <state version="7" enabled="true" />
+    <state version="7" enabled="true"/>
     <notifications>
-      <idea-join enabled="false" />
-      <idea-put enabled="false" />
-      <was-automatically-subscribed-to-eap enabled="false" />
-      <first-ideavim-version value="2.19.0" />
+      <idea-join enabled="false"/>
+      <idea-put enabled="false"/>
+      <was-automatically-subscribed-to-eap enabled="false"/>
+      <first-ideavim-version value="2.19.0"/>
     </notifications>
   </component>
 </application>
