@@ -218,6 +218,7 @@ in {
           "extensions.autoDisableScopes" =
             true; # Automatically install configured extensions
           "browser.preferences.experimental.hidden" = true;
+          "zen.view.window.scheme" = 0; # Dark mode
           "zen.view.welcome-screen.seen" = true;
           "zen.welcome-screen.seen" = true;
           "accessibility.browsewithcaret" = false;
