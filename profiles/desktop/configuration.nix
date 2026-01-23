@@ -38,5 +38,7 @@ args@{ self, util, pkgs, lib, config, ... }: {
       isNormalUser = true;
       extraGroups = [ "wheel" "ssh" "libvirtd" ];
     };
+
+    networking.firewall.allowedTCPPorts = [ 25565 8123 ];
   };
 }
