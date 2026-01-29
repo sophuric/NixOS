@@ -5,7 +5,7 @@
   </component>
   <component name="VimKeySettings">
     <shortcut-conflicts>
-      <shortcut-conflict owner="vim">
+      <shortcut-conflict owner="ide">
         <text encoding="base64">Y3RybCBwcmVzc2VkIFY=</text>
         <!-- ctrl+V -->
       </shortcut-conflict>
