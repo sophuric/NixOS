@@ -15,6 +15,7 @@ args@{ self, util, pkgs, lib, config, ... }: {
       /steam.nix
       /removable-media.nix
       /obs-virtual-camera.nix
+      /immich.nix
     ]));
 
   config = {
