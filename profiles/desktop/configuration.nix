@@ -9,7 +9,6 @@ args@{ self, util, pkgs, lib, config, ... }: {
       /virtualisation.nix
       /bluetooth.nix
       /printing.nix
-      /webdav.nix
       /audio.nix
       /openssh.nix
       /greeter.nix
