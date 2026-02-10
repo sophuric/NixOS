@@ -2,7 +2,8 @@
 args@{ util, self, config, pkgs, lib, ... }:
 let
   addons = pkgs.nur.repos.rycee.firefox-addons;
-  extensions = {
+  extensions = let palette = util.getPalette config;
+  in {
     clearurls = {
       permissions = [
         "<all_urls>"
@@ -14,8 +15,28 @@ let
         "webNavigation"
         "webRequest"
         "webRequestBlocking"
-      ];
-      private_browsing = true; # TODO
+        "*://*.yandex.ru/*"
+        "*://*.yandex.com/*"
+        "*://*.ya.ru/*"
+      ] ++ (builtins.map (x: "*://*.${x}/*") (import util/google-domains.nix));
+      # private_browsing = true; # TODO
+      settings = {
+        badgedStatus = true;
+        globalStatus = true;
+        badged_color = palette.pink.hex;
+        hashURL = "https://rules2.clearurls.xyz/rules.minify.hash";
+        ruleURL = "https://rules2.clearurls.xyz/data.minify.json";
+        contextMenuEnabled = true;
+        historyListenerEnabled = true;
+        localHostsSkipping = true;
+        referralMarketing = false;
+        domainBlocking = true;
+        pingBlocking = true;
+        eTagFiltering = false;
+        types =
+          "font,image,imageset,main_frame,media,object,object_subrequest,other,script,stylesheet,sub_frame,websocket,xml_dtd,xmlhttprequest,xslt";
+      };
+      force = true;
     };
     keepassxc-browser = {
       permissions = [
@@ -31,6 +52,9 @@ let
         "webNavigation"
         "webRequest"
         "webRequestBlocking"
+        "https://*/*"
+        "http://*/*"
+        "https://api.github.com/"
       ];
     };
     noscript = {
@@ -48,20 +72,17 @@ let
         "webRequestFilterResponse"
         "webRequestFilterResponse.serviceWorkerScript"
       ];
-      private_browsing = true; # TODO
-    };
-    redirector = {
-      permissions = [
-        "notifications"
-        "storage"
-        "tabs"
-        "webNavigation"
-        "webRequest"
-        "webRequestBlocking"
-      ];
+      # private_browsing = true; # TODO
     };
     sponsorblock = {
-      permissions = [ "scripting" "storage" "unlimitedStorage" ];
+      permissions = [
+        "scripting"
+        "storage"
+        "unlimitedStorage"
+        "https://sponsor.ajay.app/*"
+        "https://*.youtube.com/*"
+        "https://www.youtube-nocookie.com/embed/*"
+      ];
     };
     stylus = {
       permissions = [
@@ -74,6 +95,7 @@ let
         "webNavigation"
         "webRequest"
         "webRequestBlocking"
+        "https://userstyles.org/*"
       ];
     };
     ublock-origin = {
@@ -82,6 +104,21 @@ let
         "alarms"
         "dns"
         "file://*/*"
+# <<<<<<< Updated upstream:home/zen-browser.nix
+# =======
+#         "http://*/*"
+#         "https://*/*"
+#         "https://easylist.to/*"
+#         "https://*.fanboy.co.nz/*"
+#         "https://filterlists.com/*"
+#         "https://forums.lanik.us/*"
+#         "https://github.com/*"
+#         "https://*.github.io/*"
+#         "https://github.com/uBlockOrigin/*"
+#         "https://ublockorigin.github.io/*"
+#         "https://*.reddit.com/r/uBlockOrigin/*"
+#         "management"
+# >>>>>>> Stashed changes:home/sophie/zen-browser.nix
         "menus"
         "privacy"
         "storage"
@@ -91,7 +128,21 @@ let
         "webRequest"
         "webRequestBlocking"
       ];
-      private_browsing = true; # TODO
+      settings = {
+  selectedFilterLists= [
+    "user-filters"
+    "ublock-filters"
+    "ublock-badware"
+    "ublock-privacy"
+    "ublock-unbreak"
+    "ublock-quick-fixes"
+    "easylist"
+    "easyprivacy"
+    "urlhaus-1"
+    "plowe-0"
+  ];
+      };
+      # private_browsing = true; # TODO
     };
     violentmonkey = {
       permissions = [
@@ -179,7 +230,6 @@ in {
               unified-extensions-area =
                 builtins.map (x: "${x}-browser-action") [
                   "sponsorblocker_ajay_app"
-                  "redirector_einaregilsson_com"
                   "keepassxc-browser_keepassxc_org"
                   "_74145f27-f039-47ce-a470-a662b129930a_"
                   "_aecec67f-0d10-4fa7-b7c7-609a2db280cf_"
@@ -219,6 +269,7 @@ in {
             true; # Automatically install configured extensions
           "browser.preferences.experimental.hidden" = true;
           "zen.view.window.scheme" = 0; # Dark mode
+          "browser.toolbars.bookmarks.visibility" = "always";
           "zen.view.welcome-screen.seen" = true;
           "zen.welcome-screen.seen" = true;
           "accessibility.browsewithcaret" = false;
@@ -491,34 +542,15 @@ in {
           };
           force = true;
         };
+        extensions = {
+          force = true;
+          exactPermissions = true;
+          packages = lib.mapAttrsToList (extension: attr: addons.${extension})
+            extensions;
+          settings = util.merge (builtins.attrValues (builtins.mapAttrs
+            (name: value: { ${addons.${name}.addonId} = value; }) extensions));
+        };
       };
     };
-    profiles.default = {
-      extensions.force = true;
-      extensions.packages =
-        lib.mapAttrsToList (extension: attr: addons.${extension}) extensions;
-    };
   };
-  assertions = lib.mapAttrsToList (extension: attr:
-    (let
-      ext = addons.${extension};
-      # Some extensions have permissions with massive lists of domains so I'm just gonna allow them all by default
-      removeUrlPermissions = x:
-        (builtins.filter
-          (perm: builtins.isNull (builtins.match "^(https?|\\*)://.*$" perm))
-          x);
-    in {
-      assertion = util.listEquals attr.permissions
-        (removeUrlPermissions ext.meta.mozPermissions);
-      message = "Extension ${extension} wants permissions [${
-          builtins.concatStringsSep " "
-          (builtins.map lib.strings.escapeNixString
-            (builtins.sort builtins.lessThan
-              (removeUrlPermissions ext.meta.mozPermissions)))
-        }] but [${
-          builtins.concatStringsSep " "
-          (builtins.map lib.strings.escapeNixString
-            (builtins.sort builtins.lessThan attr.permissions))
-        }] was specified. See https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/manifest.json/permissions#api_permissions for a list of permissions.";
-    })) extensions;
 }
