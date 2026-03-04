@@ -125,18 +125,18 @@ let
         "webRequestBlocking"
       ];
       settings = {
-  selectedFilterLists= [
-    "user-filters"
-    "ublock-filters"
-    "ublock-badware"
-    "ublock-privacy"
-    "ublock-unbreak"
-    "ublock-quick-fixes"
-    "easylist"
-    "easyprivacy"
-    "urlhaus-1"
-    "plowe-0"
-  ];
+        selectedFilterLists = [
+          "user-filters"
+          "ublock-filters"
+          "ublock-badware"
+          "ublock-privacy"
+          "ublock-unbreak"
+          "ublock-quick-fixes"
+          "easylist"
+          "easyprivacy"
+          "urlhaus-1"
+          "plowe-0"
+        ];
       };
       # private_browsing = true; # TODO
     };
@@ -152,6 +152,22 @@ let
         "unlimitedStorage"
         "webRequest"
         "webRequestBlocking"
+      ];
+    };
+    blocktube = {
+      permissions = [
+        "storage"
+        "unlimitedStorage"
+        "https://www.youtube.com/*"
+        "https://m.youtube.com/*"
+      ];
+    };
+    return-youtube-dislikes = {
+      permissions = [
+        "activeTab"
+        "*://*.youtube.com/*"
+        "storage"
+        "*://returnyoutubedislikeapi.com/*"
       ];
     };
   };
@@ -229,6 +245,8 @@ in {
                   "keepassxc-browser_keepassxc_org"
                   "_74145f27-f039-47ce-a470-a662b129930a_"
                   "_aecec67f-0d10-4fa7-b7c7-609a2db280cf_"
+                  "_58204f8b-01c2-4bbc-98f8-9a90458fd9ef_"
+                  "_762f9885-5a13-4abd-9c77-433dcd38b8fd_"
                 ];
               nav-bar = [
                 "back-button"
@@ -305,7 +323,8 @@ in {
           "intl.regional_prefs.use_os_locales" = true;
           "layers.acceleration.disabled" = true; # Hardware acceleration
           "layout.css.always_underline_links" = false;
-          "layout.css.prefers-color-scheme.content-override" = 0; # Dark website appearance
+          "layout.css.prefers-color-scheme.content-override" =
+            0; # Dark website appearance
           "media.hardwaremediakeys.enabled" = true;
           "media.videocontrols.picture-in-picture.video-toggle.enabled" = false;
           "network.cookie.cookieBehavior" = 5;
