@@ -384,6 +384,7 @@ in {
             "modrinth"
             "skyblock-official-wiki"
             "skyblock-fandom-wiki"
+            "factorio-wiki"
           ];
           engines = (lib.attrsets.genAttrs [
             # from firefox source code ./services/settings/dumps/main/search-config-v2.json
@@ -553,6 +554,15 @@ in {
               }];
               iconMapObj."16" = "https://hypixel.net/favicon-32x32.png";
               definedAliases = [ "sbf" ];
+            };
+            factorio-wiki = {
+              name = "Factorio Wiki";
+              urls = [{
+                template =
+                  "https://wiki.factorio.com/index.php?search={searchTerms}";
+              }];
+              iconMapObj."16" = "https://wiki.factorio.com/favicon.ico";
+              definedAliases = [ "factorio-wiki" "factoriowiki" ];
             };
           };
           force = true;
