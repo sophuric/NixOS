@@ -125,6 +125,10 @@ let
         "webRequestBlocking"
       ];
       settings = {
+        userSettings = {
+          uiAccentCustom = true;
+          uiAccentCustom0 = "#f5c2e7";
+        };
         selectedFilterLists = [
           "user-filters"
           "ublock-filters"
@@ -136,6 +140,23 @@ let
           "easyprivacy"
           "urlhaus-1"
           "plowe-0"
+          "fanboy-cookiemonster"
+          "ublock-cookies-easylist"
+          "adguard-cookies"
+          "ublock-cookies-adguard"
+          "fanboy-social"
+          "adguard-social"
+          "fanboy-thirdparty_social"
+          "fanboy-ai-suggestions"
+          "easylist-chat"
+          "easylist-newsletters"
+          "easylist-notifications"
+          "easylist-annoyances"
+          "adguard-mobile-app-banners"
+          "adguard-other-annoyances"
+          "adguard-popup-overlays"
+          "adguard-widgets"
+          "ublock-annoyances"
         ];
       };
       # private_browsing = true; # TODO
