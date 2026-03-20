@@ -390,6 +390,7 @@ binds {
 
 	Mod+Space hotkey-overlay-title="Clear Clipboard" { spawn-sh "true | wl-copy"; }
 
+	Mod+Backspace repeat=false repeat=false { close-window; }
 	Ctrl+Alt+End repeat=false repeat=false { close-window; }
 	Ctrl+Alt+MouseRight { close-window; }
 
