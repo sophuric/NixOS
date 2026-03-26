@@ -49,6 +49,10 @@ args@{ config, pkgs, lib, ... }: {
     services = {
       libinput.enable = true;
       gpm.enable = true;
+      dbus = {
+        enable = true;
+        implementation = "broker";
+      };
     };
 
     users.defaultUserShell = pkgs.zsh;
