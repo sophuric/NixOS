@@ -16,6 +16,7 @@ args@{ self, util, pkgs, lib, config, ... }: {
       /removable-media.nix
       /obs-virtual-camera.nix
       /immich.nix
+      /docker.nix
     ]));
 
   config = {
@@ -36,7 +37,7 @@ args@{ self, util, pkgs, lib, config, ... }: {
     users.users.sophie = {
       uid = 1000;
       isNormalUser = true;
-      extraGroups = [ "wheel" "ssh" "libvirtd" ];
+      extraGroups = [ "wheel" "ssh" "libvirtd" "docker" ];
     };
 
     networking.firewall.allowedTCPPorts = [ 25565 8123 ];
