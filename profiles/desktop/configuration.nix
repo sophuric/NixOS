@@ -40,6 +40,6 @@ args@{ self, util, pkgs, lib, config, ... }: {
       extraGroups = [ "wheel" "ssh" "libvirtd" "docker" ];
     };
 
-    networking.firewall.allowedTCPPorts = [ 25565 8123 ];
+    networking.firewall.allowedTCPPorts = [ 25565 8123 53317 ];
   };
 }
