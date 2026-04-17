@@ -26,6 +26,9 @@ args@{ self, config, lib, pkgs, ... }: {
       bc
       xxd
       ffmpeg
+      whois
+      bind
+      nethogs
       (import (pkgs.fetchFromGitHub {
         owner = "NixOS";
         repo = "nixpkgs";
