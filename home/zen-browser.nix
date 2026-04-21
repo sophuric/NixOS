@@ -404,7 +404,7 @@ in {
             "minecraft-wiki"
             "modrinth"
             "skyblock-official-wiki"
-            "skyblock-fandom-wiki"
+            "skyblock-community-wiki"
             "factorio-wiki"
           ];
           engines = (lib.attrsets.genAttrs [
@@ -567,14 +567,14 @@ in {
               iconMapObj."16" = "https://hypixel.net/favicon-32x32.png";
               definedAliases = [ "sbh" ];
             };
-            skyblock-fandom-wiki = {
-              name = "Fandom SkyBlock Wiki";
+            skyblock-community-wiki = {
+              name = "Community SkyBlock Wiki";
               urls = [{
                 template =
-                  "https://hypixel-skyblock.fandom.com/wiki/Special:Search?query={searchTerms}";
+                  "https://hypixelskyblock.minecraft.wiki/w/Special:Search?search={searchTerms}";
               }];
               iconMapObj."16" = "https://hypixel.net/favicon-32x32.png";
-              definedAliases = [ "sbf" ];
+              definedAliases = [ "sbf" "sbc" ];
             };
             factorio-wiki = {
               name = "Factorio Wiki";
