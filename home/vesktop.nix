@@ -14,7 +14,7 @@
         ignoreDevices = false;
       };
       minimizeToTray = false;
-      arRPC = false;
+      arRPC = true;
     };
     vencord = {
       themes = {
