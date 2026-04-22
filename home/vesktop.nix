@@ -130,11 +130,6 @@
                 collapseDeleted = false;
                 inlineEdits = true;
               };
-              MessageTags = {
-                enabled = true;
-                clyde = true;
-                tagsList = { };
-              };
               NoReplyMention = {
                 enabled = true;
                 shouldPingListed = true;
@@ -186,6 +181,7 @@
               SilentMessageToggle = {
                 enabled = true;
                 persistState = false;
+                autoDisable = true;
               };
               SilentTyping = {
                 enabled = true;
@@ -196,6 +192,8 @@
               SpotifyControls = {
                 enabled = true;
                 hoverControls = false;
+                useSpotifyUris = false;
+                previousButtonRestartsTrack = true;
               };
               SpotifyCrack = {
                 enabled = true;
@@ -271,6 +269,9 @@
                 sentInput = "auto";
                 sentOutput = "en";
                 showChatBarButton = true;
+                service = "google";
+                deeplApiKey = "";
+                showAutoTranslateTooltip = true;
               };
               PermissionsViewer = {
                 enabled = true;
@@ -370,8 +371,38 @@
                 enabled = true;
                 showFullUrl = false;
               };
+              ReviewDB = {
+                enabled = true;
+                notifyReviews = true;
+                showWarning = true;
+                hideTimestamps = false;
+                hideBlockedUsers = true;
+              };
+              ReplaceGoogleSearch = {
+                enabled = true;
+                replacementEngine = "DuckDuckGo";
+              };
+              BetterRoleContext = {
+                enabled = true;
+                roleIconFileFormat = "png";
+              };
+              CrashHandler = {
+                enabled = true;
+                attemptToPreventCrashes = true;
+                attemptToNavigateToHome = true;
+              };
+              FixImagesQuality = {
+                enabled = true;
+                originalImagesInChat = false;
+              };
+              VencordToolbox = {
+                enabled = true;
+                showPluginMenu = true;
+              };
             }
             (lib.attrsets.genAttrs [
+              "WhoReacted"
+              "WebContextMenus"
               "BadgeAPI"
               "CommandsAPI"
               "MemberListDecoratorsAPI"
@@ -384,7 +415,6 @@
               "SettingsStoreAPI"
               "BetterGifAltText"
               "ClearURLs"
-              "CrashHandler"
               "ForceOwnerCrown"
               "iLoveSpam"
               "NoDevtoolsWarning"
@@ -394,7 +424,6 @@
               "StartupTimings"
               "SupportHelper"
               "VoiceChatDoubleClick"
-              "VencordToolbox"
               "ValidUser"
               "FavoriteEmojiFirst"
               "NoProfileThemes"
@@ -411,7 +440,6 @@
               "BetterGifPicker"
               "FixYoutubeEmbeds"
               "ChatInputButtonAPI"
-              "BetterRoleContext"
               "FriendsSince"
               "UnlockedAvatarZoom"
               "ImageLink"
