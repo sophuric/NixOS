@@ -170,7 +170,7 @@
               };
               Settings = {
                 enabled = true;
-                settingsLocation = "aboveActivity";
+                settingsLocation = "belowActivity";
               };
               ShowHiddenChannels = {
                 enabled = true;
