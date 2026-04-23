@@ -1,6 +1,12 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
 args@{ self, config, util, lib, pkgs, ... }: {
-  imports = [ ./home-headless.nix ./kitty.nix ./waybar.nix ./mime.nix ];
+  imports = [
+    ./home-headless.nix
+    ./kitty.nix
+    ./waybar.nix
+    ./mime.nix
+    ./screenshot-scripts.nix
+  ];
 
   fonts.fontconfig = {
     enable = true;
@@ -68,44 +74,6 @@ args@{ self, config, util, lib, pkgs, ... }: {
             DESC="$(cut -d' ' -f2- <<< "$OUT")"
             notify-send -- "Copied Emoji: $EMOJI" "$DESC"
             printf "%s" "$EMOJI" | wl-copy
-          '';
-        })
-        (pkgs.writeShellApplication {
-          name = "get-last-screenshot.sh";
-          text =
-            "find ~/screenshots -type f -printf '%T@ %p\\n' | sort --numeric-sort --reverse | cut -d' ' -f2- | head -1";
-        })
-        (pkgs.writeShellApplication {
-          name = "open-last-screenshot.sh";
-          runtimeInputs = [ pkgs.feh ];
-          text = ''feh --class=feh-float - < "$(get-last-screenshot.sh)"'';
-        })
-        (pkgs.writeShellApplication {
-          name = "copy-last-screenshot.sh";
-          runtimeInputs = [ pkgs.wl-clipboard ];
-          text = ''wl-copy < "$(get-last-screenshot.sh)"'';
-        })
-        (pkgs.writeShellApplication {
-          name = "scan-last-screenshot.sh";
-          runtimeInputs = [
-            pkgs.zbar
-            pkgs.neovim
-            pkgs.libnotify
-            pkgs.wl-clipboard
-            pkgs.kitty
-          ];
-          text = ''
-            TMP="$(mktemp)"
-            zbarimg --quiet --raw - < "$(get-last-screenshot.sh)" > "$TMP" || {
-              [[ "$?" == "4" ]] && {
-                notify-send "No barcodes were detected"
-                rm -- "$TMP"
-                false
-              }
-            }
-            wl-copy -t text/plain < "$TMP"
-            if [[ -n "$(notify-send --action default=Open -- "$(<"$TMP")" "Decoded data copied to clipboard - Click to open in neovim")" ]]; then kitty -- nvim -MR -- "$TMP"; fi
-            rm -- "$TMP"
           '';
         })
         hunspell

@@ -378,9 +378,10 @@ binds {
 	Mod+KP_9              allow-when-locked=true hotkey-overlay-title="Raise Brightness" { spawn "swayosd-client" "--brightness" "raise"; }
 	Mod+KP_3              allow-when-locked=true hotkey-overlay-title="Lower Brightness" { spawn "swayosd-client" "--brightness" "lower"; }
 
-	Mod+P                   repeat=false hotkey-overlay-title="Open Last Screenshot"     { spawn "open-last-screenshot.sh"; }
-	Mod+Shift+P             repeat=false hotkey-overlay-title="Scan Last Screenshot"     { spawn "scan-last-screenshot.sh"; }
-	Mod+Shift+C             repeat=false hotkey-overlay-title="Copy Last Screenshot"     { spawn "copy-last-screenshot.sh"; }
+	Mod+P                   repeat=false hotkey-overlay-title="Open Last Screenshot"            { spawn "open-last-screenshot.sh"; }
+	Mod+Shift+P             repeat=false hotkey-overlay-title="Scan Last Screenshot with ZBar"  { spawn "zbar-last-screenshot.sh"; }
+	Mod+Ctrl+P              repeat=false hotkey-overlay-title="Read Last Screenshot with OCR"   { spawn "ocr-last-screenshot.sh"; }
+	Mod+Shift+C             repeat=false hotkey-overlay-title="Copy Last Screenshot"            { spawn "copy-last-screenshot.sh"; }
 
 	XF86AudioPrev        allow-when-locked=true hotkey-overlay-title="Previous Track"         { spawn "playerctl" "previous"; }
 	XF86AudioNext        allow-when-locked=true hotkey-overlay-title="Next Track"             { spawn "playerctl" "next"; }
