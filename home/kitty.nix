@@ -61,4 +61,8 @@
       "kitty_mod+enter" = "detach_window ask";
     };
   };
+  xdg.terminal-exec = {
+    enable = true;
+    settings = { default = [ "kitty.desktop" ]; };
+  };
 }

@@ -3,6 +3,7 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplicationPackages = with pkgs; [
+      kitty
       nemo-fileroller
       file-roller
       config.programs.zen-browser.package
@@ -11,6 +12,10 @@
       neovim
       libreoffice-qt
     ];
-    defaultApplications = { "application/json" = [ "nvim.desktop" ]; };
+    defaultApplications = {
+      "application/json" = [ "nvim.desktop" ];
+      "application/x-shellscript" = [ "nvim.desktop" ];
+      "inode/directory" = [ "nemo.desktop" ];
+    };
   };
 }
