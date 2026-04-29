@@ -262,6 +262,8 @@ animations {
 	}
 }
 
+prefer-no-csd
+
 window-rule {
 	match is-window-cast-target=true
 
