@@ -116,7 +116,7 @@ args@{ self, config, util, lib, pkgs, ... }: {
     in with config.catppuccin; {
       # https://www.reddit.com/r/NixOS/comments/1dlqoem/comment/l9qr2hw/
       name = "catppuccin-${flavor}-${accent}-${size}";
-      # Catppuccin Nix is deprecated but there's no other choice
+      # Catppuccin Nix is deprecated unfortunately
       package = pkgs.catppuccin-gtk.override {
         accents = [ accent ];
         variant = flavor;
