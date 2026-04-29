@@ -400,7 +400,6 @@ in {
             "nixos-options"
             "nix-flakes"
             "nixos-wiki"
-            "nix-home-manager-options"
             "minecraft-wiki"
             "modrinth"
             "skyblock-official-wiki"
@@ -531,15 +530,6 @@ in {
               }];
               iconMapObj."16" = "https://search.nixos.org/favicon.png";
               definedAliases = [ "nixoswiki" "nixwiki" "nw" ];
-            };
-            nix-home-manager-options = {
-              name = "Nix Home Manager Options";
-              urls = [{
-                template =
-                  "https://home-manager-options.extranix.com/?query={searchTerms}";
-              }];
-              iconMapObj."16" = "https://search.nixos.org/favicon.png";
-              definedAliases = [ "nixhome" "homemanager" ];
             };
             minecraft-wiki = {
               name = "Minecraft Wiki";
