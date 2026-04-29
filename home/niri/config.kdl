@@ -343,8 +343,9 @@ layer-rule {
 binds {
 	Mod+Shift+Slash repeat=false { show-hotkey-overlay; }
 
-	Mod+T repeat=false hotkey-overlay-title="Open Terminal"     { spawn "kitty"; }
-	Mod+L repeat=false hotkey-overlay-title="Lock Screen"       { spawn "swaylock"; }
+	Mod+T       repeat=false hotkey-overlay-title="Open Terminal"    { spawn "kitty"; }
+	Mod+L       repeat=false hotkey-overlay-title="Lock Screen"      { spawn "swaylock"; }
+	Mod+Shift+L repeat=false hotkey-overlay-title="Toggle Auto-Lock" { spawn "toggle-swayidle"; }
 
 	Mod+N repeat=false hotkey-overlay-title="Open File Manager" { spawn "nemo"; }
 	Mod+R repeat=false hotkey-overlay-title="Open Fuzzel"       { spawn "fuzzel"; }

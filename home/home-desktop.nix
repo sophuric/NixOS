@@ -76,6 +76,19 @@ args@{ self, config, util, lib, pkgs, ... }: {
             printf "%s" "$EMOJI" | wl-copy
           '';
         })
+        (pkgs.writeShellApplication {
+          name = "toggle-swayidle";
+          runtimeInputs = [ pkgs.swayidle pkgs.libnotify ];
+          text = ''
+            if systemctl --user is-active --quiet swayidle.service; then
+              systemctl --user stop swayidle.service
+              notify-send -- "Disabled auto-lock"
+            else
+              systemctl --user start swayidle.service
+              notify-send -- "Enabled auto-lock"
+            fi
+          '';
+        })
         hunspell
       ] ++ (let cfg = import (self + /local.nix); # This is hacky
       in (builtins.map (x:
