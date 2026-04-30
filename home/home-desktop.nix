@@ -58,6 +58,7 @@ args@{ self, config, util, lib, pkgs, ... }: {
         nemo-fileroller
         file-roller
         qdirstat
+        dragon-drop
         (pkgs.writeShellApplication {
           name = "emoji-picker";
           runtimeInputs = [ pkgs.wl-clipboard pkgs.fuzzel pkgs.libnotify ];
