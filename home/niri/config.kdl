@@ -508,10 +508,10 @@ binds {
 	Mod+Ctrl+V repeat=false { toggle-window-floating; }
 	Mod+V      repeat=false { switch-focus-between-floating-and-tiling; }
 
-	Print      { screenshot; }
-	Shift+Print      { screenshot; }
-	Ctrl+Print { screenshot-screen; }
-	Alt+Print  { screenshot-window; }
+	Print       { screenshot; }
+	Shift+Print { spawn "sh" "-c" "sleep 2 && niri msg action screenshot"; }
+	Ctrl+Print  { screenshot-screen; }
+	Alt+Print   { screenshot-window; }
 
 	Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
