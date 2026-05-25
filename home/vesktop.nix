@@ -121,7 +121,7 @@
                 automodEmbeds = "never";
               };
               MessageLogger = {
-                enabled = true;
+                enabled = false;
                 deleteStyle = "overlay";
                 ignoreBots = false;
                 ignoreSelf = false;
