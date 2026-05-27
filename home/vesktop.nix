@@ -464,6 +464,7 @@
               "DisableDeepLinks"
               "ExpressionCloner"
               "CopyStickerLinks"
+              "PlainFolderIcon"
             ] (x: { enabled = true; }))
           ];
           notifications = {
