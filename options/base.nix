@@ -47,6 +47,7 @@ args@{ config, pkgs, lib, ... }: {
     security.polkit.enable = true;
 
     services = {
+      fwupd.enable = true;
       libinput.enable = true;
       gpm.enable = true;
       dbus = {
