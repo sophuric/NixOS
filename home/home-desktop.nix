@@ -43,6 +43,7 @@ args@{ self, config, util, lib, pkgs, ... }: {
         # desktop tools
         niri
         xwayland-satellite
+        egl-wayland
         swayosd
         pavucontrol
         kdePackages.ksshaskpass
