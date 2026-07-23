@@ -2,7 +2,7 @@
 
 args@{ self, util, pkgs, lib, config, ... }: {
   imports = [ ./hardware-configuration.nix ] ++ builtins.map (x: self + /${x})
-    ([ /local.nix /networking.nix ] ++ (builtins.map (x: /options/${x}) [
+    ([ /local.nix /networking.nix ] ++ (builtins.map (x: /modules/${x}) [
       /base.nix
       /limine.nix
       /nvidia.nix
@@ -32,7 +32,7 @@ args@{ self, util, pkgs, lib, config, ... }: {
 
     programs.localsend.enable = true;
 
-    home-manager.users.sophie.imports = [ (self + /home/profiles/desktop.nix) ];
+    home-manager.users.sophie.imports = [ (self + /home/profiles/sophie-desktop.nix) ];
 
     users.users.sophie = {
       uid = 1000;
@@ -41,5 +41,7 @@ args@{ self, util, pkgs, lib, config, ... }: {
     };
 
     networking.firewall.allowedTCPPorts = [ 25565 8123 53317 ];
+
+    boot.kernelPackages = pkgs.linuxPackages_latest;
   };
 }

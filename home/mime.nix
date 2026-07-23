@@ -6,7 +6,7 @@
       kitty
       nemo-fileroller
       file-roller
-      config.programs.zen-browser.package
+      firefox
       qpdfview
       nemo
       neovim

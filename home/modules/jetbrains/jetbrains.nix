@@ -1,20 +1,21 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-args@{ self, config, lib, pkgs, util, ... }:
+args@{ inputs, lib, pkgs, util, ... }:
 let
+  getProductInfo = x: lib.importJSON (x + /${x.pname}/product-info.json);
   getDataDirName = x:
     "JetBrains/${
     # this is kinda hacky
-      (lib.importJSON (x + /${x.pname}/product-info.json)).dataDirectoryName
+      (getProductInfo x).dataDirectoryName
     }";
   idea = pkgs.jetbrains.idea-oss;
-in {
-  home.packages = [
-    (pkgs.jetbrains.plugins.addPlugins idea [
-      "catppuccin-theme"
-      "minecraft-development"
-      "ideavim"
-    ])
+  plugins = inputs.nix-jetbrains-plugins.lib.pluginsForIde pkgs idea [
+    "com.github.catppuccin.jetbrains"
+    "com.demonwav.minecraft-dev"
+    "IdeaVIM"
   ];
+in {
+  home.packages =
+    [ (pkgs.jetbrains.plugins.addPlugins idea (lib.attrValues plugins)) ];
   xdg.configFile = util.merge (builtins.map
     (x: { "${getDataDirName idea}/options/${x}".source = ./${x}; }) [
       "colors.scheme.xml"

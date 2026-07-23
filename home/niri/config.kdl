@@ -20,7 +20,7 @@ input {
 		// off
 		// tap
 		dwt
-		// dwtp
+		dwtp
 		// drag false
 		// drag-lock
 		natural-scroll
@@ -51,7 +51,7 @@ input {
 	}
 
 	tablet {
-		map-to-output "HDMI-A-1"
+		map-to-focused-output
 	}
 
 	touch {
@@ -287,7 +287,7 @@ window-rule {
 }
 
 window-rule {
-	match app-id=r#"^zen-twilight$"# title="^Picture-in-Picture$"
+	match app-id=r#"^firefox$"# title="^Picture-in-Picture$"
 	open-floating true
 }
 
@@ -301,6 +301,8 @@ window-rule {
 	default-floating-position x=10 y=10 relative-to="bottom-right"
 	open-floating true
 	open-focused false
+	block-out-from "screen-capture"
+	open-on-output "DP-1"
 }
 
 window-rule {
@@ -349,7 +351,7 @@ binds {
 
 	Mod+N repeat=false hotkey-overlay-title="Open File Manager" { spawn "nemo"; }
 	Mod+R repeat=false hotkey-overlay-title="Open Fuzzel"       { spawn "fuzzel"; }
-	Mod+Y repeat=false hotkey-overlay-title="Open Browser"      { spawn "zen"; }
+	Mod+Y repeat=false hotkey-overlay-title="Open Browser"      { spawn "firefox"; }
 	Mod+K repeat=false hotkey-overlay-title="Open KeePassXC"    { spawn "keepassxc"; }
 	Mod+G repeat=false hotkey-overlay-title="Open GIMP"         { spawn "gimp"; }
 	Mod+A repeat=false hotkey-overlay-title="Pick Emoji"        { spawn "emoji-picker"; }

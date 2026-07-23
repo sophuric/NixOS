@@ -24,7 +24,7 @@
 - [kitty](https://sw.kovidgoyal.net/kitty/ "Terminal Emulator")
 - [Neovim](https://neovim.io/ "Text Editor")
 - [KeePassXC](https://keepassxc.org/ "Password Manager")
-- [Zen Browser](https://zen-browser.app/ "Web Browser")
+- [Firefox](https://firefox.com/ "Web Browser")
 - [Vesktop](https://github.com/Vencord/Vesktop "Discord Client")
 - [Prism Launcher](https://prismlauncher.org/ "Minecraft Launcher")
 - [Nemo](https://github.com/linuxmint/nemo "GUI File Manager")
@@ -34,7 +34,7 @@
 - [ ] Port [my old Hyprland config](https://github.com/sophuric/dotfiles-old) to niri
 - [ ] Configure deployment secrets, so I don't need to run Nix with `--impure`
 - [ ] Potentially port [my old Neovim config](https://github.com/sophuric/nvim) to [Nixvim](https://github.com/nix-community/nixvim)
-- [ ] Configure zen-browser and its extensions
+- [ ] Configure Firefox and its extensions
 - [ ] Set Zsh prompt and other settings
 - [x] Add separate flake outputs for my other devices
 - [ ] Add icon theme and configure Nemo

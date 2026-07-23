@@ -2,51 +2,47 @@
 
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    # Pin to version 4.7.0 since 4.7.1 hangs when updating a lot of mods
+    nixpkgs-ferium-patch.url =
+      "github:nixos/nixpkgs/dab5a37fb772b3d1a3afa9f568eb0f5aa286d015";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin = {
-      url = "github:catppuccin/nix/release-25.11";
+      url = "github:catppuccin/nix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-jetbrains-plugins.url = "github:nix-community/nix-jetbrains-plugins";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
-  outputs = args:
+  # thanks to https://github.com/CallMeEchoCodes/NixOS/blob/main/flake.nix
+  outputs = inputs@{ nixpkgs, ... }:
     let
-      inputs = (args: args // { original-args = args; }) (args // {
-        util = import ./util.nix (args // { lib = args.nixpkgs.lib; });
-      });
+      lib = inputs.nixpkgs.lib;
+      util = import ./util.nix (inputs // { inherit lib; });
     in {
-      nixosConfigurations = {
-        sophie-desktop = args.nixpkgs.lib.nixosSystem {
-          specialArgs = inputs;
-          modules = [
-            ./profiles/desktop/configuration.nix
-            { networking.hostName = "sophie-desktop"; }
-          ];
-        };
-        sophie-raspberrypi = args.nixpkgs.lib.nixosSystem {
-          specialArgs = inputs;
-          modules = [
-            ./profiles/raspberrypi/configuration.nix
-            { networking.hostName = "sophie-raspberrypi"; }
-          ];
-        };
-      };
+      nixosConfigurations =
+        lib.attrsets.genAttrs [ "sophie-desktop" "sophie-raspberrypi" ] (name:
+          (nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit util;
+              self = inputs.self;
+              inherit inputs;
+            };
+            modules = [
+              ./profiles/${name}/configuration.nix
+              { networking.hostName = name; }
+            ];
+          }));
     };
 }

@@ -1,9 +1,9 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-args@{ lib, pkgs, ... }: {
+args@{ inputs, ... }: {
   imports = [
-    args.nur.modules.homeManager.default
-    args.catppuccin.homeModules.catppuccin
-    ./nvim.nix
+    inputs.nur.modules.homeManager.default
+    inputs.catppuccin.homeModules.catppuccin
+    ./neovim.nix
     ./shell.nix
   ];
 

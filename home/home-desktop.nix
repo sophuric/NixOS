@@ -1,11 +1,19 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-args@{ self, config, util, lib, pkgs, ... }: {
+args@{
+  config,
+  util,
+  lib,
+  pkgs,
+  ...
+}:
+{
   imports = [
     ./home-headless.nix
     ./kitty.nix
     ./waybar.nix
     ./mime.nix
     ./screenshot-scripts.nix
+    ./lock.nix
   ];
 
   fonts.fontconfig = {
@@ -13,15 +21,19 @@ args@{ self, config, util, lib, pkgs, ... }: {
     defaultFonts = {
       serif = [ "Liberation Serif" ];
       sansSerif = [ "Ubuntu Sans" ];
-      monospace =
-        [ "Cartograph CF" "Fira Code" "FiraCode Nerd Font Mono" "Fira Mono" ];
+      monospace = [
+        "Cartograph CF"
+        "Fira Code"
+        "FiraCode Nerd Font Mono"
+        "Fira Mono"
+      ];
       emoji = [ "Twitter Color Emoji" ];
     };
   };
 
-  catppuccin =
-    lib.attrsets.genAttrs [ "cursors" "mpv" "obs" "swaylock" "fuzzel" "mako" ]
-    (_: { enable = true; });
+  catppuccin = lib.attrsets.genAttrs [ "cursors" "mpv" "obs" "fuzzel" "mako" ] (_: {
+    enable = true;
+  });
 
   qt = {
     platformTheme.name = "kvantum";
@@ -30,7 +42,8 @@ args@{ self, config, util, lib, pkgs, ... }: {
   };
 
   home = {
-    packages = with pkgs;
+    packages =
+      with pkgs;
       [
         # fonts
         (import ./cartograph-cf.nix args)
@@ -44,11 +57,19 @@ args@{ self, config, util, lib, pkgs, ... }: {
         niri
         xwayland-satellite
         egl-wayland
+        glfw
         swayosd
         pavucontrol
         kdePackages.ksshaskpass
         gimp
-        (prismlauncher.override { jdks = [ jdk8 jdk17 jdk21 jdk25 ]; })
+        (prismlauncher.override {
+          jdks = [
+            jdk8
+            jdk17
+            jdk21
+            jdk25
+          ];
+        })
         qpdfview
         nemo
         libnotify
@@ -62,12 +83,15 @@ args@{ self, config, util, lib, pkgs, ... }: {
         dragon-drop
         (pkgs.writeShellApplication {
           name = "emoji-picker";
-          runtimeInputs = [ pkgs.wl-clipboard pkgs.fuzzel pkgs.libnotify ];
+          runtimeInputs = [
+            pkgs.wl-clipboard
+            pkgs.fuzzel
+            pkgs.libnotify
+          ];
           text = ''
             OUT="$(fuzzel --match-mode=fuzzy --dmenu --prompt 'Select Emoji > ' < ${
               pkgs.fetchurl {
-                url =
-                  "https://github.com/sophuric/emojipicker/raw/7cc87962da618285ac102a8908243e662f180788/emojis";
+                url = "https://github.com/sophuric/emojipicker/raw/7cc87962da618285ac102a8908243e662f180788/emojis";
                 hash = "sha256-wy7IcZ5ikT6xr8je46vG3P0Os9S4r2Hn2/abJpfrkrg=";
               }
             })"
@@ -80,7 +104,10 @@ args@{ self, config, util, lib, pkgs, ... }: {
         })
         (pkgs.writeShellApplication {
           name = "toggle-swayidle";
-          runtimeInputs = [ pkgs.swayidle pkgs.libnotify ];
+          runtimeInputs = [
+            pkgs.swayidle
+            pkgs.libnotify
+          ];
           text = ''
             if systemctl --user is-active --quiet swayidle.service; then
               systemctl --user stop swayidle.service
@@ -92,10 +119,15 @@ args@{ self, config, util, lib, pkgs, ... }: {
           '';
         })
         hunspell
-      ] ++ (let cfg = import (self + /local.nix); # This is hacky
-      in (builtins.map (x:
-        pkgs.hunspellDicts.${builtins.substring 0 (util.firstIndexOf x ".") x})
-        ([ cfg.i18n.defaultLocale ] ++ cfg.i18n.extraLocales)))
+      ]
+      ++ (
+        let
+          cfg = import (args.self + /local.nix); # This is hacky
+        in
+        (builtins.map (x: pkgs.hunspellDicts.${builtins.substring 0 (util.firstIndexOf x ".") x}) (
+          [ cfg.i18n.defaultLocale ] ++ cfg.i18n.extraLocales
+        ))
+      )
       ++ config.xdg.portal.extraPortals;
 
     sessionVariables = {
@@ -125,19 +157,30 @@ args@{ self, config, util, lib, pkgs, ... }: {
 
   gtk = {
     enable = true;
-    font.name = util.first config.fonts.fontconfig.defaultFonts.sansSerif;
-    font.size = 12;
-    theme = let size = "standard";
-    in with config.catppuccin; {
-      # https://www.reddit.com/r/NixOS/comments/1dlqoem/comment/l9qr2hw/
-      name = "catppuccin-${flavor}-${accent}-${size}";
-      # Catppuccin Nix is deprecated unfortunately
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ accent ];
-        variant = flavor;
-        inherit size;
-      };
+    font = {
+      name = util.first config.fonts.fontconfig.defaultFonts.sansSerif;
+      size = 12;
     };
+    theme =
+      let
+        size = "standard";
+        shade = if config.catppuccin.flavor == "latte" then "light" else "dark";
+      in
+      with config.catppuccin;
+      {
+        # The official Catppuccin GTK port is deprecated, so I'm using another GTK theme
+        name = "Catppuccin-GTK-${lib.toSentenceCase accent}-${lib.toSentenceCase shade}";
+        package = pkgs.magnetic-catppuccin-gtk.override {
+          inherit shade;
+          inherit size;
+          accent = [ accent ];
+          tweaks = (if (flavor == "frappe" || flavor == "macchiato") then [ flavor ] else [ ]) ++ [
+            "outline"
+          ];
+        };
+      };
+    gtk4.theme = config.gtk.theme;
+    gtk3.theme = config.gtk.theme;
   };
 
   programs = {
@@ -145,7 +188,10 @@ args@{ self, config, util, lib, pkgs, ... }: {
 
     mpv = {
       enable = true;
-      scripts = with pkgs.mpvScripts; [ mpris sponsorblock ];
+      scripts = with pkgs.mpvScripts; [
+        mpris
+        sponsorblock
+      ];
       config = {
         screenshot-dir = "~/screenshots/";
         vo = "gpu";
@@ -166,26 +212,6 @@ args@{ self, config, util, lib, pkgs, ... }: {
       plugins = [ pkgs.obs-studio-plugins.wlrobs ];
     };
 
-    swaylock = {
-      enable = true;
-      settings = let palette = util.getPalette config;
-      in {
-        font-size = 24;
-        show-keyboard-layout = true;
-        indicator-idle-visible = false;
-        indicator-radius = 100;
-        indicator-thickness = 16;
-        scaling = "solid_color";
-        show-failed-attempts = true;
-        # override default catppuccin colours
-        ring-color = lib.mkForce palette.surface0.hex;
-        bs-hl-color = lib.mkForce palette.red.hex;
-        caps-lock-key-hl-color = lib.mkForce palette.yellow.hex;
-        caps-lock-bs-hl-color = lib.mkForce palette.peach.hex;
-        key-hl-color = lib.mkForce palette.pink.hex;
-      };
-    };
-
     fuzzel = {
       enable = true;
       settings = {
@@ -202,7 +228,9 @@ args@{ self, config, util, lib, pkgs, ... }: {
     };
   };
 
-  xdg.configFile = { niri.source = ./niri; };
+  xdg.configFile = {
+    niri.source = ./niri;
+  };
 
   services = {
     mako = {
@@ -232,29 +260,9 @@ args@{ self, config, util, lib, pkgs, ... }: {
       tray = "always";
     };
 
-    swayidle = let lock = "${lib.getExe' pkgs.swaylock "swaylock"} --daemonize";
-    in {
-      enable = true;
-      events = [
-        {
-          event = "lock";
-          command = lock;
-        }
-        {
-          event = "before-sleep";
-          command = lock;
-        }
-      ];
-      timeouts = [{
-        timeout = 60;
-        command = lock;
-      }];
-    };
-
     blueman-applet.enable = true;
 
-    gpg-agent.pinentry.package =
-      lib.mkIf config.services.gpg-agent.enable pkgs.pinentry-qt;
+    gpg-agent.pinentry.package = lib.mkIf config.services.gpg-agent.enable pkgs.pinentry-qt;
   };
 
   dconf.settings = {
@@ -264,33 +272,43 @@ args@{ self, config, util, lib, pkgs, ... }: {
     };
   };
 
-  systemd.user.services = lib.attrsets.mapAttrs (name:
-    value@{ package, bin }:
-    util.merge [
-      # https://github.com/spikespaz/dotfiles/blob/odyssey/hm-modules/keepassxc.nix
+  systemd.user.services =
+    lib.attrsets.mapAttrs
+      (
+        name:
+        value@{ package, bin }:
+        util.merge [
+          # https://github.com/spikespaz/dotfiles/blob/odyssey/hm-modules/keepassxc.nix
+          {
+            Unit = {
+              Description = package.meta.description;
+              After = [ "graphical-session.target" ];
+            };
+            Service = {
+              Type = "simple";
+              KillMode = "process";
+              ExecStart = lib.getExe' package bin;
+              Restart = "on-failure";
+              RestartSec = 5;
+            };
+            Install = {
+              WantedBy = [ "graphical-session.target" ];
+            };
+          }
+          (removeAttrs value [
+            "package"
+            "bin"
+          ])
+        ]
+      )
       {
-        Unit = {
-          Description = package.meta.description;
-          After = [ "graphical-session.target" ];
+        swayosd = {
+          package = pkgs.swayosd;
+          bin = "swayosd-server";
         };
-        Service = {
-          Type = "simple";
-          KillMode = "process";
-          ExecStart = lib.getExe' package bin;
-          Restart = "on-failure";
-          RestartSec = 5;
+        keepassxc = {
+          package = pkgs.keepassxc;
+          bin = "keepassxc";
         };
-        Install = { WantedBy = [ "graphical-session.target" ]; };
-      }
-      (removeAttrs value [ "package" "bin" ])
-    ]) {
-      swayosd = {
-        package = pkgs.swayosd;
-        bin = "swayosd-server";
       };
-      keepassxc = {
-        package = pkgs.keepassxc;
-        bin = "keepassxc";
-      };
-    };
 }

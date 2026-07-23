@@ -1,8 +1,8 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-args@{ config, pkgs, lib, ... }: {
+args@{ util, inputs, config, pkgs, lib, ... }: {
   imports = [
-    args.catppuccin.nixosModules.catppuccin
-    args.home-manager.nixosModules.home-manager
+    inputs.catppuccin.nixosModules.catppuccin
+    inputs.home-manager.nixosModules.home-manager
   ];
 
   options = {
@@ -81,7 +81,11 @@ args@{ config, pkgs, lib, ... }: {
 
     home-manager = {
       backupFileExtension = "backup";
-      extraSpecialArgs = args.original-args;
+      extraSpecialArgs = {
+        inherit util;
+        self = inputs.self;
+        inherit inputs;
+      };
     };
 
     system.stateVersion = "25.05"; # Do not change

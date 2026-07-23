@@ -120,6 +120,10 @@
                 idList = "";
                 automodEmbeds = "never";
               };
+              MoreQuickReactions = {
+                enabled = true;
+                reactionCount = 5;
+              };
               MessageLogger = {
                 enabled = false;
                 deleteStyle = "overlay";
@@ -173,7 +177,7 @@
                 settingsLocation = "belowActivity";
               };
               ShowHiddenChannels = {
-                enabled = true;
+                enabled = false;
                 showMode = 0;
                 hideUnreads = true;
                 defaultAllowedUsersAndRolesDropdownState = true;

@@ -5,7 +5,7 @@ args@{ self, util, pkgs, lib, config, ... }: {
     args.nixos-hardware.nixosModules.raspberry-pi-4
     ./hardware-configuration.nix
   ] ++ builtins.map (x: self + /${x}) ([ /local.nix /networking.nix ]
-    ++ (builtins.map (x: /options/${x}) [ /base.nix /openssh.nix ]));
+    ++ (builtins.map (x: /modules/${x}) [ /base.nix /openssh.nix ]));
 
   config = {
     # swapDevices = [{ device = "/swap/swapfile"; }];
@@ -31,7 +31,7 @@ args@{ self, util, pkgs, lib, config, ... }: {
     boot.kernelParams = [ "fbcon=rotate:1" ];
 
     home-manager.users.sophie.imports =
-      [ (self + /home/profiles/raspberrypi.nix) ];
+      [ (modulesPath + /home/profiles/sophie-raspberrypi.nix) ];
 
     users.users.sophie = {
       uid = 1000;

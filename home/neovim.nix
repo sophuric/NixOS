@@ -7,6 +7,8 @@
     viAlias = true;
     vimAlias = true;
     withNodeJs = true;
+    withPython3 = true;
+    withRuby = true;
   };
   home.packages = with pkgs; [
     # language servers for nvim
@@ -36,10 +38,9 @@
     ltex-ls-plus
     cmake
     cmake-language-server
-    perl540Packages.PerlTidy
+    perlPackages.PerlTidy
     html-tidy
-    python3
-    nixfmt-classic
+    nixfmt
   ];
   home.sessionVariables = { MANPAGER = "nvim +Man!"; };
   xdg.configFile.nvim.source = pkgs.fetchgit {
