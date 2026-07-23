@@ -8,5 +8,6 @@ args@{ ... }: {
     ../modules/jetbrains/jetbrains.nix
     ../modules/syncthing.nix
     ../modules/libreoffice/libreoffice.nix
+    ../modules/prism-launcher.nix
   ];
 }
