@@ -3,8 +3,7 @@
   services.greetd = {
     enable = true;
     settings = {
-      default_session.command =
-        "${pkgs.tuigreet}/bin/tuigreet -t --time-format '%F %H:%M:%S' --remember --remember-user-session --user-menu --asterisks --asterisks-char '◆' --window-padding 2";
+      default_session.command = "${pkgs.tuigreet}/bin/tuigreet -t --time-format '%F %H:%M:%S' --remember --remember-user-session --user-menu --asterisks --asterisks-char '◆' --window-padding 2";
     };
   };
 }

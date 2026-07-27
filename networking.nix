@@ -10,7 +10,10 @@
     # proxy.default = "http://user:password@proxy:port/";
     # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-    nameservers = [ "127.0.0.1" "::1" ];
+    nameservers = [
+      "127.0.0.1"
+      "::1"
+    ];
 
     useDHCP = true;
 
@@ -45,20 +48,24 @@
         control-enable = true;
         control-interface = [ "127.0.0.1" ];
       };
-      forward-zone = [{
-        name = ".";
-        forward-addr = let
-          hostName = config.networking.hostName;
-          nextdnsProfile = "24d2dd";
-        in [
-          # Change this
-          "45.90.28.0#nixOS--${hostName}-${nextdnsProfile}.dns.nextdns.io"
-          "2a07:a8c0::#nixOS--${hostName}-${nextdnsProfile}.dns.nextdns.io"
-          "45.90.30.0#nixOS--${hostName}-${nextdnsProfile}.dns.nextdns.io"
-          "2a07:a8c1::#nixOS--${hostName}-${nextdnsProfile}.dns.nextdns.io"
-        ];
-        forward-tls-upstream = true; # Protected DNS
-      }];
+      forward-zone = [
+        {
+          name = ".";
+          forward-addr =
+            let
+              hostName = config.networking.hostName;
+              nextdnsProfile = "24d2dd";
+            in
+            [
+              # Change this
+              "45.90.28.0#nixOS--${hostName}-${nextdnsProfile}.dns.nextdns.io"
+              "2a07:a8c0::#nixOS--${hostName}-${nextdnsProfile}.dns.nextdns.io"
+              "45.90.30.0#nixOS--${hostName}-${nextdnsProfile}.dns.nextdns.io"
+              "2a07:a8c1::#nixOS--${hostName}-${nextdnsProfile}.dns.nextdns.io"
+            ];
+          forward-tls-upstream = true; # Protected DNS
+        }
+      ];
     };
   };
 }

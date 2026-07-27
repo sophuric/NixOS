@@ -7,6 +7,10 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
-  allowUnfreePackages =
-    [ "steam" "steam-original" "steam-unwrapped" "steam-run" ];
+  allowUnfreePackages = [
+    "steam"
+    "steam-original"
+    "steam-unwrapped"
+    "steam-run"
+  ];
 }

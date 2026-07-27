@@ -1,5 +1,13 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-args@{ util, inputs, config, pkgs, lib, ... }: {
+args@{
+  util,
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
   imports = [
     inputs.catppuccin.nixosModules.catppuccin
     inputs.home-manager.nixosModules.home-manager
@@ -9,8 +17,7 @@ args@{ util, inputs, config, pkgs, lib, ... }: {
     allowUnfreePackages = lib.mkOption {
       type = lib.types.listOf lib.types.anything;
       default = [ ];
-      description =
-        "List of package names as a string, or predicates that accept a package name as a string";
+      description = "List of package names as a string, or predicates that accept a package name as a string";
       # This allows mkMerge to work with this
     };
   };
@@ -19,10 +26,12 @@ args@{ util, inputs, config, pkgs, lib, ... }: {
     networking.firewall.enable = true;
     networking.firewall.allowedTCPPorts = [ 8080 ];
 
-    nixpkgs.config.allowUnfreePredicate = (pkg:
-      builtins.any
-      (x: (if builtins.isFunction x then (x pkg) else (x == (lib.getName pkg))))
-      config.allowUnfreePackages);
+    nixpkgs.config.allowUnfreePredicate = (
+      pkg:
+      builtins.any (
+        x: (if builtins.isFunction x then (x pkg) else (x == (lib.getName pkg)))
+      ) config.allowUnfreePackages
+    );
 
     boot.blacklistedKernelModules = [ "pcspkr" ];
 
@@ -77,7 +86,10 @@ args@{ util, inputs, config, pkgs, lib, ... }: {
       cryptsetup
     ];
 
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
 
     home-manager = {
       backupFileExtension = "backup";

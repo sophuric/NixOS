@@ -15,5 +15,7 @@
     };
     allowSFTP = true;
   };
-  users.groups = { ssh = { }; };
+  users.groups = {
+    ssh = { };
+  };
 }

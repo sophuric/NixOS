@@ -1,8 +1,17 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-args@{ self, config, lib, pkgs, ... }: {
-  catppuccin =
-    (lib.attrsets.genAttrs [ "bat" "fzf" "zsh-syntax-highlighting" "btop" ]
-      (x: { enable = true; }));
+args@{
+  self,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  catppuccin = (
+    lib.attrsets.genAttrs [ "bat" "fzf" "zsh-syntax-highlighting" "btop" ] (x: {
+      enable = true;
+    })
+  );
 
   home = {
     packages = with pkgs; [
@@ -61,10 +70,8 @@ args@{ self, config, lib, pkgs, ... }: {
       pull = "git pull";
       clone = "git clone";
       ca = "git commit";
-      rsy =
-        "rsync --one-file-system --xattrs --acls --archive --hard-links --atimes --times --numeric-ids --info=progress2"; # preserves literally everything about files
-      tarall =
-        "tar --one-file-system --xattrs --acls --numeric-owner --preserve-permissions --xattrs-include='*' --atime-preserve";
+      rsy = "rsync --one-file-system --xattrs --acls --archive --hard-links --atimes --times --numeric-ids --info=progress2"; # preserves literally everything about files
+      tarall = "tar --one-file-system --xattrs --acls --numeric-owner --preserve-permissions --xattrs-include='*' --atime-preserve";
       clip = "wl-copy";
       copy = "wl-copy";
       paste = "wl-paste";
@@ -97,8 +104,7 @@ args@{ self, config, lib, pkgs, ... }: {
       settings = {
         theme_background = true;
         truecolor = true;
-        presets =
-          "cpu:1:default,proc:0:default cpu:0:default,mem:0:default,net:0:default cpu:0:block,net:0:tty";
+        presets = "cpu:1:default,proc:0:default cpu:0:default,mem:0:default,net:0:default cpu:0:block,net:0:tty";
         vim_keys = true;
         rounded_corners = true;
         graph_symbol = "braille";
@@ -116,7 +122,10 @@ args@{ self, config, lib, pkgs, ... }: {
       };
       syntaxHighlighting = {
         enable = true;
-        highlighters = [ "main" "brackets" ];
+        highlighters = [
+          "main"
+          "brackets"
+        ];
       };
       initContent = ''
         setopt HIST_FCNTL_LOCK RM_STAR_WAIT AUTO_PUSHD CHASE_DOTS CHASE_LINKS PUSHD_IGNORE_DUPS PUSHD_SILENT AUTO_LIST GLOB_DOTS
@@ -148,7 +157,8 @@ args@{ self, config, lib, pkgs, ... }: {
         ".jar" = "38;5;208";
         ".lua" = "38;5;126";
         ".py" = "38;5;184";
-      } // (lib.attrsets.genAttrs [
+      }
+      // (lib.attrsets.genAttrs [
         ".z64"
         ".n64"
         ".nds"
@@ -163,8 +173,7 @@ args@{ self, config, lib, pkgs, ... }: {
     };
   };
 
-  home.sessionVariables.EXA_COLORS =
-    "ur=38;5;11:uw=38;5;9:ux=38;5;10:ue=38;5;10:gr=38;5;11:gw=38;5;9:gx=38;5;10:tr=38;5;11:tw=38;5;9:tx=38;5;10:su=38;5;13:sf=38;5;13:xa=38;5;13:sn=38;5;14:sb=38;5;6:df=38;5;11:ds=38;5;11:uu=38;5;14:un=38;5;15:gu=38;5;10:gn=38;5;15:lc=38;5;9:lm=38;5;13:ga=38;5;10:gm=38;5;14:gd=38;5;9:gv=38;5;11:gt=38;5;13:xx=38;5;8:da=38;5;14:in=38;5;13:bl=38;5;13:hd=38;5;15:lp=38;5;14:cc=48;5;15;38;5;0";
+  home.sessionVariables.EXA_COLORS = "ur=38;5;11:uw=38;5;9:ux=38;5;10:ue=38;5;10:gr=38;5;11:gw=38;5;9:gx=38;5;10:tr=38;5;11:tw=38;5;9:tx=38;5;10:su=38;5;13:sf=38;5;13:xa=38;5;13:sn=38;5;14:sb=38;5;6:df=38;5;11:ds=38;5;11:uu=38;5;14:un=38;5;15:gu=38;5;10:gn=38;5;15:lc=38;5;9:lm=38;5;13:ga=38;5;10:gm=38;5;14:gd=38;5;9:gv=38;5;11:gt=38;5;13:xx=38;5;8:da=38;5;14:in=38;5;13:bl=38;5;13:hd=38;5;15:lp=38;5;14:cc=48;5;15;38;5;0";
 
   programs = {
     zoxide.enable = true;
@@ -180,7 +189,12 @@ args@{ self, config, lib, pkgs, ... }: {
       colors = "auto";
       enableZshIntegration = true;
       icons = "auto";
-      extraOptions = [ "--header" "--group" "--binary" "--sort=Name" ];
+      extraOptions = [
+        "--header"
+        "--group"
+        "--binary"
+        "--sort=Name"
+      ];
     };
 
     ripgrep.enable = true;
@@ -202,8 +216,7 @@ args@{ self, config, lib, pkgs, ... }: {
           subc = "submodule update --init --recursive";
           unstage = "restore --staged";
           r = "remote";
-          rebase-preserve = ''
-            -c rebase.instructionFormat='%s%nexec GIT_COMMITTER_DATE="%cD" GIT_COMMITTER_NAME="%cn" GIT_COMMITTER_EMAIL="%ce" git commit --amend --no-edit --reset-author --date="%cD"' rebase -i''; # preserve commit date/username
+          rebase-preserve = ''-c rebase.instructionFormat='%s%nexec GIT_COMMITTER_DATE="%cD" GIT_COMMITTER_NAME="%cn" GIT_COMMITTER_EMAIL="%ce" git commit --amend --no-edit --reset-author --date="%cD"' rebase -i''; # preserve commit date/username
         };
         user = {
           email = "48314599+sophuric@users.noreply.github.com";
@@ -211,9 +224,15 @@ args@{ self, config, lib, pkgs, ... }: {
         };
         init.defaultBranch = "main";
         color.ui = "auto";
-        format.pretty =
-          "format:Commit %C(green)%H%C(auto)%(decorate)%C(default) %C(yellow)(%C(green)%G?%C(yellow))%nAuthor: %an %C(default)%C(dim)<%C(nodim)%C(default)%ae%C(default)%C(dim)> - %C(nodim)%ad%nCommit: %cn %C(default)<%ce%C(default)> - %cd%n%n%C(default)%C(dim)> %C(nodim)%C(magenta)%C(ul)%s%n%n%b%n%C(dim)---%C(nodim)%C(default)";
-        url = { "https://github.com/" = { insteadOf = [ "gh:" "github:" ]; }; };
+        format.pretty = "format:Commit %C(green)%H%C(auto)%(decorate)%C(default) %C(yellow)(%C(green)%G?%C(yellow))%nAuthor: %an %C(default)%C(dim)<%C(nodim)%C(default)%ae%C(default)%C(dim)> - %C(nodim)%ad%nCommit: %cn %C(default)<%ce%C(default)> - %cd%n%n%C(default)%C(dim)> %C(nodim)%C(magenta)%C(ul)%s%n%n%b%n%C(dim)---%C(nodim)%C(default)";
+        url = {
+          "https://github.com/" = {
+            insteadOf = [
+              "gh:"
+              "github:"
+            ];
+          };
+        };
       };
       signing = {
         key = "EAB0A643ABD82124552040FE39F3751CDD35BB5F";

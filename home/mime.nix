@@ -1,5 +1,12 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-{ pkgs, config, util, lib, ... }: {
+{
+  pkgs,
+  config,
+  util,
+  lib,
+  ...
+}:
+{
   xdg.mimeApps = {
     enable = true;
     defaultApplicationPackages = with pkgs; [

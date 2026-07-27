@@ -1,5 +1,12 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-{ self, config, pkgs, lib, ... }: {
+{
+  self,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
   catppuccin.nvim.enable = true;
   programs.neovim = {
     enable = true;
@@ -42,7 +49,9 @@
     html-tidy
     nixfmt
   ];
-  home.sessionVariables = { MANPAGER = "nvim +Man!"; };
+  home.sessionVariables = {
+    MANPAGER = "nvim +Man!";
+  };
   xdg.configFile.nvim.source = pkgs.fetchgit {
     url = "https://github.com/sophuric/nvim.git";
     rev = "b74d2c0ce134aab26e8942b275139cd7ddc5efb3";

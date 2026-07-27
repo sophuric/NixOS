@@ -1,32 +1,43 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-{ self, config, util, pkgs, lib, ... }: {
+{
+  self,
+  config,
+  util,
+  pkgs,
+  lib,
+  ...
+}:
+{
   catppuccin.kitty.enable = true;
   programs.kitty = {
     enable = true;
-    settings = let palette = util.getPalette config;
-    in {
-      kitty_mod = "ctrl+shift";
-      clear_all_shortcuts = true;
-      confirm_os_window_close = 1;
-      enable_audio_bell = false;
-      tab_bar_edge = "top";
-      tab_bar_style = "powerline";
-      tab_bar_align = "left";
-      tab_bar_min_tabs = 2;
-      active_tab_foreground = palette.crust.hex;
-      active_tab_background = palette.pink.hex;
-      active_tab_font_style = "bold";
-      inactive_tab_foreground = palette.pink.hex;
-      inactive_tab_background = palette.base.hex;
-      inactive_tab_font_style = "normal";
-      selection_background = palette.pink.hex;
-      paste_actions = "quote-urls-at-prompt,confirm,confirm-if-large";
-      strip_trailing_spaces = "smart";
-      remember_window_size = false;
-      remember_window_position = false;
-      hide_window_decorations = true;
-      background_opacity = 0.85;
-    };
+    settings =
+      let
+        palette = util.getPalette config;
+      in
+      {
+        kitty_mod = "ctrl+shift";
+        clear_all_shortcuts = true;
+        confirm_os_window_close = 1;
+        enable_audio_bell = false;
+        tab_bar_edge = "top";
+        tab_bar_style = "powerline";
+        tab_bar_align = "left";
+        tab_bar_min_tabs = 2;
+        active_tab_foreground = palette.crust.hex;
+        active_tab_background = palette.pink.hex;
+        active_tab_font_style = "bold";
+        inactive_tab_foreground = palette.pink.hex;
+        inactive_tab_background = palette.base.hex;
+        inactive_tab_font_style = "normal";
+        selection_background = palette.pink.hex;
+        paste_actions = "quote-urls-at-prompt,confirm,confirm-if-large";
+        strip_trailing_spaces = "smart";
+        remember_window_size = false;
+        remember_window_position = false;
+        hide_window_decorations = true;
+        background_opacity = 0.85;
+      };
     keybindings = {
       "kitty_mod+C" = "copy_to_clipboard";
       "kitty_mod+V" = "paste_from_clipboard";
@@ -63,6 +74,8 @@
   };
   xdg.terminal-exec = {
     enable = true;
-    settings = { default = [ "kitty.desktop" ]; };
+    settings = {
+      default = [ "kitty.desktop" ];
+    };
   };
 }
