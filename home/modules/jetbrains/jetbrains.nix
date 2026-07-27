@@ -1,29 +1,66 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-args@{ inputs, lib, pkgs, util, ... }:
+args@{
+  inputs,
+  lib,
+  pkgs,
+  util,
+  ...
+}:
 let
   getProductInfo = x: lib.importJSON (x + /${x.pname}/product-info.json);
-  getDataDirName = x:
+  getDataDirName =
+    x:
     "JetBrains/${
-    # this is kinda hacky
+      # this is kinda hacky
       (getProductInfo x).dataDirectoryName
     }";
-  idea = pkgs.jetbrains.idea-oss;
-  plugins = inputs.nix-jetbrains-plugins.lib.pluginsForIde pkgs idea [
+  plugins = [
     "com.github.catppuccin.jetbrains"
-    "com.demonwav.minecraft-dev"
     "IdeaVIM"
   ];
-in {
-  home.packages =
-    [ (pkgs.jetbrains.plugins.addPlugins idea (lib.attrValues plugins)) ];
-  xdg.configFile = util.merge (builtins.map
-    (x: { "${getDataDirName idea}/options/${x}".source = ./${x}; }) [
-      "colors.scheme.xml"
-      "editor-font.xml"
-      "ide.general.xml"
-      "laf.xml"
-      "vim_settings.xml"
-      "linux/keymap.xml"
-      "other.xml"
-    ]);
+  ides = with pkgs.jetbrains; [
+    {
+      package = idea-oss;
+      plugins = [
+        "com.demonwav.minecraft-dev"
+      ];
+    }
+    {
+      package = rider;
+      plugins = [ ];
+    }
+  ];
+  unfree-ides = with pkgs.jetbrains; [
+    rider
+  ];
+in
+{
+  home.packages = builtins.map (
+    ide:
+    (pkgs.jetbrains.plugins.addPlugins ide.package (
+      lib.attrValues (
+        inputs.nix-jetbrains-plugins.lib.pluginsForIde pkgs ide.package (plugins ++ ide.plugins)
+      )
+    ))
+  ) ides;
+  xdg.configFile = util.merge (
+    builtins.concatMap (
+      ide:
+      let
+        dir = getDataDirName ide.package;
+      in
+      builtins.map (x: { "${dir}/options/${x}".source = ./${x}; }) [
+        "colors.scheme.xml"
+        "editor-font.xml"
+        "ide.general.xml"
+        "laf.xml"
+        "vim_settings.xml"
+        "linux/keymap.xml"
+        "other.xml"
+      ]
+    ) ides
+  );
+  allowUnfreePackages =
+    (builtins.map (x: x.pname) unfree-ides)
+    ++ (builtins.map (x: x.pname + "-with-plugins") unfree-ides);
 }
