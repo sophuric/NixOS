@@ -260,6 +260,10 @@ args@{
           identityFile = "~/.ssh/online_ed25519";
           user = "git";
         };
+        "greenhouse.lgbt" = {
+          identityFile = "~/.ssh/online_ed25519";
+          user = "git";
+        };
       };
     };
 
