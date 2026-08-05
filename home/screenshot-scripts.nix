@@ -11,7 +11,7 @@
     (pkgs.writeShellApplication {
       name = "get-last-screenshot.sh";
       # Returns the latest screenshot in the screenshots directory
-      text = "find ~/screenshots -type f -printf '%T@ %p\\n' | sort --numeric-sort --reverse | cut -d' ' -f2- | head -1";
+      text = "head -n1 <(find ~/screenshots -type f -printf '%T@ %p\\n' | sort --numeric-sort --reverse | cut -d' ' -f2-)";
     })
     (pkgs.writeShellApplication {
       name = "open-last-screenshot.sh";
@@ -21,8 +21,17 @@
     (pkgs.writeShellApplication {
       name = "copy-last-screenshot.sh";
       runtimeInputs = [ pkgs.wl-clipboard ];
-      text = ''wl-copy < "$(get-last-screenshot.sh)"'';
+      text = ''LAST="$(get-last-screenshot.sh)" && wl-copy < "$LAST" && notify-send -i "$LAST" -- "Copied file to clipboard" "$LAST"'';
     })
+    (pkgs.writeShellApplication {
+      name = "save-clipboard-as-screenshot.sh";
+      runtimeInputs = [ pkgs.wl-clipboard ];
+      text = ''
+        LAST=~/screenshots/"paste-$(date -u +"%F %T").png" && [[ ! -e "$LAST" ]] && printf "%s\n" "$LAST"
+        { wl-paste -t image/png > "$LAST" || { rm -fv -- "$LAST"; notify-send "Clipboard does not contain an image/png"; exit 1; }; } && notify-send -i "$LAST" -- "Pasted clipboard to file" "$LAST"
+      '';
+    })
+
     (pkgs.writeShellApplication {
       name = "notify-copy-temp-file.sh";
       # Copies a file's content to clipboard, notifies the user that it was copied, and opens it in nvim if the notification is clicked

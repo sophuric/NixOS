@@ -387,6 +387,7 @@ binds {
 	Mod+Shift+P             repeat=false hotkey-overlay-title="Scan Last Screenshot with ZBar"  { spawn "zbar-last-screenshot.sh"; }
 	Mod+Ctrl+P              repeat=false hotkey-overlay-title="Read Last Screenshot with OCR"   { spawn "ocr-last-screenshot.sh"; }
 	Mod+Shift+C             repeat=false hotkey-overlay-title="Copy Last Screenshot"            { spawn "copy-last-screenshot.sh"; }
+	Mod+Ctrl+Shift+C         repeat=false hotkey-overlay-title="Save Clipboard as Screenshot"    { spawn "save-clipboard-as-screenshot.sh"; }
 
 	XF86AudioPrev        allow-when-locked=true hotkey-overlay-title="Previous Track"         { spawn "playerctl" "previous"; }
 	XF86AudioNext        allow-when-locked=true hotkey-overlay-title="Next Track"             { spawn "playerctl" "next"; }
