@@ -40,6 +40,7 @@ args@{
       nethogs
       #nixpkgs-ferium-patch.legacyPackages.${lib.}
       http-server
+      parallel
     ];
     shell.enableShellIntegration = true;
     shellAliases = {
