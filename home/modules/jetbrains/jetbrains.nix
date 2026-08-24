@@ -29,9 +29,14 @@ let
       package = rider;
       plugins = [ ];
     }
+    {
+      package = clion;
+      plugins = [ ];
+    }
   ];
   unfree-ides = with pkgs.jetbrains; [
     rider
+    clion
   ];
 in
 {
