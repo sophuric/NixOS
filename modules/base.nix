@@ -46,10 +46,14 @@ args@{
       font = "${pkgs.terminus_font}/share/consolefonts/ter-v22n.psf.gz";
     };
 
-    documentation.dev.enable = true;
-    documentation.man = {
-      man-db.enable = false;
-      mandoc.enable = true;
+    documentation = {
+      dev.enable = true;
+      man = {
+        man-db.enable = false;
+        mandoc.enable = true;
+        cache.enable=true;
+      };
+      nixos.includeAllModules = true;
     };
 
     security.sudo.extraConfig = "Defaults pwfeedback";
