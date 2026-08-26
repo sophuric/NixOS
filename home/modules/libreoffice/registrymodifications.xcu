@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <oor:items xmlns:oor="http://openoffice.org/2001/registry" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <catppuccin-file/>
+  <item oor:path="/org.openoffice.Office.Common/AutoCorrect">
+    <prop oor:name="CapitalAtStartSentence" oor:op="fuse">
+      <value>false</value>
+    </prop>
+  </item>
+  <item oor:path="/org.openoffice.Office.UI.ToolbarMode/Applications/org.openoffice.Office.UI.ToolbarMode:Application['Calc']/Modes/org.openoffice.Office.UI.ToolbarMode:ModeEntry['Tabbed']">
+    <prop oor:name="HasMenubar" oor:op="fuse">
+      <value>true</value>
+    </prop>
+  </item>
+  <item oor:path="/org.openoffice.Office.Common/Misc">
+    <prop oor:name="FirstRun" oor:op="fuse">
+      <value>false</value>
+    </prop>
+  </item>
   <item oor:path="/org.openoffice.Office.Common/Misc">
     <prop oor:name="ShowTipOfTheDay" oor:op="fuse">
       <value>false</value>
@@ -7,7 +23,7 @@
   </item>
   <item oor:path="/org.openoffice.Office.Common/Misc">
     <prop oor:name="SymbolStyle" oor:op="fuse">
-      <value>auto</value>
+      <value>colibre_dark</value>
     </prop>
   </item>
   <item oor:path="/org.openoffice.Office.UI.ToolbarMode/Applications/org.openoffice.Office.UI.ToolbarMode:Application['Calc']">
@@ -56,6 +72,97 @@
   <item oor:path="/org.openoffice.Office.UI.ToolbarMode">
     <prop oor:name="ActiveWriter" oor:op="fuse">
       <value>notebookbar.ui</value>
+    </prop>
+  </item>
+  <item oor:path="/org.openoffice.Office.Common/Appearance">
+    <prop oor:name="ApplicationAppearance" oor:op="fuse">
+      <value>0</value>
+    </prop>
+  </item>
+  <item oor:path="/org.openoffice.Office.Common/Appearance">
+    <prop oor:name="LibreOfficeTheme" oor:op="fuse">
+      <value>1</value>
+    </prop>
+  </item>
+  <item oor:path="/org.openoffice.Office.Common/Appearance">
+    <prop oor:name="UseOnlyWhiteDocBackground" oor:op="fuse">
+      <value>false</value>
+    </prop>
+  </item>
+  <item oor:path="/org.openoffice.Office.UI/ColorScheme">
+    <prop oor:name="CurrentColorScheme" oor:op="fuse">
+      <value>catppuccin-theme</value>
+    </prop>
+  </item>
+  <item oor:path="/org.openoffice.Office.Views/TabDialogs">
+    <node oor:name="cui/ui/welcomedialog/WelcomeDialog" oor:op="replace">
+      <prop oor:name="PageID" oor:op="fuse">
+        <value>WhatsNewTabPage</value>
+      </prop>
+      <node oor:name="UserData"/>
+      <prop oor:name="WindowState" oor:op="fuse">
+        <value xsi:nil="true"/>
+      </prop>
+    </node>
+  </item>
+  <item oor:path="/org.openoffice.Office.Views/Windows">
+    <node oor:name="SplitWindow0" oor:op="replace">
+      <prop oor:name="Visible" oor:op="fuse">
+        <value xsi:nil="true"/>
+      </prop>
+      <node oor:name="UserData">
+        <prop oor:name="UserItem" oor:op="fuse" oor:type="xs:string">
+          <value>V1,2,0</value>
+        </prop>
+      </node>
+      <prop oor:name="WindowState" oor:op="fuse">
+        <value xsi:nil="true"/>
+      </prop>
+    </node>
+  </item>
+  <item oor:path="/org.openoffice.Office.Views/Windows">
+    <node oor:name="SplitWindow1" oor:op="replace">
+      <prop oor:name="Visible" oor:op="fuse">
+        <value xsi:nil="true"/>
+      </prop>
+      <node oor:name="UserData">
+        <prop oor:name="UserItem" oor:op="fuse" oor:type="xs:string">
+          <value>V1,2,0</value>
+        </prop>
+      </node>
+      <prop oor:name="WindowState" oor:op="fuse">
+        <value xsi:nil="true"/>
+      </prop>
+    </node>
+  </item>
+  <item oor:path="/org.openoffice.Office.Views/Windows">
+    <node oor:name="SplitWindow3" oor:op="replace">
+      <prop oor:name="Visible" oor:op="fuse">
+        <value xsi:nil="true"/>
+      </prop>
+      <node oor:name="UserData">
+        <prop oor:name="UserItem" oor:op="fuse" oor:type="xs:string">
+          <value>V1,2,0</value>
+        </prop>
+      </node>
+      <prop oor:name="WindowState" oor:op="fuse">
+        <value xsi:nil="true"/>
+      </prop>
+    </node>
+  </item>
+  <item oor:path="/org.openoffice.Setup/Office">
+    <prop oor:name="OfficeRestartInProgress" oor:op="fuse">
+      <value>false</value>
+    </prop>
+  </item>
+  <item oor:path="/org.openoffice.Setup/Product">
+    <prop oor:name="LastTimeDonateShown" oor:op="fuse">
+      <value>9223372036854775807</value>
+    </prop>
+  </item>
+  <item oor:path="/org.openoffice.Setup/Product">
+    <prop oor:name="LastTimeGetInvolvedShown" oor:op="fuse">
+      <value>9223372036854775807</value>
     </prop>
   </item>
 </oor:items>
