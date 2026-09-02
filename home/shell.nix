@@ -41,6 +41,10 @@ args@{
       #nixpkgs-ferium-patch.legacyPackages.${lib.}
       http-server
       parallel
+      gnumake
+      meson
+      ninja
+      cmake
     ];
     shell.enableShellIntegration = true;
     shellAliases = {
