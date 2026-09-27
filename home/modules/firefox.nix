@@ -194,6 +194,7 @@ let
       };
       return-youtube-dislikes = {
         permissions = [
+          "identity"
           "activeTab"
           "*://*.youtube.com/*"
           "storage"
