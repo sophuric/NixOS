@@ -405,6 +405,8 @@
               };
             }
             (lib.attrsets.genAttrs [
+              "AddAttachments"
+              "TenorGifSearch"
               "WhoReacted"
               "WebContextMenus"
               "BadgeAPI"
