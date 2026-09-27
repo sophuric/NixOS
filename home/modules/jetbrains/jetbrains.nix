@@ -20,7 +20,7 @@ let
   ];
   ides = with pkgs.jetbrains; [
     {
-      package = idea-oss;
+      package = idea;
       plugins = [
         "com.demonwav.minecraft-dev"
       ];
@@ -35,6 +35,7 @@ let
     }
   ];
   unfree-ides = with pkgs.jetbrains; [
+    idea
     rider
     clion
   ];
