@@ -171,6 +171,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-immich-patch": {
+      "locked": {
+        "lastModified": 1790689126,
+        "narHash": "sha256-ilerN1WLSvF+HMjziC/Wv99J5y02maDH+6hZPwsORKg=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "b4fd65b198c599cbe814fcb9f42d25d021595ec9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "b4fd65b198c599cbe814fcb9f42d25d021595ec9",
+        "type": "github"
+      }
+    },
     "nixpkgs-nvidia-patch": {
       "locked": {
         "lastModified": 1784432872,
@@ -267,6 +283,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-ferium-patch": "nixpkgs-ferium-patch",
+        "nixpkgs-immich-patch": "nixpkgs-immich-patch",
         "nixpkgs-nvidia-patch": "nixpkgs-nvidia-patch",
         "nixvim": "nixvim",
         "nur": "nur"
