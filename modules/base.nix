@@ -20,12 +20,6 @@ args@{
       description = "List of package names as a string, or predicates that accept a package name as a string";
       # This allows mkMerge to work with this
     };
-
-    boot.kernelPackagesName = lib.mkOption {
-      type = lib.types.str;
-      default = "linuxPackages";
-      description = "Which kernel package group to use";
-    };
   };
 
   config = {
@@ -109,13 +103,6 @@ args@{
         inherit inputs;
       };
     };
-
-    # super fucking cursed hack
-    boot.kernelPackages =
-      (import inputs.nixpkgs-nvidia-patch {
-        system = pkgs.system;
-        config.allowUnfreePredicate = config.nixpkgs.config.allowUnfreePredicate;
-      }).${config.boot.kernelPackagesName};
 
     system.stateVersion = "25.05"; # Do not change
   };
