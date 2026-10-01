@@ -4,6 +4,7 @@ args@{
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 {
@@ -38,7 +39,8 @@ args@{
       whois
       bind
       nethogs
-      #nixpkgs-ferium-patch.legacyPackages.${lib.}
+      inputs.nixpkgs-ferium-patch.legacyPackages.${pkgs.system}.ferium
+      packwiz
       http-server
       parallel
       gnumake
