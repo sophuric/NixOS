@@ -5,6 +5,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     # Pin to version 4.7.0 since 4.7.1 hangs when updating a lot of mods
     nixpkgs-ferium-patch.url = "github:nixos/nixpkgs/dab5a37fb772b3d1a3afa9f568eb0f5aa286d015";
+    # Revert NVIDIA to a working version
+    nixpkgs-nvidia-patch.url = "github:nixos/nixpkgs/fd1462031fdee08f65fd0b4c6b64e22239a77870";
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -42,6 +42,6 @@ args@{ self, util, pkgs, lib, config, ... }: {
 
     networking.firewall.allowedTCPPorts = [ 25565 8123 53317 ];
 
-    boot.kernelPackages = pkgs.linuxPackages_latest;
+    boot.kernelPackagesName = "linuxPackages_latest";
   };
 }
