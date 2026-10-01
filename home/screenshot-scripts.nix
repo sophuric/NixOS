@@ -8,23 +8,38 @@
 }:
 {
   home.packages = [
+    (pkgs.stdenv.mkDerivation {
+      name = "get-latest-file";
+      sourceRoot = ".";
+      srcs = [
+        ./get-latest-file-script
+        (pkgs.fetchgit {
+          name = "sophutil";
+          url = "https://github.com/sophuric/sophutil.git";
+          rev = "873c0c3c486a4ccafcec2541e81a0ed855a1ebf1";
+          sha256 = "f+3AY6d1txYllNLrDBDZnz0zyZqkfFB79heqvIV+t30=";
+        })
+      ];
+      buildPhase = "$CC -I. get-latest-file-script/main.c sophutil/src/{hashmap,fnv1_32,linked_list}.c -o get-latest-file";
+      installPhase = "install -Dm755 get-latest-file $out/bin/get-latest-file";
+    })
     (pkgs.writeShellApplication {
-      name = "get-last-screenshot.sh";
+      name = "get-latest-screenshot";
       # Returns the latest screenshot in the screenshots directory
-      text = "head -n1 <(find ~/screenshots -type f -printf '%T@ %p\\n' | sort --numeric-sort --reverse | cut -d' ' -f2-)";
+      text = "get-latest-file latest create f -1 true ~/screenshots";
     })
     (pkgs.writeShellApplication {
-      name = "open-last-screenshot.sh";
+      name = "open-latest-screenshot";
       runtimeInputs = [ pkgs.feh ];
-      text = ''feh --class=feh-float - < "$(get-last-screenshot.sh)"'';
+      text = ''feh --class=feh-float - < "$(get-latest-screenshot)"'';
     })
     (pkgs.writeShellApplication {
-      name = "copy-last-screenshot.sh";
+      name = "copy-latest-screenshot";
       runtimeInputs = [ pkgs.wl-clipboard ];
-      text = ''LAST="$(get-last-screenshot.sh)" && wl-copy < "$LAST" && notify-send -i "$LAST" -- "Copied file to clipboard" "$LAST"'';
+      text = ''LAST="$(get-latest-screenshot)" && wl-copy < "$LAST" && notify-send -i "$LAST" -- "Copied file to clipboard" "$LAST"'';
     })
     (pkgs.writeShellApplication {
-      name = "save-clipboard-as-screenshot.sh";
+      name = "save-clipboard-as-screenshot";
       runtimeInputs = [ pkgs.wl-clipboard ];
       text = ''
         LAST=~/screenshots/"paste-$(date -u +"%F %T").png" && [[ ! -e "$LAST" ]] && printf "%s\n" "$LAST"
@@ -33,7 +48,7 @@
     })
 
     (pkgs.writeShellApplication {
-      name = "notify-copy-temp-file.sh";
+      name = "notify-copy-temp-file";
       # Copies a file's content to clipboard, notifies the user that it was copied, and opens it in nvim if the notification is clicked
       runtimeInputs = with pkgs; [
         neovim
@@ -49,8 +64,8 @@
       '';
     })
     (pkgs.writeShellApplication {
-      name = "zbar-last-screenshot.sh";
-      # Scans the last screenshot for barcodes with ZBar
+      name = "zbar-latest-screenshot";
+      # Scans the latest screenshot for barcodes with ZBar
       runtimeInputs = with pkgs; [
         zbar
         neovim
@@ -60,19 +75,19 @@
       ];
       text = ''
         TMP="$(mktemp)"
-        zbarimg --quiet --raw - < "$(get-last-screenshot.sh)" > "$TMP" || {
+        zbarimg --quiet --raw - < "$(get-latest-screenshot)" > "$TMP" || {
           [[ "$?" == "4" ]] && {
             notify-send "No barcodes were detected"
             rm -- "$TMP"
             false
           }
         }
-        notify-copy-temp-file.sh "$TMP" "Decoded data"
+        notify-copy-temp-file "$TMP" "Decoded data"
       '';
     })
     (pkgs.writeShellApplication {
-      name = "ocr-last-screenshot.sh";
-      # Scans text in the last screenshot with Tesseract
+      name = "ocr-latest-screenshot";
+      # Scans text in the latest screenshot with Tesseract
       runtimeInputs = with pkgs; [
         tesseract
         neovim
@@ -82,13 +97,13 @@
       ];
       text = ''
         TMP="$(mktemp)"
-        tesseract - - < "$(get-last-screenshot.sh)" > "$TMP"
+        tesseract - - < "$(get-latest-screenshot)" > "$TMP"
         [[ -s "$TMP" ]] || {
           notify-send "No text was detected"
           rm -- "$TMP"
           false
         }
-        notify-copy-temp-file.sh "$TMP" "Text"
+        notify-copy-temp-file "$TMP" "Text"
       '';
     })
   ];
