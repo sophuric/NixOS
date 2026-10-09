@@ -71,7 +71,7 @@ args@{
     # super fucking cursed hack
     boot.kernelPackages =
       (import inputs.nvidia-nixpkgs {
-        system = pkgs.system;
+        system = pkgs.stdenv.hostPlatform.system;
         config.allowUnfreePredicate = config.nixpkgs.config.allowUnfreePredicate;
       }).linuxPackages_latest;
   };

@@ -39,7 +39,7 @@ args@{
       whois
       bind
       nethogs
-      inputs.ferium-nixpkgs.legacyPackages.${pkgs.system}.ferium
+      inputs.ferium-nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.ferium
       packwiz
       http-server
       parallel
