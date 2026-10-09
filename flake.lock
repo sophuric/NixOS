@@ -21,6 +21,22 @@
         "type": "github"
       }
     },
+    "ferium-nixpkgs": {
+      "locked": {
+        "lastModified": 1726574621,
+        "narHash": "sha256-QQbppb62+PHpmK2S1C0cHX9nBEcto1HJpKphw8dRpmY=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "dab5a37fb772b3d1a3afa9f568eb0f5aa286d015",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "dab5a37fb772b3d1a3afa9f568eb0f5aa286d015",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -100,6 +116,22 @@
         "type": "github"
       }
     },
+    "immich-nixpkgs": {
+      "locked": {
+        "lastModified": 1790689126,
+        "narHash": "sha256-ilerN1WLSvF+HMjziC/Wv99J5y02maDH+6hZPwsORKg=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "b4fd65b198c599cbe814fcb9f42d25d021595ec9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "b4fd65b198c599cbe814fcb9f42d25d021595ec9",
+        "type": "github"
+      }
+    },
     "nix-jetbrains-plugins": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -152,54 +184,6 @@
         "owner": "NixOS",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-ferium-patch": {
-      "locked": {
-        "lastModified": 1726574621,
-        "narHash": "sha256-QQbppb62+PHpmK2S1C0cHX9nBEcto1HJpKphw8dRpmY=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "dab5a37fb772b3d1a3afa9f568eb0f5aa286d015",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "dab5a37fb772b3d1a3afa9f568eb0f5aa286d015",
-        "type": "github"
-      }
-    },
-    "nixpkgs-immich-patch": {
-      "locked": {
-        "lastModified": 1790689126,
-        "narHash": "sha256-ilerN1WLSvF+HMjziC/Wv99J5y02maDH+6hZPwsORKg=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "b4fd65b198c599cbe814fcb9f42d25d021595ec9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "b4fd65b198c599cbe814fcb9f42d25d021595ec9",
-        "type": "github"
-      }
-    },
-    "nixpkgs-nvidia-patch": {
-      "locked": {
-        "lastModified": 1784432872,
-        "narHash": "sha256-n3gKTBIV4ZA5VQpUakffBe3KGu4+mhPoA34rrqS0GkA=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "fd1462031fdee08f65fd0b4c6b64e22239a77870",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "fd1462031fdee08f65fd0b4c6b64e22239a77870",
         "type": "github"
       }
     },
@@ -275,18 +259,34 @@
         "type": "github"
       }
     },
+    "nvidia-nixpkgs": {
+      "locked": {
+        "lastModified": 1784432872,
+        "narHash": "sha256-n3gKTBIV4ZA5VQpUakffBe3KGu4+mhPoA34rrqS0GkA=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "fd1462031fdee08f65fd0b4c6b64e22239a77870",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "fd1462031fdee08f65fd0b4c6b64e22239a77870",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
+        "ferium-nixpkgs": "ferium-nixpkgs",
         "home-manager": "home-manager",
+        "immich-nixpkgs": "immich-nixpkgs",
         "nix-jetbrains-plugins": "nix-jetbrains-plugins",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-ferium-patch": "nixpkgs-ferium-patch",
-        "nixpkgs-immich-patch": "nixpkgs-immich-patch",
-        "nixpkgs-nvidia-patch": "nixpkgs-nvidia-patch",
         "nixvim": "nixvim",
-        "nur": "nur"
+        "nur": "nur",
+        "nvidia-nixpkgs": "nvidia-nixpkgs"
       }
     },
     "systems": {

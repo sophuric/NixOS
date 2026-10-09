@@ -39,7 +39,7 @@ args@{
       whois
       bind
       nethogs
-      inputs.nixpkgs-ferium-patch.legacyPackages.${pkgs.system}.ferium
+      inputs.ferium-nixpkgs.legacyPackages.${pkgs.system}.ferium
       packwiz
       http-server
       parallel
@@ -127,6 +127,7 @@ args@{
         enable = true;
         plugins = [ "git" ];
       };
+      dotDir = config.home.homeDirectory;
       syntaxHighlighting = {
         enable = true;
         highlighters = [

@@ -14,7 +14,7 @@
     accelerationDevices = [ "/dev/dri/renderD128" ];
     openFirewall = true;
     machine-learning.enable = true;
-    package = inputs.nixpkgs-immich-patch.legacyPackages.${pkgs.system}.immich;
+    package = inputs.immich-nixpkgs.legacyPackages.${pkgs.system}.immich;
   };
   systemd.services.immich-server = {
     requires = [ "tailscaled.service" ];
