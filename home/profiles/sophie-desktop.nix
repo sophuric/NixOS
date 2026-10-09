@@ -1,8 +1,10 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-args@{ ... }: {
+args@{ ... }:
+{
   imports = [
     ../home-desktop.nix
     ../modules/vesktop.nix
+    ../modules/fluxer.nix
     ../modules/firefox.nix
     ../modules/keepassxc.nix
     ../modules/jetbrains/jetbrains.nix

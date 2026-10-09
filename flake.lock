@@ -95,6 +95,26 @@
         "type": "github"
       }
     },
+    "fluxer": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791519957,
+        "narHash": "sha256-IQJEA9FYdhOjC29U7N/o6XzntSqM+QR6S+631zLYYxs=",
+        "owner": "sophuric",
+        "repo": "fluxer-flake",
+        "rev": "6e722b3269e976c36153cea95e67fc710a2bbc99",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sophuric",
+        "repo": "fluxer-flake",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -279,6 +299,7 @@
       "inputs": {
         "catppuccin": "catppuccin",
         "ferium-nixpkgs": "ferium-nixpkgs",
+        "fluxer": "fluxer",
         "home-manager": "home-manager",
         "immich-nixpkgs": "immich-nixpkgs",
         "nix-jetbrains-plugins": "nix-jetbrains-plugins",
