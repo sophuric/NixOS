@@ -331,10 +331,34 @@ layer-rule {
 window-rule {
 	geometry-corner-radius 12
 	clip-to-geometry true
+	draw-border-with-background false
+
+	background-effect {
+		xray false
+		blur true
+		noise 0.1
+	}
+
+	popups {
+		geometry-corner-radius 12
+		opacity 0.9
+
+		background-effect {
+			xray false
+			blur true
+			noise 0
+		}
+	}
 }
 
 layer-rule {
 	match namespace="^launcher$"
+
+	background-effect {
+		xray false
+		blur true
+		noise 0.1
+	}
 
 	shadow {
 		on
@@ -346,6 +370,19 @@ layer-rule {
 	}
 
 	geometry-corner-radius 40
+}
+
+layer-rule {
+	popups {
+		geometry-corner-radius 12
+		opacity 0.9
+
+		background-effect {
+			xray false
+			blur true
+			noise 0
+		}
+	}
 }
 
 binds {
