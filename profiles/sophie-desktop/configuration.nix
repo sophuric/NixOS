@@ -54,6 +54,7 @@ args@{
     users.users.sophie = {
       uid = 1000;
       isNormalUser = true;
+      description = "Sophie";
       extraGroups = [
         "wheel"
         "ssh"
