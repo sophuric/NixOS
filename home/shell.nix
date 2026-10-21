@@ -47,6 +47,17 @@ args@{
       meson
       ninja
       cmake
+      #gnulib
+      pkg-config
+      bison
+      #python3
+      #autoconf
+      #m4
+      #cairo
+      #pango
+      #fontconfig
+      #libgit2
+      #openssl
     ];
     shell.enableShellIntegration = true;
     shellAliases = {
