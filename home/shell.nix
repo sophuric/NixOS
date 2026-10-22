@@ -255,15 +255,16 @@ args@{
           grafted = "blue";
         };
         log.decorate = "short";
-        log.date="format-local:%Y-%m-%d %a %H:%M:%S"
+        log.date = "format-local:%Y-%m-%d %a %H:%M:%S";
         format.pretty = ''
-          format:Commit %C(magenta)%H%C(default)%C(blue)% D%C(default)
-          %C(default)%C(dim)> %C(nodim)%C(magenta)%C(ul)%s%C(noul)%C(default)
-          Commit: %cn %C(default)%C(dim)<%C(nodim)%C(default)%ce%C(default)%C(dim)> - %C(nodim)%cd%C(default)
-          Author: %an %C(default)%C(dim)<%C(nodim)%C(default)%ae%C(default)%C(dim)> - %C(nodim)%ad%C(default)
-          Signed: %C(green)%G?%C(default)%C(yellow)% GT%C(default)%C(dim) -%C(nodim)% GS%C(default)%C(dim) -%C(nodim)% GK%C(default)
-          %C(default)%+b%C(default)
-          %C(dim)---%C(nodim)'';
+          format:Commit %C(magenta)%H%C(blue)% D%C(default)
+
+          %C(black)◖%C(magenta black)%s%C(black default)◗
+
+          Commit: %cn %C(default dim)<%C(nodim default)%ce%C(default dim)> - %C(nodim)%cd%C(default)
+          Author: %an %C(default dim)<%C(nodim default)%ae%C(default dim)> - %C(nodim)%ad%C(default)
+          Signed: %C(green)%G?%C(yellow)% GT%C(default dim) -%C(nodim)% GS%C(default dim) -%C(nodim)% GK%C(default)
+          %C(default)%+b%C(default)%C(black ul)%<|(-1)%C() %C(noul default)'';
         url = {
           "https://github.com/" = {
             insteadOf = [
