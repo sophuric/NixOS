@@ -245,7 +245,24 @@ args@{
         };
         init.defaultBranch = "main";
         color.ui = "auto";
-        format.pretty = "format:Commit %C(green)%H%C(auto)%(decorate)%C(default) %C(yellow)(%C(green)%G?%C(yellow))%nAuthor: %an %C(default)%C(dim)<%C(nodim)%C(default)%ae%C(default)%C(dim)> - %C(nodim)%ad%nCommit: %cn %C(default)<%ce%C(default)> - %cd%n%n%C(default)%C(dim)> %C(nodim)%C(magenta)%C(ul)%s%n%n%b%n%C(dim)---%C(nodim)%C(default)";
+        # see git-log(1) "PRETTY FORMATS" and git-config(1) "Values"
+        color.decorate = {
+          branch = "green";
+          remoteBranch = "blue";
+          tag = "yellow";
+          stash = "magenta";
+          HEAD = "red";
+          grafted = "blue";
+        };
+        log.decorate = "short";
+        format.pretty = ''
+          format:Commit %C(magenta)%H%C(default)%C(blue)% D%C(default)
+          %C(default)%C(dim)> %C(nodim)%C(magenta)%C(ul)%s%C(noul)%C(default)
+          Commit: %cn %C(default)%C(dim)<%C(nodim)%C(default)%ce%C(default)%C(dim)> - %C(nodim)%cd%C(default)
+          Author: %an %C(default)%C(dim)<%C(nodim)%C(default)%ae%C(default)%C(dim)> - %C(nodim)%ad%C(default)
+          Signed: %C(green)%G?%C(default)%C(yellow)% GT%C(default)%C(dim) -%C(nodim)% GS%C(default)%C(dim) -%C(nodim)% GK%C(default)
+          %C(default)%+b%C(default)
+          %C(dim)---%C(nodim)'';
         url = {
           "https://github.com/" = {
             insteadOf = [
