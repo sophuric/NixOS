@@ -102,15 +102,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1791519957,
-        "narHash": "sha256-IQJEA9FYdhOjC29U7N/o6XzntSqM+QR6S+631zLYYxs=",
-        "owner": "sophuric",
+        "lastModified": 1792553259,
+        "narHash": "sha256-rlwDUy5JjHQDVNn/Rgdb+6rDPSMFdTxjx/Y2MSYqOwo=",
+        "owner": "Hy4ri",
         "repo": "fluxer-flake",
-        "rev": "6e722b3269e976c36153cea95e67fc710a2bbc99",
+        "rev": "11171fa3fa1c7a4d6af16a44a9bd5d8436e7857e",
         "type": "github"
       },
       "original": {
-        "owner": "sophuric",
+        "owner": "Hy4ri",
         "repo": "fluxer-flake",
         "type": "github"
       }

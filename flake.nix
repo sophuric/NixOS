@@ -22,7 +22,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     fluxer = {
-      url = "github:sophuric/fluxer-flake";
+      url = "github:Hy4ri/fluxer-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur = {
