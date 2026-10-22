@@ -255,6 +255,7 @@ args@{
           grafted = "blue";
         };
         log.decorate = "short";
+        log.date="format-local:%Y-%m-%d %a %H:%M:%S"
         format.pretty = ''
           format:Commit %C(magenta)%H%C(default)%C(blue)% D%C(default)
           %C(default)%C(dim)> %C(nodim)%C(magenta)%C(ul)%s%C(noul)%C(default)
