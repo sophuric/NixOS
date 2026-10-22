@@ -29,11 +29,13 @@
     fsType = "btrfs";
   };
 
+/*
   fileSystems."/swap" = {
     device = "/dev/disk/by-uuid/de4993a9-6bc8-4d92-8e8e-e5536cc716ef";
     fsType = "btrfs";
     options = [ "subvol=swap" ];
   };
+*/
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/26BA-881F";
