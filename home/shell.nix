@@ -230,6 +230,8 @@ args@{
       enable = true;
       lfs.enable = true;
       settings = {
+        commit.gpgSign = true;
+        tag.gpgSign = true;
         alias = {
           sub = "submodule";
           subc = "submodule update --init --recursive";
