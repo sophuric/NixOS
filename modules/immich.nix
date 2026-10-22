@@ -16,10 +16,6 @@
     machine-learning.enable = true;
     package = inputs.immich-nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.immich;
   };
-  systemd.services.immich-server = {
-    requires = [ "tailscaled.service" ];
-    after = [ "tailscaled.service" ];
-  };
   users.users.immich.extraGroups = [
     "video"
     "render"

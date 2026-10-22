@@ -45,8 +45,6 @@ args@{
 
     services.gvfs.enable = true;
 
-    services.tailscale.enable = true;
-
     programs.localsend.enable = true;
 
     home-manager.users.sophie.imports = [ (self + /home/profiles/sophie-desktop.nix) ];

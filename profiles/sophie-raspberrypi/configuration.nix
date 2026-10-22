@@ -10,8 +10,6 @@ args@{ self, util, pkgs, lib, config, ... }: {
   config = {
     # swapDevices = [{ device = "/swap/swapfile"; }];
 
-    services.tailscale.enable = true;
-
     hardware = {
       raspberry-pi."4".apply-overlays-dtmerge.enable = true;
       deviceTree = {
