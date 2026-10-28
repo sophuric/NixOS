@@ -259,7 +259,7 @@ args@{
         format.pretty = ''
           format:Commit %C(magenta)%H%C(blue)% D%C(default)
 
-          %C(black)◖%C(magenta black)%s%C(black default)◗
+           %C(black)◖%C(magenta black)%s%C(black default)◗
 
           Commit: %cn %C(default dim)<%C(nodim default)%ce%C(default dim)> - %C(nodim)%cd%C(default)
           Author: %an %C(default dim)<%C(nodim default)%ae%C(default dim)> - %C(nodim)%ad%C(default)
