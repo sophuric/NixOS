@@ -62,9 +62,10 @@ args@{
     };
 
     networking.firewall.allowedTCPPorts = [
-      25565
-      8123
-      53317
+      33280
+      33281
+      33282
+      33283
     ];
 
     # super fucking cursed hack
