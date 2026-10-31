@@ -52,6 +52,7 @@ args@{
       python3
       autoconf
       m4
+      net-tools
     ];
     shell.enableShellIntegration = true;
     shellAliases = {
