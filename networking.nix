@@ -19,7 +19,11 @@
 
     dhcpcd = {
       enable = true;
-      extraConfig = "nohook resolv.conf"; # disable getting DNS from DHCP
+      extraConfig = ''
+        nohook resolv.conf # disable getting DNS from DHCP
+        request 192.168.20.50
+        inform 192.168.20.50/32
+      '';
       setHostname = false;
     };
   };
