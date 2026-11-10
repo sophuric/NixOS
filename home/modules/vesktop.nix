@@ -255,7 +255,7 @@
                 greetMode = "Greet";
               };
               PinDMs = {
-                enabled = true;
+                enabled = false;
                 pinOrder = 0;
                 sortDmsByNewestMessage = false;
                 dmSectionCollapsed = false;
