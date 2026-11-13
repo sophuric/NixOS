@@ -9,7 +9,7 @@ args@{
   imports = [
     inputs.nur.modules.homeManager.default
     inputs.catppuccin.homeModules.catppuccin
-    ./neovim.nix
+    ./neovim/neovim.nix
     ./shell.nix
   ];
 

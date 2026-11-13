@@ -33,7 +33,7 @@
 - [ ] Add preview images to README
 - [ ] Port [my old Hyprland config](https://github.com/sophuric/dotfiles-old) to niri
 - [ ] Configure deployment secrets, so I don't need to run Nix with `--impure`
-- [ ] Potentially port [my old Neovim config](https://github.com/sophuric/nvim) to [Nixvim](https://github.com/nix-community/nixvim)
+- [x] Potentially port [my old Neovim config](https://github.com/sophuric/nvim) to [Nixvim](https://github.com/nix-community/nixvim)
 - [ ] Configure Firefox and its extensions
 - [ ] Set Zsh prompt and other settings
 - [x] Add separate flake outputs for my other devices
