@@ -10,6 +10,7 @@
     ./catppuccin.nix
     ./visual-whitespace.nix
     ./tiny-inline-diagnostic.nix
+    ./cmp.nix
     ./lsp.nix
   ];
   programs.nixvim.plugins =
