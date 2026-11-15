@@ -315,6 +315,7 @@ window-rule {
 	match app-id=r#"^org\.keepassxc\.KeePassXC$"#
 	match app-id=r#"^org\.gnome\.World\.Secrets$"#
 	match app-id=r#"^vesktop$"#
+	match app-id=r#"^app\.fluxer\.FluxerDesktop$"#
 	match app-id=r#"^discord$"#
 
 	block-out-from "screen-capture"
