@@ -25,12 +25,12 @@
         tab_bar_align = "left";
         tab_bar_min_tabs = 2;
         active_tab_foreground = palette.crust.hex;
-        active_tab_background = palette.pink.hex;
+        active_tab_background = palette.accent.hex;
         active_tab_font_style = "bold";
-        inactive_tab_foreground = palette.pink.hex;
+        inactive_tab_foreground = palette.accent.hex;
         inactive_tab_background = palette.base.hex;
         inactive_tab_font_style = "normal";
-        selection_background = palette.pink.hex;
+        selection_background = palette.accent.hex;
         paste_actions = "quote-urls-at-prompt,confirm,confirm-if-large";
         strip_trailing_spaces = "smart";
         remember_window_size = false;

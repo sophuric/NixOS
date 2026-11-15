@@ -1,8 +1,9 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-args@{
+{
   config,
   lib,
   inputs,
+  osConfig,
   ...
 }:
 {
@@ -31,8 +32,8 @@ args@{
     );
 
     catppuccin = {
-      accent = "pink";
-      flavor = "mocha";
+      accent = osConfig.catppuccin.accent;
+      flavor = osConfig.catppuccin.flavor;
       kvantum = {
         apply = true;
         enable = true;

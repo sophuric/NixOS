@@ -1,8 +1,9 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
 
-args@{ lib, ... }:
+{ lib, ... }:
 with builtins;
 rec {
+  allSystems = lib.systems.flakeExposed;
   ensureList = x: if builtins.isList x then x else [ x ];
   trimNewlines = x: (replaceStrings [ "\n" "\r" ] [ "" "" ] x);
   first = x: (elemAt x 0);
@@ -38,7 +39,7 @@ rec {
     );
   indexesOf =
     string: substring:
-    (builtins.map (x: substring == builtins.substring x (stringLength substring) string) (
+    (map (x: substring == builtins.substring x (stringLength substring) string) (
       lib.lists.range 0 (stringLength string - stringLength substring)
     ));
   firstIndexOf =
@@ -56,10 +57,10 @@ rec {
             (
               if elem ? ${name} then
                 # recursively merge the two values if elem has the attribute too
-                merge ([
+                merge [
                   value
                   elem.${name}
-                ])
+                ]
               else
                 value # else use the attribute from elem
             )
@@ -80,8 +81,13 @@ rec {
   # https://github.com/catppuccin/nix/blob/06f0ea19/modules/home-manager/fzf.nix#L8
   getPalette =
     config:
-    (lib.importJSON "${config.catppuccin.sources.palette}/palette.json")
-    .${config.catppuccin.flavor}.colors;
+    let
+      colors = (
+        (lib.importJSON "${config.catppuccin.sources.palette}/palette.json")
+        .${config.catppuccin.flavor}.colors
+      );
+    in
+    colors // { accent = colors.${config.catppuccin.accent}; };
   toRGB =
     {
       r,

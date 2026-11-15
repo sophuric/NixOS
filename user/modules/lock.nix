@@ -28,7 +28,7 @@
         bs-hl-color = lib.mkForce palette.red.hex;
         caps-lock-key-hl-color = lib.mkForce palette.yellow.hex;
         caps-lock-bs-hl-color = lib.mkForce palette.peach.hex;
-        key-hl-color = lib.mkForce palette.pink.hex;
+        key-hl-color = lib.mkForce palette.accent.hex;
       };
     };
 

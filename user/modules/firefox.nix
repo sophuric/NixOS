@@ -33,7 +33,7 @@ let
         settings = {
           badgedStatus = true;
           globalStatus = true;
-          badged_color = palette.pink.hex;
+          badged_color = palette.accent.hex;
           hashURL = "https://rules2.clearurls.xyz/rules.minify.hash";
           ruleURL = "https://rules2.clearurls.xyz/data.minify.json";
           contextMenuEnabled = true;
@@ -132,6 +132,7 @@ let
           "webNavigation"
           "webRequest"
           "webRequestBlocking"
+          "publicSuffix"
         ];
         settings = {
           userSettings = {
@@ -507,7 +508,7 @@ in
                     template =
                       with builtins.mapAttrs (name: value: util.replacePrefix value.hex "#" "") (util.getPalette config);
                       # See https://duckduckgo.com/duckduckgo-help-pages/settings/params
-                      "https://noai.duckduckgo.com/?kae=d&kau=-1&kaj=m&kav=1&k1=-1&kay=b&kak=-1&kaq=-1&kap=-1&kao=-1&kax=-1&kw=s&k7=${base}&kj=${mantle}&k9=${pink}&kaa=${mauve}&k21=${mantle}&kbg=-1&kbe=0&k5=2&k8=cdd6f4&kx=bac2de&kpsb=-1&ka=sans-serif&kt=sans-serif&km=l&kbj=1&ks=l&ko=1&q={searchTerms}";
+                      "https://noai.duckduckgo.com/?kae=d&kau=-1&kaj=m&kav=1&k1=-1&kay=b&kak=-1&kaq=-1&kap=-1&kao=-1&kax=-1&kw=s&k7=${base}&kj=${mantle}&k9=${accent}&kaa=${mauve}&k21=${mantle}&kbg=-1&kbe=0&k5=2&k8=cdd6f4&kx=bac2de&kpsb=-1&ka=sans-serif&kt=sans-serif&km=l&kbj=1&ks=l&ko=1&q={searchTerms}";
                   }
                 ];
                 iconMapObj."16" = "https://duckduckgo.com/favicon.png";

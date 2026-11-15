@@ -1,6 +1,5 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-args@{
-  util,
+{
   inputs,
   config,
   pkgs,
@@ -10,7 +9,7 @@ args@{
 {
   imports = [
     inputs.catppuccin.nixosModules.catppuccin
-    inputs.home-manager.nixosModules.home-manager
+    ./catppuccin.nix
   ];
 
   options = {
@@ -36,8 +35,6 @@ args@{
     boot.blacklistedKernelModules = [ "pcspkr" ];
 
     catppuccin = {
-      accent = "pink";
-      flavor = "mocha";
       tty.enable = true;
     };
 
@@ -94,15 +91,6 @@ args@{
       "nix-command"
       "flakes"
     ];
-
-    home-manager = {
-      backupFileExtension = "backup";
-      extraSpecialArgs = {
-        inherit util;
-        self = inputs.self;
-        inherit inputs;
-      };
-    };
 
     security.pki.caCertificateBlacklist = [
       "Comodo AAA Services root"

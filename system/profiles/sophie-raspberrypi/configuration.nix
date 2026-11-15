@@ -1,11 +1,27 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
 
-args@{ self, util, pkgs, lib, config, ... }: {
+{
+  nixos-hardware,
+  inputs,
+  pkgs,
+  username,
+  ...
+}:
+{
   imports = [
-    args.nixos-hardware.nixosModules.raspberry-pi-4
+    nixos-hardware.nixosModules.raspberry-pi-4
     ./hardware-configuration.nix
-  ] ++ builtins.map (x: self + /${x}) ([ /local.nix /networking.nix ]
-    ++ (builtins.map (x: /modules/${x}) [ /base.nix /openssh.nix ]));
+  ]
+  ++ map (x: inputs.self + /system/${x}) (
+    [
+      /local.nix
+      /networking.nix
+    ]
+    ++ (map (x: /modules/${x}) [
+      /base.nix
+      /openssh.nix
+    ])
+  );
 
   config = {
     # swapDevices = [{ device = "/swap/swapfile"; }];
@@ -28,13 +44,9 @@ args@{ self, util, pkgs, lib, config, ... }: {
 
     boot.kernelParams = [ "fbcon=rotate:1" ];
 
-    home-manager.users.sophie.imports =
-      [ (modulesPath + /home/profiles/sophie-raspberrypi.nix) ];
-
-    users.users.sophie = {
-      uid = 1000;
-      isNormalUser = true;
-      extraGroups = [ "wheel" "ssh" ];
-    };
+    users.users.${username}.extraGroups = [
+      "wheel"
+      "ssh"
+    ];
   };
 }

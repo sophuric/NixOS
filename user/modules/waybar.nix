@@ -65,7 +65,7 @@
               format = {
                 days = "<span color='${palette.blue.hex}'>{}</span>";
                 months = "<span color='${palette.yellow.hex}'>{}</span>";
-                today = "<span color='${palette.pink.hex}'><b><u>{}</u></b></span>";
+                today = "<span color='${palette.accent.hex}'><b><u>{}</u></b></span>";
                 weekdays = "<span color='${palette.peach.hex}'>{}</span>";
                 weeks = "<span color='${palette.teal.hex}'>w{}</span>";
               };

@@ -1,24 +1,22 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
 
-args@{
-  self,
-  util,
+{
   pkgs,
-  lib,
   config,
   inputs,
+  username,
   ...
 }:
 {
   imports = [
     ./hardware-configuration.nix
   ]
-  ++ builtins.map (x: self + /${x}) (
+  ++ map (x: inputs.self + /system/${x}) (
     [
       /local.nix
       /networking.nix
     ]
-    ++ (builtins.map (x: /modules/${x}) [
+    ++ (map (x: /modules/${x}) [
       /base.nix
       /limine.nix
       /nvidia.nix
@@ -47,19 +45,12 @@ args@{
 
     programs.localsend.enable = true;
 
-    home-manager.users.sophie.imports = [ (self + /home/profiles/sophie-desktop.nix) ];
-
-    users.users.sophie = {
-      uid = 1000;
-      isNormalUser = true;
-      description = "Sophie";
-      extraGroups = [
-        "wheel"
-        "ssh"
-        "libvirtd"
-        "docker"
-      ];
-    };
+    users.users.${username}.extraGroups = [
+      "wheel"
+      "ssh"
+      "libvirtd"
+      "docker"
+    ];
 
     networking.firewall.allowedTCPPorts = [
       33280

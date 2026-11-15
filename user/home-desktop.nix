@@ -1,5 +1,6 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
 args@{
+  osConfig,
   config,
   util,
   lib,
@@ -9,12 +10,12 @@ args@{
 {
   imports = [
     ./home-headless.nix
-    ./kitty.nix
-    ./waybar.nix
+    ./modules/kitty.nix
+    ./modules/waybar.nix
     ./mime.nix
-    ./screenshot-scripts.nix
-    ./lock.nix
-    ./emoji-picker.nix
+    ./modules/screenshot-scripts.nix
+    ./modules/lock.nix
+    ./modules/emoji-picker.nix
   ];
 
   fonts.fontconfig = {
@@ -92,14 +93,9 @@ args@{
         })
         hunspell
       ]
-      ++ (
-        let
-          cfg = import (args.self + /local.nix); # This is hacky
-        in
-        (builtins.map (x: pkgs.hunspellDicts.${builtins.substring 0 (util.firstIndexOf x ".") x}) (
-          [ cfg.i18n.defaultLocale ] ++ cfg.i18n.extraLocales
-        ))
-      )
+      ++ (map (x: pkgs.hunspellDicts.${builtins.substring 0 (util.firstIndexOf x ".") x}) (
+        [ osConfig.i18n.defaultLocale ] ++ osConfig.i18n.extraLocales
+      ))
       ++ config.xdg.portal.extraPortals;
 
     sessionVariables = {
