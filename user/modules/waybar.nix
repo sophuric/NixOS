@@ -63,22 +63,22 @@
             };
             calendar = {
               format = {
-                days = "<span color='${palette.blue.hex}'>{}</span>";
-                months = "<span color='${palette.yellow.hex}'>{}</span>";
+                days = "<span color='${palette.text.hex}'>{}</span>";
+                months = "<span color='${palette.accent.hex}'>{}</span>";
                 today = "<span color='${palette.accent.hex}'><b><u>{}</u></b></span>";
                 weekdays = "<span color='${palette.peach.hex}'>{}</span>";
-                weeks = "<span color='${palette.teal.hex}'>w{}</span>";
+                weeks = "<span color='${palette.peach.hex}'>w{}</span>";
               };
               mode = "year";
               mode-mon-col = 3;
-              on-scroll = -1;
-              weeks-pos = "right";
+              on-scroll = 1;
             };
             format = "🕒 {:%Y-%m-%d %a %H:%M:%S}";
             interval = 1;
             tooltip = true;
             tooltip-format = ''
-              <tt><span font_size="200%">{:%Y}</span>
+              <tt><span color='${palette.accent.hex}' font_size="200%">{:%Y}</span>
+
               <small>{calendar}</small></tt>'';
           };
           tray = {
