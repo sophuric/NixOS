@@ -20,6 +20,7 @@
       	protocol: chainload
       	path: boot():///efi/memtest86+.efi
     '';
+    maxGenerations = 50;
     style = {
       interface = {
         helpHidden = true;
