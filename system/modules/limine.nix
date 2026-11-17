@@ -19,7 +19,7 @@
         helpHidden = true;
         branding = null;
       };
-      wallpapers = [ ./limine_bg.bmp ];
+      wallpapers = [ ];
       wallpaperStyle = "centered";
       graphicalTerminal = {
         margin = 64;
