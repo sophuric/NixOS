@@ -1,5 +1,5 @@
 <h2 align="center">
-🚀 sophur's NixOS config<br/><br/>
+🐱 sophur's NixOS config<br/><br/>
 </h2>
 
 <h3 align="center">
@@ -34,11 +34,4 @@
 - [ ] Configure deployment secrets, so I don't need to run Nix with `--impure`
 - [ ] Configure Firefox and its extensions
 - [ ] Set Zsh prompt and other settings
-- [ ] Separate system and home manager config
 - [ ] Add icon theme and configure Nemo
-- [ ] Add programs
-  - [x] [Prism Launcher](https://prismlauncher.org/)
-  - [x] [Vesktop](https://github.com/Vencord/Vesktop)
-  - [x] [IntelliJ IDEA](https://www.jetbrains.com/idea/)
-  - [x] [Nemo](https://github.com/linuxmint/nemo)
-  - [x] [Syncthing](https://syncthing.net/)
