@@ -99,6 +99,12 @@
       "emSign ECC Root CA - C3"
     ];
 
+    boot.tmp = {
+      useZram = false;
+      useTmpfs = false;
+      cleanOnBoot = true;
+    };
+
     system.stateVersion = "25.05"; # Do not change
   };
 }
