@@ -1,15 +1,21 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-{ pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   boot.loader.timeout = 3;
   boot.loader.limine = {
     enable = true;
     efiSupport = true;
     enableEditor = true;
-    additionalFiles = {
+    additionalFiles = lib.mkIf config.boot.loader.limine.efiSupport {
       "efi/memtest86+.efi" = "${pkgs.memtest86plus}/mt86plus.efi";
     };
     panicOnChecksumMismatch = true;
-    extraEntries = ''
+    extraEntries = lib.mkIf config.boot.loader.limine.efiSupport ''
       /Memtest86+
       	protocol: chainload
       	path: boot():///efi/memtest86+.efi
