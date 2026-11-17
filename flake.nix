@@ -67,7 +67,7 @@
                   inherit util;
                   inherit inputs;
                 };
-                users.${username}.imports = [ ./user/profiles/${configurationName}/configuration.nix ];
+                users.${username} = ./user/profiles/${configurationName}/configuration.nix;
               };
               users.users.${username} = {
                 uid = 1000;
