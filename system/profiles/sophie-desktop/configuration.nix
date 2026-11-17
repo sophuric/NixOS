@@ -59,6 +59,8 @@
       33283
     ];
 
+    boot.loader.limine.efiSupport = true;
+
     # super fucking cursed hack
     boot.kernelPackages =
       (import inputs.nvidia-nixpkgs {

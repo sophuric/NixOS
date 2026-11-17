@@ -42,6 +42,8 @@
       raspberrypi-eeprom
     ];
 
+    boot.loader.limine.efiSupport = true;
+
     boot.kernelParams = [ "fbcon=rotate:1" ];
 
     users.users.${username}.extraGroups = [

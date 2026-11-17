@@ -8,8 +8,8 @@
 {
   boot.loader.timeout = 3;
   boot.loader.limine = {
-    enable = true;
-    efiSupport = true;
+    enable = lib.mkDefault true;
+    efiSupport = lib.mkDefault true;
     enableEditor = true;
     additionalFiles = lib.mkIf config.boot.loader.limine.efiSupport {
       "efi/memtest86+.efi" = "${pkgs.memtest86plus}/mt86plus.efi";
