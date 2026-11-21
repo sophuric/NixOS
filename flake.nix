@@ -49,6 +49,7 @@
       userDescription = "Sophie";
     in
     {
+      inherit util; # debugging
       nixosConfigurations = lib.attrsets.genAttrs configurationNames (
         configurationName:
         (nixpkgs.lib.nixosSystem {
