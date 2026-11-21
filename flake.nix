@@ -46,6 +46,7 @@
         "sophie-raspberrypi"
       ];
       username = "sophie";
+      userDescription = "Sophie";
     in
     {
       nixosConfigurations = lib.attrsets.genAttrs configurationNames (
@@ -72,7 +73,7 @@
               users.users.${username} = {
                 uid = 1000;
                 isNormalUser = true;
-                description = "Sophie";
+                description = userDescription;
               };
             }
           ];
