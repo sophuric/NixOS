@@ -46,8 +46,7 @@
           winCtrlQ = false;
           disableMinSize = true;
           winNativeTitleBar = false;
-          plugins = util.merge [
-            {
+          plugins = {
               AnonymiseFileNames = {
                 enabled = true;
                 method = 1;
@@ -403,75 +402,72 @@
                 enabled = true;
                 showPluginMenu = true;
               };
-            }
-            (lib.attrsets.genAttrs [
-              "AddAttachments"
-              "TenorGifSearch"
-              "WhoReacted"
-              "WebContextMenus"
-              "BadgeAPI"
-              "CommandsAPI"
-              "MemberListDecoratorsAPI"
-              "MessageAccessoriesAPI"
-              "MessageDecorationsAPI"
-              "MessageEventsAPI"
-              "MessagePopoverAPI"
-              "NoticesAPI"
-              "ServerListAPI"
-              "SettingsStoreAPI"
-              "BetterGifAltText"
-              "ClearURLs"
-              "ForceOwnerCrown"
-              "iLoveSpam"
-              "NoDevtoolsWarning"
-              "NoF1"
-              "NoUnblockToJump"
-              "NSFWGateBypass"
-              "StartupTimings"
-              "SupportHelper"
-              "VoiceChatDoubleClick"
-              "ValidUser"
-              "FavoriteEmojiFirst"
-              "NoProfileThemes"
-              "UnsuppressEmbeds"
-              "MutualGroupDMs"
-              "BiggerStreamPreview"
-              "NormalizeMessageLinks"
-              "PreviewMessage"
-              "CopyUserURLs"
-              "FixSpotifyEmbeds"
-              "NoTypingAnimation"
-              "WebKeybinds"
-              "BetterGifPicker"
-              "FixYoutubeEmbeds"
-              "ChatInputButtonAPI"
-              "FriendsSince"
-              "UnlockedAvatarZoom"
-              "ImageLink"
-              "PauseInvitesForever"
-              "VoiceDownload"
-              "WebScreenShareFixes"
-              "AutomodContext"
-              "DontRoundMyTimestamps"
-              "MaskedLinkPaste"
-              "NoDefaultHangStatus"
-              "ValidReply"
-              "MessageUpdaterAPI"
-              "ServerInfo"
-              "NoOnboardingDelay"
-              "UserSettingsAPI"
-              "YoutubeAdblock"
-              "AlwaysExpandRoles"
-              "CopyFileContents"
-              "StickerPaste"
-              "FullSearchContext"
-              "DynamicImageModalAPI"
-              "DisableDeepLinks"
-              "ExpressionCloner"
-              "CopyStickerLinks"
-              "PlainFolderIcon"
-            ] (x: { enabled = true; }))
-          ];
+            AddAttachments.enabled = true;
+            TenorGifSearch.enabled = true;
+            WhoReacted.enabled = true;
+            WebContextMenus.enabled = true;
+            BadgeAPI.enabled = true;
+            CommandsAPI.enabled = true;
+            MemberListDecoratorsAPI.enabled = true;
+            MessageAccessoriesAPI.enabled = true;
+            MessageDecorationsAPI.enabled = true;
+            MessageEventsAPI.enabled = true;
+            MessagePopoverAPI.enabled = true;
+            NoticesAPI.enabled = true;
+            ServerListAPI.enabled = true;
+            SettingsStoreAPI.enabled = true;
+            BetterGifAltText.enabled = true;
+            ClearURLs.enabled = true;
+            ForceOwnerCrown.enabled = true;
+            iLoveSpam.enabled = true;
+            NoDevtoolsWarning.enabled = true;
+            NoF1.enabled = true;
+            NoUnblockToJump.enabled = true;
+            NSFWGateBypass.enabled = true;
+            StartupTimings.enabled = true;
+            SupportHelper.enabled = true;
+            VoiceChatDoubleClick.enabled = true;
+            ValidUser.enabled = true;
+            FavoriteEmojiFirst.enabled = true;
+            NoProfileThemes.enabled = true;
+            UnsuppressEmbeds.enabled = true;
+            MutualGroupDMs.enabled = true;
+            BiggerStreamPreview.enabled = true;
+            NormalizeMessageLinks.enabled = true;
+            PreviewMessage.enabled = true;
+            CopyUserURLs.enabled = true;
+            FixSpotifyEmbeds.enabled = true;
+            NoTypingAnimation.enabled = true;
+            WebKeybinds.enabled = true;
+            BetterGifPicker.enabled = true;
+            FixYoutubeEmbeds.enabled = true;
+            ChatInputButtonAPI.enabled = true;
+            FriendsSince.enabled = true;
+            UnlockedAvatarZoom.enabled = true;
+            ImageLink.enabled = true;
+            PauseInvitesForever.enabled = true;
+            VoiceDownload.enabled = true;
+            WebScreenShareFixes.enabled = true;
+            AutomodContext.enabled = true;
+            DontRoundMyTimestamps.enabled = true;
+            MaskedLinkPaste.enabled = true;
+            NoDefaultHangStatus.enabled = true;
+            ValidReply.enabled = true;
+            MessageUpdaterAPI.enabled = true;
+            ServerInfo.enabled = true;
+            NoOnboardingDelay.enabled = true;
+            UserSettingsAPI.enabled = true;
+            YoutubeAdblock.enabled = true;
+            AlwaysExpandRoles.enabled = true;
+            CopyFileContents.enabled = true;
+            StickerPaste.enabled = true;
+            FullSearchContext.enabled = true;
+            DynamicImageModalAPI.enabled = true;
+            DisableDeepLinks.enabled = true;
+            ExpressionCloner.enabled = true;
+            CopyStickerLinks.enabled = true;
+            PlainFolderIcon.enabled = true;
+          };
           notifications = {
             timeout = 5000;
             position = "bottom-right";
