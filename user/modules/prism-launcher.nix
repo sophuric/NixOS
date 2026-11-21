@@ -1,6 +1,5 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
 {
-  util,
   config,
   pkgs,
   ...
@@ -32,7 +31,7 @@
       SkinsDir = "/storage/PrismLauncher/skins";
       CloseAfterLaunch = false;
       ConfigVersion = 1.3;
-      ConsoleFont = util.first config.fonts.fontconfig.defaultFonts.monospace;
+      ConsoleFont = builtins.head config.fonts.fontconfig.defaultFonts.monospace;
       ConsoleFontSize = 11;
       ConsoleMaxLines = 100000;
       ConsoleOverflowStop = true;

@@ -130,7 +130,7 @@ args@{
   gtk = {
     enable = true;
     font = {
-      name = util.first config.fonts.fontconfig.defaultFonts.sansSerif;
+      name = builtins.head config.fonts.fontconfig.defaultFonts.sansSerif;
       size = 12;
     };
     theme =

@@ -20,7 +20,7 @@
       themes = {
         custom = let
           escapeFont = x:
-            builtins.concatStringsSep ", " (builtins.map (util.escapeCss) x);
+            builtins.concatStringsSep ", " (map (util.escapeCss) x);
         in with config.fonts.fontconfig.defaultFonts; ''
           :root {
             --font-code: ${escapeFont monospace} !important;
@@ -441,7 +441,6 @@
               "CopyUserURLs"
               "FixSpotifyEmbeds"
               "NoTypingAnimation"
-              "FixImagesQuality"
               "WebKeybinds"
               "BetterGifPicker"
               "FixYoutubeEmbeds"

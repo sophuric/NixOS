@@ -6,10 +6,17 @@
 }:
 {
   programs.nixvim.keymaps =
+    let
+      all = [
+        ""
+        "t"
+        "l"
+      ];
+    in
     map
       (
         x:
-        util.merge [
+        util.mergeLast [
           {
             key = x.name;
             options = {
@@ -18,37 +25,25 @@
             };
           }
           (if lib.isString x.value then { action = x.value; } else x.value)
-          (
-            if x.value ? mode && x.value.mode == "all" then
-              {
-                mode = [
-                  ""
-                  "t"
-                  "l"
-                ];
-              }
-            else
-              { }
-          )
         ]
       )
       (
         lib.attrsets.attrsToList {
           "<MiddleMouse>" = {
             action = "";
-            mode = "all";
+            mode = all;
           };
           "<2-MiddleMouse>" = {
             action = "";
-            mode = "all";
+            mode = all;
           };
           "<3-MiddleMouse>" = {
             action = "";
-            mode = "all";
+            mode = all;
           };
           "<4-MiddleMouse>" = {
             action = "";
-            mode = "all";
+            mode = all;
           };
           "<C-Q>" = "<cmd>bd<CR>";
           "<C-S-Q>" = "<cmd>bd<CR>";

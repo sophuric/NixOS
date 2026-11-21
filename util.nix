@@ -1,12 +1,37 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
 
-{ lib, ... }:
 with builtins;
+{ lib, ... }:
+let
+  traceAll = lib.foldl' (_: x: trace x null) null;
+  mergeCustom =
+    selfMergeFunc: other: x:
+    if length x == 1 then
+      head x
+    else if length x > 1 && all isAttrs x then
+      zipAttrsWith (name: selfMergeFunc) x
+    else if length x > 1 && all isList x then
+      mergeLists x
+    else
+      other x (
+        # Doesn't match other conditions, fail
+        if length x == 0 then
+          throw "Cannot merge no items"
+        else
+          trace "Trying to merge" seq (traceAll x) throw "Don't know how to merge this"
+      );
+in
 rec {
+  # Recursively merge attrset or list
+  # This is because {a.b=2;}//{a.c=3;} will produce {a={c=3;};} because // doesn't recursively merge an attrset
+  merge = mergeCustom merge (x: fail: fail);
+  mergeFirst = mergeCustom mergeFirst (x: fail: if length x > 0 then head x else fail);
+  mergeLast = mergeCustom mergeLast (x: fail: if length x > 0 then last x else fail);
+
   allSystems = lib.systems.flakeExposed;
   ensureList = x: if builtins.isList x then x else [ x ];
   trimNewlines = x: (replaceStrings [ "\n" "\r" ] [ "" "" ] x);
-  first = x: (elemAt x 0);
+  last = x: (elemAt x (length x - 1));
   startsWith =
     string: substring: ((builtins.substring 0 (stringLength substring) string) == substring);
   endsWith =
@@ -45,38 +70,7 @@ rec {
   firstIndexOf =
     string: substring: (lib.lists.findFirstIndex (x: x) null (indexesOf string substring));
   listEquals = list1: list2: (sort lessThan list1) == (sort lessThan list2);
-  # Recursively merge attrset or list
-  # This is because {a.b=2;}//{a.c=3;} will produce {a={c=3;};} because // doesn't recursively merge an attrset
-  merge = foldl' (
-    acc: elem:
-    (
-      if (isAttrs acc && isAttrs elem) then
-        (
-          (mapAttrs (
-            name: value: # map list of acc
-            (
-              if elem ? ${name} then
-                # recursively merge the two values if elem has the attribute too
-                merge [
-                  value
-                  elem.${name}
-                ]
-              else
-                value # else use the attribute from elem
-            )
-          ) acc)
-          //
-            # add attributes from elem that are not within acc
-            (lib.filterAttrs (name: value: !(acc ? ${name})) elem)
-        )
-      else if (isList acc && isList elem) then
-        (acc ++ elem) # concat lists
-      else if (isNull elem) then
-        acc
-      else
-        elem
-    )
-  ) [ ];
+  mergeLists = lib.foldl (acc: cur: acc ++ cur) [ ];
   escapeCss = x: ''"${lib.strings.escape [ ''"'' "\n" ] x}"'';
   # https://github.com/catppuccin/nix/blob/06f0ea19/modules/home-manager/fzf.nix#L8
   getPalette =
