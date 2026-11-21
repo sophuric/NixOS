@@ -322,7 +322,8 @@
         "nixpkgs": "nixpkgs_3",
         "nixvim": "nixvim",
         "nur": "nur",
-        "nvidia-nixpkgs": "nvidia-nixpkgs"
+        "nvidia-nixpkgs": "nvidia-nixpkgs",
+        "timer": "timer"
       }
     },
     "systems": {
@@ -352,6 +353,26 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "timer": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795290758,
+        "narHash": "sha256-ph/NPbc7lmlYN3IctYkuxxAcaPhCm4Y898oiea+tP0k=",
+        "owner": "sophuric",
+        "repo": "timer",
+        "rev": "4d088514b691002ce70ef8c7c0b6f4a2bb8168a8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sophuric",
+        "repo": "timer",
         "type": "github"
       }
     }

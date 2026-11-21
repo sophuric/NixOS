@@ -54,6 +54,7 @@ args@{
       autoconf
       m4
       net-tools
+      inputs.timer.packages.${pkgs.stdenv.hostPlatform.system}.timer
     ];
     shell.enableShellIntegration = true;
     shellAliases = {

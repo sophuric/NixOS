@@ -27,6 +27,10 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    timer = {
+      url = "github:sophuric/timer";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-jetbrains-plugins.url = "github:nix-community/nix-jetbrains-plugins";
     # Pin to version 4.7.0 since 4.7.1 hangs when updating a lot of mods
     ferium-nixpkgs.url = "github:nixos/nixpkgs/dab5a37fb772b3d1a3afa9f568eb0f5aa286d015";
