@@ -1,5 +1,12 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-{ self, config, pkgs, lib, ... }: {
+{
+  self,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
   programs.keepassxc = {
     enable = true;
     settings = {
