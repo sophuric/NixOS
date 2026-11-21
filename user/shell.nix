@@ -47,6 +47,7 @@ args@{
       meson
       ninja
       cmake
+      gcc
       pkg-config
       bison
       python3
