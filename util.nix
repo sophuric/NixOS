@@ -3,7 +3,8 @@
 with builtins;
 { lib, ... }:
 let
-  traceAll = lib.foldl' (_: x: trace x null) null;
+  traceAll = foldl' (_: x: trace x null) null;
+  mergeLists = foldl' (acc: cur: acc ++ cur) [ ];
   mergeCustom =
     selfMergeFunc: other: x:
     if length x == 1 then
@@ -27,6 +28,7 @@ rec {
   merge = mergeCustom merge (x: fail: fail);
   mergeFirst = mergeCustom mergeFirst (x: fail: if length x > 0 then head x else fail);
   mergeLast = mergeCustom mergeLast (x: fail: if length x > 0 then last x else fail);
+  inherit mergeLists;
 
   allSystems = lib.systems.flakeExposed;
   ensureList = x: if builtins.isList x then x else [ x ];
@@ -70,7 +72,6 @@ rec {
   firstIndexOf =
     string: substring: (lib.lists.findFirstIndex (x: x) null (indexesOf string substring));
   listEquals = list1: list2: (sort lessThan list1) == (sort lessThan list2);
-  mergeLists = lib.foldl (acc: cur: acc ++ cur) [ ];
   escapeCss = x: ''"${lib.strings.escape [ ''"'' "\n" ] x}"'';
   # https://github.com/catppuccin/nix/blob/06f0ea19/modules/home-manager/fzf.nix#L8
   getPalette =
