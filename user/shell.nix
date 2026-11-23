@@ -1,6 +1,5 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
-args@{
-  self,
+{
   config,
   lib,
   pkgs,
@@ -58,7 +57,7 @@ args@{
     ];
     shell.enableShellIntegration = true;
     shellAliases = {
-      "nixos-update" = "sudo nixos-rebuild switch --flake ~/.nixos --impure";
+      "nixos-update" = "sudo nixos-rebuild switch --flake ~/.nixos";
       cd = "z";
       exa = "eza";
       ls = "eza";

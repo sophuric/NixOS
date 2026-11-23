@@ -31,7 +31,6 @@
 
 ### To-Do List:
 - [ ] Add preview images to README
-- [ ] Configure deployment secrets, so I don't need to run Nix with `--impure`
 - [ ] Configure Firefox and its extensions
 - [ ] Set Zsh prompt and other settings
 - [ ] Add icon theme and configure Nemo

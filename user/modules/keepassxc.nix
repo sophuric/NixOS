@@ -36,7 +36,26 @@
         ToolButtonStyle = 0;
         TrayIconAppearance = "monochrome-light";
       };
-      PasswordGenerator = import /${config.home.homeDirectory}/.config/keepassxc-password-generator.nix;
+      PasswordGenerator = {
+        AdditionalChars = "";
+        AdvancedMode = true;
+        Braces = true;
+        Dashes = true;
+        EASCII = false;
+        ExcludeAlike = true;
+        ExcludedChars = "";
+        Length = 64;
+        Logograms = true;
+        LowerCase = true;
+        Math = true;
+        Numbers = true;
+        Punctuation = true;
+        Quotes = true;
+        SpecialChars = true;
+        UpperCase = true;
+        WordCase = 0;
+        WordCount = 40;
+      };
       SSHAgent.Enabled = true;
       Security = {
         ClearClipboardTimeout = 7;
