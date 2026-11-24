@@ -1,7 +1,7 @@
 # vim: fixeol eol expandtab tabstop=2 shiftwidth=2
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs.url = "https://channels.nixos.org/nixos-26.05/nixexprs.tar.zst";
     # Revert NVIDIA to a working version
     nvidia-nixpkgs.url = "github:nixos/nixpkgs/fd1462031fdee08f65fd0b4c6b64e22239a77870";
     # Newer version of Immich

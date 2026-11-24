@@ -25,14 +25,14 @@ let
         "com.demonwav.minecraft-dev"
       ];
     }
-    {
-      package = rider;
-      plugins = [ ];
-    }
-    {
-      package = clion;
-      plugins = [ ];
-    }
+    # {
+    #   package = rider;
+    #   plugins = [ ];
+    # }
+    # {
+    #   package = clion;
+    #   plugins = [ ];
+    # }
   ];
   unfree-ides = with pkgs.jetbrains; [
     idea
