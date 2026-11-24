@@ -12,6 +12,10 @@
         nixfmt
         shfmt
         stylua
+        rustc
+        cargo
+        clippy
+        rustfmt
       ];
     plugins.lspconfig.enable = true;
     lsp = {
@@ -21,6 +25,14 @@
         lua_ls.enable = true;
         nixd.enable = true;
         ts_ls.enable = true;
+        rust_analyzer = {
+          enable = true;
+          config.settings.rust-analyzer = {
+            check = {
+              command = "clippy";
+            };
+          };
+        };
       };
       keymaps =
         map
