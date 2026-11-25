@@ -2,7 +2,6 @@
 
 {
   pkgs,
-  config,
   inputs,
   username,
   ...
@@ -61,11 +60,6 @@
 
     boot.loader.limine.efiSupport = true;
 
-    # super fucking cursed hack
-    boot.kernelPackages =
-      (import inputs.nvidia-nixpkgs {
-        system = pkgs.stdenv.hostPlatform.system;
-        config.allowUnfreePredicate = config.nixpkgs.config.allowUnfreePredicate;
-      }).linuxPackages_latest;
+    boot.kernelPackages = pkgs.linuxPackages_latest;
   };
 }

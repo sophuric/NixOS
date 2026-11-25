@@ -2,8 +2,6 @@
 {
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixos-26.05/nixexprs.tar.zst";
-    # Revert NVIDIA to a working version
-    nvidia-nixpkgs.url = "github:nixos/nixpkgs/fd1462031fdee08f65fd0b4c6b64e22239a77870";
     # Newer version of Immich
     immich-nixpkgs.url = "github:nixos/nixpkgs/b4fd65b198c599cbe814fcb9f42d25d021595ec9";
     catppuccin = {
