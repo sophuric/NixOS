@@ -360,11 +360,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795395404,
-        "narHash": "sha256-Fk11sCzN9cLwyrCx7JdFxL6KzPKca96dVF7Qhd2b1bw=",
+        "lastModified": 1795596288,
+        "narHash": "sha256-kBpQVY4P6l+QxfBLNg5k2rkZAnwsbyiICDRl0tmkD1E=",
         "owner": "sophuric",
         "repo": "timer",
-        "rev": "f5cab981b1e6ffce0b92b4ca4a2a439797f20476",
+        "rev": "bd42af7ede6f37f2910545165f078a844b1bb2e8",
         "type": "github"
       },
       "original": {
